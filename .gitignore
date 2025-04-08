@@ -1,3 +1,62 @@
-.qodo
-.node_modules
+# Dependency directories
+node_modules/
+.pnp/
+.pnp.js
+.yarn/
+
+# Environment variables
 .env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+
+# Coverage directories
+coverage/
+.nyc_output/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+*.sublime-*
+
+# Personal or sensitive information
+.qodo
+config.js
+secrets.json
+credentials.json
+*_rsa
+*_dsa
+*.pem
+*.key
+
+# Local development files
+.vercel
+.netlify
+
+# Optional: Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
