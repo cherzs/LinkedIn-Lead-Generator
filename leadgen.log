@@ -7836,3 +7836,428 @@ Stacktrace:
 
 2025-04-09 23:33:08,387 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:33:08] "GET /api/linkedin/login-status?_t=1744216387975 HTTP/1.1" 200 -
 2025-04-09 23:33:08,651 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:33:08] "GET /api/linkedin/check-status-file?_t=1744216387975 HTTP/1.1" 200 -
+2025-04-09 23:44:35,336 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.18.11:5000
+2025-04-09 23:44:35,370 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-09 23:45:14,990 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:14] "OPTIONS /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-09 23:45:15,025 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:15] "OPTIONS /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-09 23:45:15,042 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:15,045 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:15,047 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:15] "GET /api/linkedin/verify-login?_t=1744217114660 HTTP/1.1" 200 -
+2025-04-09 23:45:15,049 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:15] "GET /api/linkedin/verify-login?_t=1744217114698 HTTP/1.1" 200 -
+2025-04-09 23:45:15,051 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:15] "GET /api/leads HTTP/1.1" 200 -
+2025-04-09 23:45:15,250 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-09 23:45:15,252 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:15] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-09 23:45:15,314 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-09 23:45:15,316 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:15] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-09 23:45:15,350 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:15] "GET /api/leads HTTP/1.1" 200 -
+2025-04-09 23:45:15,364 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:15] "GET /api/linkedin/login-status?_t=1744217114660 HTTP/1.1" 200 -
+2025-04-09 23:45:15,478 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:15] "GET /api/linkedin/login-status?_t=1744217114698 HTTP/1.1" 200 -
+2025-04-09 23:45:16,056 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-09 23:45:16,062 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:16] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-09 23:45:16,373 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:16,376 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:16] "GET /api/leads HTTP/1.1" 200 -
+2025-04-09 23:45:16,378 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:16] "GET /api/linkedin/verify-login?_t=1744217116035 HTTP/1.1" 200 -
+2025-04-09 23:45:16,727 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:16] "GET /api/linkedin/login-status?_t=1744217116035 HTTP/1.1" 200 -
+2025-04-09 23:45:17,002 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:17] "GET /api/linkedin/check-status-file?_t=1744217116035 HTTP/1.1" 200 -
+2025-04-09 23:45:22,282 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:22,282 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:22] "GET /api/linkedin/verify-login?_t=1744217121959 HTTP/1.1" 200 -
+2025-04-09 23:45:22,533 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:22] "GET /api/linkedin/login-status?_t=1744217121959 HTTP/1.1" 200 -
+2025-04-09 23:45:22,615 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:22] "GET /api/linkedin/check-status-file?_t=1744217121959 HTTP/1.1" 200 -
+2025-04-09 23:45:26,966 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:26,968 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:26] "GET /api/linkedin/verify-login?_t=1744217126951 HTTP/1.1" 200 -
+2025-04-09 23:45:27,292 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:27] "GET /api/linkedin/login-status?_t=1744217126951 HTTP/1.1" 200 -
+2025-04-09 23:45:27,557 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:27] "GET /api/linkedin/check-status-file?_t=1744217126951 HTTP/1.1" 200 -
+2025-04-09 23:45:31,971 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:31,974 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:31] "GET /api/linkedin/verify-login?_t=1744217131953 HTTP/1.1" 200 -
+2025-04-09 23:45:32,309 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:32] "GET /api/linkedin/login-status?_t=1744217131953 HTTP/1.1" 200 -
+2025-04-09 23:45:32,575 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:32] "GET /api/linkedin/check-status-file?_t=1744217131953 HTTP/1.1" 200 -
+2025-04-09 23:45:36,976 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:36,976 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:36] "GET /api/linkedin/verify-login?_t=1744217136956 HTTP/1.1" 200 -
+2025-04-09 23:45:37,305 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:37] "GET /api/linkedin/login-status?_t=1744217136956 HTTP/1.1" 200 -
+2025-04-09 23:45:37,567 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:37] "GET /api/linkedin/check-status-file?_t=1744217136956 HTTP/1.1" 200 -
+2025-04-09 23:45:41,974 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:41,976 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:41] "GET /api/linkedin/verify-login?_t=1744217141956 HTTP/1.1" 200 -
+2025-04-09 23:45:42,294 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:42] "GET /api/linkedin/login-status?_t=1744217141956 HTTP/1.1" 200 -
+2025-04-09 23:45:42,552 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:42] "GET /api/linkedin/check-status-file?_t=1744217141956 HTTP/1.1" 200 -
+2025-04-09 23:45:46,135 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:46,206 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:46] "GET /api/linkedin/verify-login?_t=1744217146040 HTTP/1.1" 200 -
+2025-04-09 23:45:46,587 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:46] "GET /api/linkedin/login-status?_t=1744217146040 HTTP/1.1" 200 -
+2025-04-09 23:45:46,844 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:46] "GET /api/linkedin/check-status-file?_t=1744217146040 HTTP/1.1" 200 -
+2025-04-09 23:45:51,064 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:51,068 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:51] "GET /api/linkedin/verify-login?_t=1744217151046 HTTP/1.1" 200 -
+2025-04-09 23:45:51,405 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:51] "GET /api/linkedin/login-status?_t=1744217151046 HTTP/1.1" 200 -
+2025-04-09 23:45:51,661 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:51] "GET /api/linkedin/check-status-file?_t=1744217151046 HTTP/1.1" 200 -
+2025-04-09 23:45:56,058 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:45:56,061 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:56] "GET /api/linkedin/verify-login?_t=1744217156042 HTTP/1.1" 200 -
+2025-04-09 23:45:56,407 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:56] "GET /api/linkedin/login-status?_t=1744217156042 HTTP/1.1" 200 -
+2025-04-09 23:45:56,661 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:45:56] "GET /api/linkedin/check-status-file?_t=1744217156042 HTTP/1.1" 200 -
+2025-04-09 23:46:01,978 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:01,978 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:01] "GET /api/linkedin/verify-login?_t=1744217161963 HTTP/1.1" 200 -
+2025-04-09 23:46:02,318 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:02] "GET /api/linkedin/login-status?_t=1744217161963 HTTP/1.1" 200 -
+2025-04-09 23:46:02,977 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:02] "GET /api/linkedin/check-status-file?_t=1744217161963 HTTP/1.1" 200 -
+2025-04-09 23:46:06,364 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:06,370 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:06] "GET /api/linkedin/verify-login?_t=1744217166037 HTTP/1.1" 200 -
+2025-04-09 23:46:06,619 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:06] "GET /api/linkedin/login-status?_t=1744217166037 HTTP/1.1" 200 -
+2025-04-09 23:46:06,730 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:06] "GET /api/linkedin/check-status-file?_t=1744217166037 HTTP/1.1" 200 -
+2025-04-09 23:46:11,060 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:11,060 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:11] "GET /api/linkedin/verify-login?_t=1744217171049 HTTP/1.1" 200 -
+2025-04-09 23:46:11,384 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:11] "GET /api/linkedin/login-status?_t=1744217171049 HTTP/1.1" 200 -
+2025-04-09 23:46:11,654 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:11] "GET /api/linkedin/check-status-file?_t=1744217171049 HTTP/1.1" 200 -
+2025-04-09 23:46:16,055 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:16,059 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:16] "GET /api/linkedin/verify-login?_t=1744217176038 HTTP/1.1" 200 -
+2025-04-09 23:46:16,390 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:16] "GET /api/linkedin/login-status?_t=1744217176038 HTTP/1.1" 200 -
+2025-04-09 23:46:16,661 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:16] "GET /api/linkedin/check-status-file?_t=1744217176038 HTTP/1.1" 200 -
+2025-04-09 23:46:21,059 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:21,060 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:21] "GET /api/linkedin/verify-login?_t=1744217181045 HTTP/1.1" 200 -
+2025-04-09 23:46:21,382 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:21] "GET /api/linkedin/login-status?_t=1744217181045 HTTP/1.1" 200 -
+2025-04-09 23:46:21,652 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:21] "GET /api/linkedin/check-status-file?_t=1744217181045 HTTP/1.1" 200 -
+2025-04-09 23:46:26,056 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:26,058 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:26] "GET /api/linkedin/verify-login?_t=1744217186042 HTTP/1.1" 200 -
+2025-04-09 23:46:26,391 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:26] "GET /api/linkedin/login-status?_t=1744217186042 HTTP/1.1" 200 -
+2025-04-09 23:46:26,645 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:26] "GET /api/linkedin/check-status-file?_t=1744217186042 HTTP/1.1" 200 -
+2025-04-09 23:46:31,657 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:31,659 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:31] "GET /api/linkedin/verify-login?_t=1744217191048 HTTP/1.1" 200 -
+2025-04-09 23:46:31,999 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:31] "GET /api/linkedin/login-status?_t=1744217191048 HTTP/1.1" 200 -
+2025-04-09 23:46:32,258 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:32] "GET /api/linkedin/check-status-file?_t=1744217191048 HTTP/1.1" 200 -
+2025-04-09 23:46:36,976 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:36,976 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:36] "GET /api/linkedin/verify-login?_t=1744217196966 HTTP/1.1" 200 -
+2025-04-09 23:46:37,316 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:37] "GET /api/linkedin/login-status?_t=1744217196966 HTTP/1.1" 200 -
+2025-04-09 23:46:37,657 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:37] "GET /api/linkedin/check-status-file?_t=1744217196966 HTTP/1.1" 200 -
+2025-04-09 23:46:42,087 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:42,090 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:42] "GET /api/linkedin/verify-login?_t=1744217201964 HTTP/1.1" 200 -
+2025-04-09 23:46:42,421 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:42] "GET /api/linkedin/login-status?_t=1744217201964 HTTP/1.1" 200 -
+2025-04-09 23:46:42,669 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:42] "GET /api/linkedin/check-status-file?_t=1744217201964 HTTP/1.1" 200 -
+2025-04-09 23:46:46,976 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:46,976 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:46] "GET /api/linkedin/verify-login?_t=1744217206955 HTTP/1.1" 200 -
+2025-04-09 23:46:47,302 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:47] "GET /api/linkedin/login-status?_t=1744217206955 HTTP/1.1" 200 -
+2025-04-09 23:46:47,571 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:47] "GET /api/linkedin/check-status-file?_t=1744217206955 HTTP/1.1" 200 -
+2025-04-09 23:46:51,975 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:51,979 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:51] "GET /api/linkedin/verify-login?_t=1744217211958 HTTP/1.1" 200 -
+2025-04-09 23:46:52,301 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:52] "GET /api/linkedin/login-status?_t=1744217211958 HTTP/1.1" 200 -
+2025-04-09 23:46:52,568 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:52] "GET /api/linkedin/check-status-file?_t=1744217211958 HTTP/1.1" 200 -
+2025-04-09 23:46:56,973 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:46:56,973 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:56] "GET /api/linkedin/verify-login?_t=1744217216955 HTTP/1.1" 200 -
+2025-04-09 23:46:57,305 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:57] "GET /api/linkedin/login-status?_t=1744217216955 HTTP/1.1" 200 -
+2025-04-09 23:46:57,556 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:46:57] "GET /api/linkedin/check-status-file?_t=1744217216955 HTTP/1.1" 200 -
+2025-04-09 23:47:01,969 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:01,969 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:01] "GET /api/linkedin/verify-login?_t=1744217221957 HTTP/1.1" 200 -
+2025-04-09 23:47:02,294 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:02] "GET /api/linkedin/login-status?_t=1744217221957 HTTP/1.1" 200 -
+2025-04-09 23:47:02,551 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:02] "GET /api/linkedin/check-status-file?_t=1744217221957 HTTP/1.1" 200 -
+2025-04-09 23:47:06,971 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:06,971 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:06] "GET /api/linkedin/verify-login?_t=1744217226957 HTTP/1.1" 200 -
+2025-04-09 23:47:07,301 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:07] "GET /api/linkedin/login-status?_t=1744217226957 HTTP/1.1" 200 -
+2025-04-09 23:47:07,562 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:07] "GET /api/linkedin/check-status-file?_t=1744217226957 HTTP/1.1" 200 -
+2025-04-09 23:47:11,973 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:11,973 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:11] "GET /api/linkedin/verify-login?_t=1744217231956 HTTP/1.1" 200 -
+2025-04-09 23:47:12,298 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:12] "GET /api/linkedin/login-status?_t=1744217231956 HTTP/1.1" 200 -
+2025-04-09 23:47:12,552 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:12] "GET /api/linkedin/check-status-file?_t=1744217231956 HTTP/1.1" 200 -
+2025-04-09 23:47:16,965 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:16,967 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:16] "GET /api/linkedin/verify-login?_t=1744217236951 HTTP/1.1" 200 -
+2025-04-09 23:47:17,283 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:17] "GET /api/linkedin/login-status?_t=1744217236951 HTTP/1.1" 200 -
+2025-04-09 23:47:17,551 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:17] "GET /api/linkedin/check-status-file?_t=1744217236951 HTTP/1.1" 200 -
+2025-04-09 23:47:21,970 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:21,970 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:21] "GET /api/linkedin/verify-login?_t=1744217241956 HTTP/1.1" 200 -
+2025-04-09 23:47:22,293 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:22] "GET /api/linkedin/login-status?_t=1744217241956 HTTP/1.1" 200 -
+2025-04-09 23:47:22,548 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:22] "GET /api/linkedin/check-status-file?_t=1744217241956 HTTP/1.1" 200 -
+2025-04-09 23:47:26,962 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:26,980 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:26] "GET /api/linkedin/verify-login?_t=1744217246964 HTTP/1.1" 200 -
+2025-04-09 23:47:27,296 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:27] "GET /api/linkedin/login-status?_t=1744217246964 HTTP/1.1" 200 -
+2025-04-09 23:47:27,555 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:27] "GET /api/linkedin/check-status-file?_t=1744217246964 HTTP/1.1" 200 -
+2025-04-09 23:47:31,240 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:31,243 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:31] "GET /api/linkedin/verify-login?_t=1744217251212 HTTP/1.1" 200 -
+2025-04-09 23:47:31,587 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:31] "GET /api/linkedin/login-status?_t=1744217251212 HTTP/1.1" 200 -
+2025-04-09 23:47:31,849 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:31] "GET /api/linkedin/check-status-file?_t=1744217251212 HTTP/1.1" 200 -
+2025-04-09 23:47:36,973 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:36,976 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:36] "GET /api/linkedin/verify-login?_t=1744217256956 HTTP/1.1" 200 -
+2025-04-09 23:47:37,316 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:37] "GET /api/linkedin/login-status?_t=1744217256956 HTTP/1.1" 200 -
+2025-04-09 23:47:37,574 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:37] "GET /api/linkedin/check-status-file?_t=1744217256956 HTTP/1.1" 200 -
+2025-04-09 23:47:41,972 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:41,974 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:41] "GET /api/linkedin/verify-login?_t=1744217261956 HTTP/1.1" 200 -
+2025-04-09 23:47:42,304 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:42] "GET /api/linkedin/login-status?_t=1744217261956 HTTP/1.1" 200 -
+2025-04-09 23:47:42,561 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:42] "GET /api/linkedin/check-status-file?_t=1744217261956 HTTP/1.1" 200 -
+2025-04-09 23:47:46,987 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:46,987 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:46] "GET /api/linkedin/verify-login?_t=1744217266965 HTTP/1.1" 200 -
+2025-04-09 23:47:47,320 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:47] "GET /api/linkedin/login-status?_t=1744217266965 HTTP/1.1" 200 -
+2025-04-09 23:47:47,577 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:47] "GET /api/linkedin/check-status-file?_t=1744217266965 HTTP/1.1" 200 -
+2025-04-09 23:47:51,996 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:52,004 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:52] "GET /api/linkedin/verify-login?_t=1744217271958 HTTP/1.1" 200 -
+2025-04-09 23:47:52,695 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:52] "GET /api/linkedin/login-status?_t=1744217271958 HTTP/1.1" 200 -
+2025-04-09 23:47:53,609 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:53] "GET /api/linkedin/check-status-file?_t=1744217271958 HTTP/1.1" 200 -
+2025-04-09 23:47:57,288 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:47:57,290 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:57] "GET /api/linkedin/verify-login?_t=1744217276955 HTTP/1.1" 200 -
+2025-04-09 23:47:57,554 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:57] "GET /api/linkedin/login-status?_t=1744217276955 HTTP/1.1" 200 -
+2025-04-09 23:47:57,629 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:47:57] "GET /api/linkedin/check-status-file?_t=1744217276955 HTTP/1.1" 200 -
+2025-04-09 23:57:28,315 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.18.11:5000
+2025-04-09 23:57:28,323 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-09 23:57:45,655 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:57:45,663 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:45] "OPTIONS /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-09 23:57:45,665 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:45] "GET /api/linkedin/verify-login?_t=1744217865333 HTTP/1.1" 200 -
+2025-04-09 23:57:45,671 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:57:45,671 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:45] "OPTIONS /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-09 23:57:45,692 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:45] "GET /api/linkedin/verify-login?_t=1744217865347 HTTP/1.1" 200 -
+2025-04-09 23:57:45,699 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:45] "GET /api/leads HTTP/1.1" 200 -
+2025-04-09 23:57:45,902 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-09 23:57:45,902 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:45] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-09 23:57:46,011 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-09 23:57:46,019 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:46] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-09 23:57:46,030 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:46] "GET /api/linkedin/login-status?_t=1744217865333 HTTP/1.1" 200 -
+2025-04-09 23:57:46,037 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:46] "GET /api/linkedin/login-status?_t=1744217865347 HTTP/1.1" 200 -
+2025-04-09 23:57:46,039 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:46] "GET /api/leads HTTP/1.1" 200 -
+2025-04-09 23:57:49,191 - leadgen - INFO - LinkedIn login status forced to: False
+2025-04-09 23:57:49,193 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:49] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-09 23:57:50,335 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:50] "OPTIONS /api/run-test-scraper HTTP/1.1" 200 -
+2025-04-09 23:57:50,581 - leadgen - INFO - Starting LinkedIn login process directly
+2025-04-09 23:57:50,584 - leadgen - INFO - Detected OS: Windows
+2025-04-09 23:57:50,584 - leadgen - INFO - Using ChromeDriver at: C:\Users\zhafr\OneDrive\Documents\Project\LinkedIn-Lead-Generator\drivers/chromedriver-win64/chromedriver.exe
+2025-04-09 23:57:50,588 - leadgen - INFO - Starting Chrome with visible UI
+2025-04-09 23:57:50,681 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:57:50,681 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:50] "GET /api/linkedin/verify-login?_t=1744217870350 HTTP/1.1" 200 -
+2025-04-09 23:57:50,738 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:50] "GET /api/linkedin/login-status?_t=1744217870350 HTTP/1.1" 200 -
+2025-04-09 23:57:51,081 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:51] "GET /api/linkedin/check-status-file?_t=1744217870350 HTTP/1.1" 200 -
+2025-04-09 23:57:53,687 - leadgen - INFO - Opening LinkedIn login page...
+2025-04-09 23:57:53,687 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:53] "POST /api/run-test-scraper HTTP/1.1" 200 -
+2025-04-09 23:57:56,298 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:57:56,303 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:56] "GET /api/linkedin/verify-login?_t=1744217875963 HTTP/1.1" 200 -
+2025-04-09 23:57:56,539 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:56] "GET /api/linkedin/login-status?_t=1744217875963 HTTP/1.1" 200 -
+2025-04-09 23:57:56,668 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:57:56] "GET /api/linkedin/check-status-file?_t=1744217875963 HTTP/1.1" 200 -
+2025-04-09 23:57:59,554 - leadgen - INFO - Waiting for user to login manually
+2025-04-09 23:57:59,618 - leadgen - INFO - Current URL: https://www.linkedin.com/login
+2025-04-09 23:58:00,410 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:00,415 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:00] "GET /api/linkedin/verify-login?_t=1744217880363 HTTP/1.1" 200 -
+2025-04-09 23:58:00,813 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:00,892 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:00] "GET /api/linkedin/verify-login?_t=1744217880367 HTTP/1.1" 200 -
+2025-04-09 23:58:01,366 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:01] "GET /api/linkedin/login-status?_t=1744217880363 HTTP/1.1" 200 -
+2025-04-09 23:58:01,370 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:01] "GET /api/linkedin/login-status?_t=1744217880367 HTTP/1.1" 200 -
+2025-04-09 23:58:01,639 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:01] "GET /api/linkedin/check-status-file?_t=1744217880363 HTTP/1.1" 200 -
+2025-04-09 23:58:01,703 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:01] "GET /api/linkedin/check-status-file?_t=1744217880367 HTTP/1.1" 200 -
+2025-04-09 23:58:05,974 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:05,976 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:05] "GET /api/linkedin/verify-login?_t=1744217885957 HTTP/1.1" 200 -
+2025-04-09 23:58:06,307 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:06] "GET /api/linkedin/login-status?_t=1744217885957 HTTP/1.1" 200 -
+2025-04-09 23:58:06,566 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:06] "GET /api/linkedin/check-status-file?_t=1744217885957 HTTP/1.1" 200 -
+2025-04-09 23:58:10,986 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:10,994 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:10] "GET /api/linkedin/verify-login?_t=1744217890950 HTTP/1.1" 200 -
+2025-04-09 23:58:12,324 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:12] "GET /api/linkedin/login-status?_t=1744217890950 HTTP/1.1" 200 -
+2025-04-09 23:58:12,540 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:12] "GET /api/linkedin/check-status-file?_t=1744217890950 HTTP/1.1" 200 -
+2025-04-09 23:58:15,978 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:15,978 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:15] "GET /api/linkedin/verify-login?_t=1744217895965 HTTP/1.1" 200 -
+2025-04-09 23:58:16,311 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:16] "GET /api/linkedin/login-status?_t=1744217895965 HTTP/1.1" 200 -
+2025-04-09 23:58:16,578 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:16] "GET /api/linkedin/check-status-file?_t=1744217895965 HTTP/1.1" 200 -
+2025-04-09 23:58:20,971 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:20,977 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:20] "GET /api/linkedin/verify-login?_t=1744217900961 HTTP/1.1" 200 -
+2025-04-09 23:58:21,302 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:21] "GET /api/linkedin/login-status?_t=1744217900961 HTTP/1.1" 200 -
+2025-04-09 23:58:21,565 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:21] "GET /api/linkedin/check-status-file?_t=1744217900961 HTTP/1.1" 200 -
+2025-04-09 23:58:25,970 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:25,970 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:25] "GET /api/linkedin/verify-login?_t=1744217905959 HTTP/1.1" 200 -
+2025-04-09 23:58:26,301 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:26] "GET /api/linkedin/login-status?_t=1744217905959 HTTP/1.1" 200 -
+2025-04-09 23:58:26,550 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:26] "GET /api/linkedin/check-status-file?_t=1744217905959 HTTP/1.1" 200 -
+2025-04-09 23:58:30,951 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:30,951 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:30] "GET /api/linkedin/verify-login?_t=1744217910952 HTTP/1.1" 200 -
+2025-04-09 23:58:31,284 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:31] "GET /api/linkedin/login-status?_t=1744217910952 HTTP/1.1" 200 -
+2025-04-09 23:58:31,543 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:31] "GET /api/linkedin/check-status-file?_t=1744217910952 HTTP/1.1" 200 -
+2025-04-09 23:58:35,948 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:35,948 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:35] "GET /api/linkedin/verify-login?_t=1744217915949 HTTP/1.1" 200 -
+2025-04-09 23:58:36,273 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:36] "GET /api/linkedin/login-status?_t=1744217915949 HTTP/1.1" 200 -
+2025-04-09 23:58:36,542 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:36] "GET /api/linkedin/check-status-file?_t=1744217915949 HTTP/1.1" 200 -
+2025-04-09 23:58:40,969 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:40,969 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:40] "GET /api/linkedin/verify-login?_t=1744217920958 HTTP/1.1" 200 -
+2025-04-09 23:58:41,297 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:41] "GET /api/linkedin/login-status?_t=1744217920958 HTTP/1.1" 200 -
+2025-04-09 23:58:41,553 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:41] "GET /api/linkedin/check-status-file?_t=1744217920958 HTTP/1.1" 200 -
+2025-04-09 23:58:45,987 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:45,990 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:45] "GET /api/linkedin/verify-login?_t=1744217925955 HTTP/1.1" 200 -
+2025-04-09 23:58:46,326 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:46] "GET /api/linkedin/login-status?_t=1744217925955 HTTP/1.1" 200 -
+2025-04-09 23:58:46,586 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:46] "GET /api/linkedin/check-status-file?_t=1744217925955 HTTP/1.1" 200 -
+2025-04-09 23:58:50,956 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:50,956 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:50] "GET /api/linkedin/verify-login?_t=1744217930951 HTTP/1.1" 200 -
+2025-04-09 23:58:51,283 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:51] "GET /api/linkedin/login-status?_t=1744217930951 HTTP/1.1" 200 -
+2025-04-09 23:58:51,540 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:51] "GET /api/linkedin/check-status-file?_t=1744217930951 HTTP/1.1" 200 -
+2025-04-09 23:58:55,972 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:58:55,972 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:55] "GET /api/linkedin/verify-login?_t=1744217935959 HTTP/1.1" 200 -
+2025-04-09 23:58:56,310 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:56] "GET /api/linkedin/login-status?_t=1744217935959 HTTP/1.1" 200 -
+2025-04-09 23:58:56,556 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:58:56] "GET /api/linkedin/check-status-file?_t=1744217935959 HTTP/1.1" 200 -
+2025-04-09 23:59:00,972 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:59:00,972 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:00] "GET /api/linkedin/verify-login?_t=1744217940956 HTTP/1.1" 200 -
+2025-04-09 23:59:01,300 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:01] "GET /api/linkedin/login-status?_t=1744217940956 HTTP/1.1" 200 -
+2025-04-09 23:59:01,563 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:01] "GET /api/linkedin/check-status-file?_t=1744217940956 HTTP/1.1" 200 -
+2025-04-09 23:59:05,955 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:59:05,955 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:05] "GET /api/linkedin/verify-login?_t=1744217945956 HTTP/1.1" 200 -
+2025-04-09 23:59:06,279 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:06] "GET /api/linkedin/login-status?_t=1744217945956 HTTP/1.1" 200 -
+2025-04-09 23:59:06,540 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:06] "GET /api/linkedin/check-status-file?_t=1744217945956 HTTP/1.1" 200 -
+2025-04-09 23:59:10,984 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:59:10,986 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:10] "GET /api/linkedin/verify-login?_t=1744217950963 HTTP/1.1" 200 -
+2025-04-09 23:59:11,338 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:11] "GET /api/linkedin/login-status?_t=1744217950963 HTTP/1.1" 200 -
+2025-04-09 23:59:11,597 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:11] "GET /api/linkedin/check-status-file?_t=1744217950963 HTTP/1.1" 200 -
+2025-04-09 23:59:24,981 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:59:24,983 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:24] "GET /api/linkedin/verify-login?_t=1744217964963 HTTP/1.1" 200 -
+2025-04-09 23:59:25,305 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:25] "GET /api/linkedin/login-status?_t=1744217964963 HTTP/1.1" 200 -
+2025-04-09 23:59:25,570 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:25] "GET /api/linkedin/check-status-file?_t=1744217964963 HTTP/1.1" 200 -
+2025-04-09 23:59:54,257 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:59:54,281 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:54] "GET /api/linkedin/verify-login?_t=1744217994137 HTTP/1.1" 200 -
+2025-04-09 23:59:54,720 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:54] "GET /api/linkedin/login-status?_t=1744217994137 HTTP/1.1" 200 -
+2025-04-09 23:59:54,963 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:54] "GET /api/linkedin/check-status-file?_t=1744217994137 HTTP/1.1" 200 -
+2025-04-09 23:59:55,376 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-09 23:59:55,390 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:55] "GET /api/linkedin/verify-login?_t=1744217995358 HTTP/1.1" 200 -
+2025-04-09 23:59:55,726 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:55] "GET /api/linkedin/login-status?_t=1744217995358 HTTP/1.1" 200 -
+2025-04-09 23:59:55,983 - werkzeug - INFO - 127.0.0.1 - - [09/Apr/2025 23:59:55] "GET /api/linkedin/check-status-file?_t=1744217995358 HTTP/1.1" 200 -
+2025-04-10 00:00:00,975 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:00,977 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:00] "GET /api/linkedin/verify-login?_t=1744218000955 HTTP/1.1" 200 -
+2025-04-10 00:00:01,302 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:01] "GET /api/linkedin/login-status?_t=1744218000955 HTTP/1.1" 200 -
+2025-04-10 00:00:01,561 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:01] "GET /api/linkedin/check-status-file?_t=1744218000955 HTTP/1.1" 200 -
+2025-04-10 00:00:05,986 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:05,991 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:05] "GET /api/linkedin/verify-login?_t=1744218005958 HTTP/1.1" 200 -
+2025-04-10 00:00:06,354 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:06] "GET /api/linkedin/login-status?_t=1744218005958 HTTP/1.1" 200 -
+2025-04-10 00:00:06,607 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:06] "GET /api/linkedin/check-status-file?_t=1744218005958 HTTP/1.1" 200 -
+2025-04-10 00:00:10,976 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:10,979 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:10] "GET /api/linkedin/verify-login?_t=1744218010952 HTTP/1.1" 200 -
+2025-04-10 00:00:11,316 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:11] "GET /api/linkedin/login-status?_t=1744218010952 HTTP/1.1" 200 -
+2025-04-10 00:00:11,581 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:11] "GET /api/linkedin/check-status-file?_t=1744218010952 HTTP/1.1" 200 -
+2025-04-10 00:00:15,977 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:15,977 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:15] "GET /api/linkedin/verify-login?_t=1744218015963 HTTP/1.1" 200 -
+2025-04-10 00:00:16,305 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:16] "GET /api/linkedin/login-status?_t=1744218015963 HTTP/1.1" 200 -
+2025-04-10 00:00:16,565 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:16] "GET /api/linkedin/check-status-file?_t=1744218015963 HTTP/1.1" 200 -
+2025-04-10 00:00:20,973 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:20,981 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:20] "GET /api/linkedin/verify-login?_t=1744218020964 HTTP/1.1" 200 -
+2025-04-10 00:00:21,309 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:21] "GET /api/linkedin/login-status?_t=1744218020964 HTTP/1.1" 200 -
+2025-04-10 00:00:21,564 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:21] "GET /api/linkedin/check-status-file?_t=1744218020964 HTTP/1.1" 200 -
+2025-04-10 00:00:25,971 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:25,980 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:25] "GET /api/linkedin/verify-login?_t=1744218025957 HTTP/1.1" 200 -
+2025-04-10 00:00:26,297 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:26] "GET /api/linkedin/login-status?_t=1744218025957 HTTP/1.1" 200 -
+2025-04-10 00:00:26,574 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:26] "GET /api/linkedin/check-status-file?_t=1744218025957 HTTP/1.1" 200 -
+2025-04-10 00:00:30,976 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:30,979 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:30] "GET /api/linkedin/verify-login?_t=1744218030963 HTTP/1.1" 200 -
+2025-04-10 00:00:31,304 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:31] "GET /api/linkedin/login-status?_t=1744218030963 HTTP/1.1" 200 -
+2025-04-10 00:00:31,566 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:31] "GET /api/linkedin/check-status-file?_t=1744218030963 HTTP/1.1" 200 -
+2025-04-10 00:00:35,975 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:35,977 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:35] "GET /api/linkedin/verify-login?_t=1744218035960 HTTP/1.1" 200 -
+2025-04-10 00:00:36,309 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:36] "GET /api/linkedin/login-status?_t=1744218035960 HTTP/1.1" 200 -
+2025-04-10 00:00:36,574 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:36] "GET /api/linkedin/check-status-file?_t=1744218035960 HTTP/1.1" 200 -
+2025-04-10 00:00:40,954 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:40,961 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:40] "GET /api/linkedin/verify-login?_t=1744218040950 HTTP/1.1" 200 -
+2025-04-10 00:00:41,290 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:41] "GET /api/linkedin/login-status?_t=1744218040950 HTTP/1.1" 200 -
+2025-04-10 00:00:41,550 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:41] "GET /api/linkedin/check-status-file?_t=1744218040950 HTTP/1.1" 200 -
+2025-04-10 00:00:45,953 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:45,961 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:45] "GET /api/linkedin/verify-login?_t=1744218045953 HTTP/1.1" 200 -
+2025-04-10 00:00:46,277 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:46] "GET /api/linkedin/login-status?_t=1744218045953 HTTP/1.1" 200 -
+2025-04-10 00:00:46,538 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:46] "GET /api/linkedin/check-status-file?_t=1744218045953 HTTP/1.1" 200 -
+2025-04-10 00:00:50,952 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:50,960 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:50] "GET /api/linkedin/verify-login?_t=1744218050950 HTTP/1.1" 200 -
+2025-04-10 00:00:51,277 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:51] "GET /api/linkedin/login-status?_t=1744218050950 HTTP/1.1" 200 -
+2025-04-10 00:00:51,541 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:51] "GET /api/linkedin/check-status-file?_t=1744218050950 HTTP/1.1" 200 -
+2025-04-10 00:00:56,293 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:00:56,295 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:56] "GET /api/linkedin/verify-login?_t=1744218055959 HTTP/1.1" 200 -
+2025-04-10 00:00:56,618 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:56] "GET /api/linkedin/login-status?_t=1744218055959 HTTP/1.1" 200 -
+2025-04-10 00:00:57,091 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:00:57] "GET /api/linkedin/check-status-file?_t=1744218055959 HTTP/1.1" 200 -
+2025-04-10 00:01:01,992 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:01,998 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:01] "GET /api/linkedin/verify-login?_t=1744218061972 HTTP/1.1" 200 -
+2025-04-10 00:01:02,351 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:02] "GET /api/linkedin/login-status?_t=1744218061972 HTTP/1.1" 200 -
+2025-04-10 00:01:02,626 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:02] "GET /api/linkedin/check-status-file?_t=1744218061972 HTTP/1.1" 200 -
+2025-04-10 00:01:05,958 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:05,962 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:05] "GET /api/linkedin/verify-login?_t=1744218065950 HTTP/1.1" 200 -
+2025-04-10 00:01:06,290 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:06] "GET /api/linkedin/login-status?_t=1744218065950 HTTP/1.1" 200 -
+2025-04-10 00:01:06,550 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:06] "GET /api/linkedin/check-status-file?_t=1744218065950 HTTP/1.1" 200 -
+2025-04-10 00:01:10,971 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:10,973 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:10] "GET /api/linkedin/verify-login?_t=1744218070951 HTTP/1.1" 200 -
+2025-04-10 00:01:11,300 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:11] "GET /api/linkedin/login-status?_t=1744218070951 HTTP/1.1" 200 -
+2025-04-10 00:01:11,812 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:11] "GET /api/linkedin/check-status-file?_t=1744218070951 HTTP/1.1" 200 -
+2025-04-10 00:01:15,376 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:15,378 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:15] "GET /api/linkedin/verify-login?_t=1744218075352 HTTP/1.1" 200 -
+2025-04-10 00:01:15,708 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:15] "GET /api/linkedin/login-status?_t=1744218075352 HTTP/1.1" 200 -
+2025-04-10 00:01:15,979 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:15] "GET /api/linkedin/check-status-file?_t=1744218075352 HTTP/1.1" 200 -
+2025-04-10 00:01:20,965 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:20,965 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:20] "GET /api/linkedin/verify-login?_t=1744218080962 HTTP/1.1" 200 -
+2025-04-10 00:01:21,296 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:21] "GET /api/linkedin/login-status?_t=1744218080962 HTTP/1.1" 200 -
+2025-04-10 00:01:21,583 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:21] "GET /api/linkedin/check-status-file?_t=1744218080962 HTTP/1.1" 200 -
+2025-04-10 00:01:26,021 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:26,024 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:26] "GET /api/linkedin/verify-login?_t=1744218085997 HTTP/1.1" 200 -
+2025-04-10 00:01:26,361 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:26] "GET /api/linkedin/login-status?_t=1744218085997 HTTP/1.1" 200 -
+2025-04-10 00:01:26,606 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:26] "GET /api/linkedin/check-status-file?_t=1744218085997 HTTP/1.1" 200 -
+2025-04-10 00:01:30,966 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:30,969 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:30] "GET /api/linkedin/verify-login?_t=1744218090952 HTTP/1.1" 200 -
+2025-04-10 00:01:31,306 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:31] "GET /api/linkedin/login-status?_t=1744218090952 HTTP/1.1" 200 -
+2025-04-10 00:01:31,572 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:31] "GET /api/linkedin/check-status-file?_t=1744218090952 HTTP/1.1" 200 -
+2025-04-10 00:01:35,971 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:35,972 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:35] "GET /api/linkedin/verify-login?_t=1744218095951 HTTP/1.1" 200 -
+2025-04-10 00:01:36,289 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:36] "GET /api/linkedin/login-status?_t=1744218095951 HTTP/1.1" 200 -
+2025-04-10 00:01:36,557 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:36] "GET /api/linkedin/check-status-file?_t=1744218095951 HTTP/1.1" 200 -
+2025-04-10 00:01:40,986 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:40,988 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:40] "GET /api/linkedin/verify-login?_t=1744218100968 HTTP/1.1" 200 -
+2025-04-10 00:01:41,318 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:41] "GET /api/linkedin/login-status?_t=1744218100968 HTTP/1.1" 200 -
+2025-04-10 00:01:41,581 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:41] "GET /api/linkedin/check-status-file?_t=1744218100968 HTTP/1.1" 200 -
+2025-04-10 00:01:45,961 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:45,966 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:45] "GET /api/linkedin/verify-login?_t=1744218105954 HTTP/1.1" 200 -
+2025-04-10 00:01:46,299 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:46] "GET /api/linkedin/login-status?_t=1744218105954 HTTP/1.1" 200 -
+2025-04-10 00:01:46,553 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:46] "GET /api/linkedin/check-status-file?_t=1744218105954 HTTP/1.1" 200 -
+2025-04-10 00:01:50,985 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:50,986 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:50] "GET /api/linkedin/verify-login?_t=1744218110962 HTTP/1.1" 200 -
+2025-04-10 00:01:51,354 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:51] "GET /api/linkedin/login-status?_t=1744218110962 HTTP/1.1" 200 -
+2025-04-10 00:01:51,624 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:51] "GET /api/linkedin/check-status-file?_t=1744218110962 HTTP/1.1" 200 -
+2025-04-10 00:01:55,969 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:01:55,969 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:55] "GET /api/linkedin/verify-login?_t=1744218115956 HTTP/1.1" 200 -
+2025-04-10 00:01:56,287 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:56] "GET /api/linkedin/login-status?_t=1744218115956 HTTP/1.1" 200 -
+2025-04-10 00:01:56,552 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:01:56] "GET /api/linkedin/check-status-file?_t=1744218115956 HTTP/1.1" 200 -
+2025-04-10 00:02:00,970 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:02:00,970 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:00] "GET /api/linkedin/verify-login?_t=1744218120955 HTTP/1.1" 200 -
+2025-04-10 00:02:01,291 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:01] "GET /api/linkedin/login-status?_t=1744218120955 HTTP/1.1" 200 -
+2025-04-10 00:02:01,555 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:01] "GET /api/linkedin/check-status-file?_t=1744218120955 HTTP/1.1" 200 -
+2025-04-10 00:02:05,972 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:02:05,972 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:05] "GET /api/linkedin/verify-login?_t=1744218125958 HTTP/1.1" 200 -
+2025-04-10 00:02:06,309 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:06] "GET /api/linkedin/login-status?_t=1744218125958 HTTP/1.1" 200 -
+2025-04-10 00:02:06,561 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:06] "GET /api/linkedin/check-status-file?_t=1744218125958 HTTP/1.1" 200 -
+2025-04-10 00:02:10,977 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:02:10,979 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:10] "GET /api/linkedin/verify-login?_t=1744218130956 HTTP/1.1" 200 -
+2025-04-10 00:02:11,302 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:11] "GET /api/linkedin/login-status?_t=1744218130956 HTTP/1.1" 200 -
+2025-04-10 00:02:11,559 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:11] "GET /api/linkedin/check-status-file?_t=1744218130956 HTTP/1.1" 200 -
+2025-04-10 00:02:15,986 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:02:15,986 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:15] "GET /api/linkedin/verify-login?_t=1744218135966 HTTP/1.1" 200 -
+2025-04-10 00:02:16,320 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:16] "GET /api/linkedin/login-status?_t=1744218135966 HTTP/1.1" 200 -
+2025-04-10 00:02:16,573 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:16] "GET /api/linkedin/check-status-file?_t=1744218135966 HTTP/1.1" 200 -
+2025-04-10 00:02:25,019 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:02:25,022 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:25] "GET /api/linkedin/verify-login?_t=1744218144969 HTTP/1.1" 200 -
+2025-04-10 00:02:25,349 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:25] "GET /api/linkedin/login-status?_t=1744218144969 HTTP/1.1" 200 -
+2025-04-10 00:02:25,613 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:02:25] "GET /api/linkedin/check-status-file?_t=1744218144969 HTTP/1.1" 200 -
+2025-04-10 00:03:01,311 - leadgen - WARNING - Login timeout reached, no login detected
+2025-04-10 00:03:24,967 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:03:24,967 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:03:24] "GET /api/linkedin/verify-login?_t=1744218204959 HTTP/1.1" 200 -
+2025-04-10 00:03:25,313 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:03:25] "GET /api/linkedin/login-status?_t=1744218204959 HTTP/1.1" 200 -
+2025-04-10 00:03:25,563 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:03:25] "GET /api/linkedin/check-status-file?_t=1744218204959 HTTP/1.1" 200 -
+2025-04-10 00:04:25,068 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:04:25,080 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:04:25] "GET /api/linkedin/verify-login?_t=1744218264954 HTTP/1.1" 200 -
+2025-04-10 00:04:25,448 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:04:25] "GET /api/linkedin/login-status?_t=1744218264954 HTTP/1.1" 200 -
+2025-04-10 00:04:25,706 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:04:25] "GET /api/linkedin/check-status-file?_t=1744218264954 HTTP/1.1" 200 -
+2025-04-10 00:05:24,992 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:05:24,992 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:05:24] "GET /api/linkedin/verify-login?_t=1744218324957 HTTP/1.1" 200 -
+2025-04-10 00:05:25,333 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:05:25] "GET /api/linkedin/login-status?_t=1744218324957 HTTP/1.1" 200 -
+2025-04-10 00:05:25,586 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:05:25] "GET /api/linkedin/check-status-file?_t=1744218324957 HTTP/1.1" 200 -
+2025-04-10 00:06:24,979 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:06:24,983 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:06:24] "GET /api/linkedin/verify-login?_t=1744218384956 HTTP/1.1" 200 -
+2025-04-10 00:06:25,329 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:06:25] "GET /api/linkedin/login-status?_t=1744218384956 HTTP/1.1" 200 -
+2025-04-10 00:06:25,595 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:06:25] "GET /api/linkedin/check-status-file?_t=1744218384956 HTTP/1.1" 200 -
+2025-04-10 00:06:52,614 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:06:52,616 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:06:52] "GET /api/linkedin/verify-login?_t=1744218412511 HTTP/1.1" 200 -
+2025-04-10 00:06:52,983 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:06:52] "GET /api/linkedin/login-status?_t=1744218412511 HTTP/1.1" 200 -
+2025-04-10 00:06:53,244 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:06:53] "GET /api/linkedin/check-status-file?_t=1744218412511 HTTP/1.1" 200 -
+2025-04-10 00:06:55,975 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:06:55,978 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:06:55] "GET /api/linkedin/verify-login?_t=1744218415959 HTTP/1.1" 200 -
+2025-04-10 00:06:56,311 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:06:56] "GET /api/linkedin/login-status?_t=1744218415959 HTTP/1.1" 200 -
+2025-04-10 00:06:56,561 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:06:56] "GET /api/linkedin/check-status-file?_t=1744218415959 HTTP/1.1" 200 -
+2025-04-10 00:07:01,146 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:07:01,148 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:01] "GET /api/linkedin/verify-login?_t=1744218420971 HTTP/1.1" 200 -
+2025-04-10 00:07:01,499 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:01] "GET /api/linkedin/login-status?_t=1744218420971 HTTP/1.1" 200 -
+2025-04-10 00:07:01,765 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:01] "GET /api/linkedin/check-status-file?_t=1744218420971 HTTP/1.1" 200 -
+2025-04-10 00:07:05,978 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:07:05,978 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:05] "GET /api/linkedin/verify-login?_t=1744218425961 HTTP/1.1" 200 -
+2025-04-10 00:07:06,306 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:06] "GET /api/linkedin/login-status?_t=1744218425961 HTTP/1.1" 200 -
+2025-04-10 00:07:06,564 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:06] "GET /api/linkedin/check-status-file?_t=1744218425961 HTTP/1.1" 200 -
+2025-04-10 00:07:10,989 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:07:10,991 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:10] "GET /api/linkedin/verify-login?_t=1744218430961 HTTP/1.1" 200 -
+2025-04-10 00:07:11,309 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:11] "GET /api/linkedin/login-status?_t=1744218430961 HTTP/1.1" 200 -
+2025-04-10 00:07:11,569 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:11] "GET /api/linkedin/check-status-file?_t=1744218430961 HTTP/1.1" 200 -
+2025-04-10 00:07:15,975 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-10 00:07:15,977 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:15] "GET /api/linkedin/verify-login?_t=1744218435961 HTTP/1.1" 200 -
+2025-04-10 00:07:16,311 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:16] "GET /api/linkedin/login-status?_t=1744218435961 HTTP/1.1" 200 -
+2025-04-10 00:07:16,561 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:16] "GET /api/linkedin/check-status-file?_t=1744218435961 HTTP/1.1" 200 -

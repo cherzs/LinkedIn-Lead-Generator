@@ -9,10 +9,8 @@ const Dashboard = () => {
   const [message, setMessage] = useState({ text: '', type: '' });
   const [editingLead, setEditingLead] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [websiteUrl, setWebsiteUrl] = useState('');
   const [linkedinId, setLinkedinId] = useState('');
   const [isScrapingLinkedin, setIsScrapingLinkedin] = useState(false);
-  const [showLinkedinForm, setShowLinkedinForm] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [importData, setImportData] = useState('');
   const [isImporting, setIsImporting] = useState(false);
@@ -322,55 +320,6 @@ const Dashboard = () => {
     }
   };
 
-  const handleScrapeWebsite = async () => {
-    if (!websiteUrl.trim()) {
-      setMessage({ text: 'Please enter a website URL', type: 'error' });
-      return;
-    }
-
-    setIsSearching(true);
-    setMessage({ text: 'Scraping website...', type: 'info' });
-
-    try {
-      const response = await fetch('http://localhost:5000/api/scrape-website', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ url: websiteUrl.trim() }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || errorData.message || 'Failed to scrape website');
-      }
-
-      const scrapeResult = await response.json();
-      
-      if (!scrapeResult.results || scrapeResult.results.length === 0) {
-        setMessage({ 
-          text: `No profiles found on "${websiteUrl}"`, 
-          type: 'error' 
-        });
-      } else {
-        setMessage({ 
-          text: `Found ${scrapeResult.results.length} profiles`, 
-          type: 'success' 
-        });
-      }
-      
-      fetchLeads();
-    } catch (error) {
-      console.error('Error scraping website:', error);
-      setMessage({ 
-        text: error.message || 'Failed to scrape website', 
-        type: 'error' 
-      });
-    } finally {
-      setIsSearching(false);
-    }
-  };
-
   const handleScrapeLinkedin = async () => {
     if (!linkedinId.trim()) {
       setMessage({ text: 'Please enter a LinkedIn profile URL', type: 'error' });
@@ -440,12 +389,10 @@ const Dashboard = () => {
           text: scrapeResult.message || `Successfully scraped LinkedIn profile`, 
           type: 'success' 
         });
-        // Bersihkan input setelah berhasil
+        // clean input after success
         setLinkedinId('');
-        // Sembunyikan form LinkedIn
-        setShowLinkedinForm(false);
         
-        // Refresh data profil
+        // refresh profile data
         fetchLeads();
       }
     } catch (error) {
@@ -456,80 +403,6 @@ const Dashboard = () => {
       });
     } finally {
       setIsScrapingLinkedin(false);
-    }
-  };
-
-  const handleCleanData = async () => {
-    if (!window.confirm('This will group profiles by company and clean the data. Continue?')) {
-      return;
-    }
-    
-    try {
-      setIsLoading(true);
-      setMessage({ text: 'Cleaning data...', type: 'info' });
-      
-      const response = await fetch('http://localhost:5000/api/clean-data', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to clean data');
-      }
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        setMessage({ text: 'Data cleaned successfully', type: 'success' });
-        // Fetch the cleaned data
-        fetchLeads();
-      } else {
-        setMessage({ text: result.message || 'No changes made', type: 'info' });
-        setIsLoading(false);
-      }
-    } catch (error) {
-      console.error('Error cleaning data:', error);
-      setMessage({ text: 'Failed to clean data', type: 'error' });
-      setIsLoading(false);
-    }
-  };
-
-  const handleCleanAllData = async () => {
-    if (!window.confirm('This will completely reorganize all data, removing duplicates and fixing formatting. Continue?')) {
-      return;
-    }
-    
-    try {
-      setIsLoading(true);
-      setMessage({ text: 'Cleaning all data...', type: 'info' });
-      
-      const response = await fetch('http://localhost:5000/api/clean-all', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to clean data');
-      }
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        setMessage({ text: result.message || 'Data cleaned successfully', type: 'success' });
-        // Fetch the cleaned data
-        fetchLeads();
-      } else {
-        setMessage({ text: result.message || 'No changes made', type: 'info' });
-        setIsLoading(false);
-      }
-    } catch (error) {
-      console.error('Error cleaning all data:', error);
-      setMessage({ text: 'Failed to clean data', type: 'error' });
-      setIsLoading(false);
     }
   };
 

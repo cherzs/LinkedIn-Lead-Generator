@@ -5,10 +5,7 @@ A powerful tool to scrape and collect LinkedIn profile data for lead generation 
 ## Features
 
 - LinkedIn profile scraping with detailed information extraction
-- Clean, modern UI for managing leads
-- Interactive dashboard to monitor and control the scraping process
 - Export functionality to CSV
-- Contact information validation
 - Profile data organization and search
 
 ## Installation

@@ -69,3 +69,6 @@ __pycache__/
 ledgen_data/
 ledgen.log
 ledgen.log.*
+
+# LinkedIn temporary files
+linkedin_login_status.json

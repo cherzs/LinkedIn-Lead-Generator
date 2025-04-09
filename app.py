@@ -152,14 +152,6 @@ def extract_profile_data(soup, url):
     
     return profile
 
-def get_domain_from_url(url):
-    """Extract domain from URL"""
-    parsed_url = urlparse(url)
-    domain = parsed_url.netloc
-    if domain.startswith('www.'):
-        domain = domain[4:]
-    return domain
-
 def setup_chrome_driver():
     """Setup and return a Chrome WebDriver instance"""
     # Detect operating system and select appropriate ChromeDriver
@@ -505,7 +497,6 @@ def index():
         'endpoints': [
             '/api/leads',
             '/api/leads/<id>',
-            '/api/scrape-website',
             '/api/linkedin/scrape-profile',
             '/api/clean-data',
             '/api/export/csv',
@@ -888,59 +879,6 @@ def scrape_linkedin():
     except Exception as e:
         logger.error(f"Error scraping LinkedIn profile: {str(e)}")
         return jsonify({"success": False, "error": str(e)}), 500
-
-@app.route('/api/scrape-website', methods=['POST'])
-def scrape_website():
-    """Scrape a website for leads"""
-    try:
-        data = request.json
-        url = data.get('url')
-        
-        if not url:
-            return jsonify({"error": "URL is required"}), 400
-        
-        # Fetch the webpage
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-        }
-        response = requests.get(url, headers=headers)
-        soup = BeautifulSoup(response.content, 'html.parser')
-        
-        # Extract profile data
-        profile = extract_profile_data(soup, url)
-        
-        # If company not found, use domain name as fallback
-        if not profile.get("company"):
-            profile["company"] = get_domain_from_url(url)
-        
-        # Clean the profile data
-        profile = clean_leads_data([profile])[0]
-        
-        # Check if we should save
-        save_profile = data.get('save', False)
-        if save_profile:
-            leads = load_leads()
-            
-            # Check if this profile already exists by URL
-            existing_lead = next((lead for lead in leads if lead.get("source_url") == url), None)
-            
-            if existing_lead:
-                # Update existing lead
-                for key, value in profile.items():
-                    if value and not existing_lead.get(key):
-                        existing_lead[key] = value
-                profile = existing_lead
-            else:
-                # Add new lead
-                profile["id"] = generate_lead_id(leads)
-                leads.append(profile)
-            
-            save_leads(leads)
-        
-        return jsonify({"success": True, "profile": profile})
-    except Exception as e:
-        logger.error(f"Error scraping website: {str(e)}")
-        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/clean-data', methods=['POST'])
 def clean_data():
