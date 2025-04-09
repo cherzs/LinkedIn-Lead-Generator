@@ -13,8 +13,6 @@ const Dashboard = () => {
   const [linkedinId, setLinkedinId] = useState('');
   const [isScrapingLinkedin, setIsScrapingLinkedin] = useState(false);
   const [showLinkedinForm, setShowLinkedinForm] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [useAdvancedScraping, _setUseAdvancedScraping] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [importData, setImportData] = useState('');
   const [isImporting, setIsImporting] = useState(false);
@@ -112,11 +110,6 @@ const Dashboard = () => {
     } catch (error) {
       console.error('Error checking LinkedIn login status:', error);
     }
-  };
-
-  // eslint-disable-next-line no-unused-vars
-  const handleLinkedInLoginStatusChange = (status) => {
-    setIsLinkedinLoggedIn(status);
   };
 
   const fetchLeads = async () => {
@@ -537,57 +530,6 @@ const Dashboard = () => {
       console.error('Error cleaning all data:', error);
       setMessage({ text: 'Failed to clean data', type: 'error' });
       setIsLoading(false);
-    }
-  };
-
-  const handleAdvancedScrape = async () => {
-    if (!websiteUrl.trim()) {
-      setMessage({ text: 'Please enter a website URL', type: 'error' });
-      return;
-    }
-
-    setIsSearching(true);
-    setMessage({ text: 'Advanced scraping in progress...', type: 'info' });
-
-    try {
-      const response = await fetch('http://localhost:5000/api/scrape-website', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          url: websiteUrl.trim()
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || errorData.message || 'Failed to scrape website');
-      }
-
-      const scrapeResult = await response.json();
-      
-      if (!scrapeResult.results || scrapeResult.results.length === 0) {
-        setMessage({ 
-          text: `No profiles found on "${websiteUrl}" using advanced scraping`, 
-          type: 'error' 
-        });
-      } else {
-        setMessage({ 
-          text: `Found ${scrapeResult.results.length} profiles using advanced scraping`, 
-          type: 'success' 
-        });
-      }
-      
-      fetchLeads();
-    } catch (error) {
-      console.error('Error with advanced scraping:', error);
-      setMessage({ 
-        text: error.message || 'Failed to scrape website', 
-        type: 'error' 
-      });
-    } finally {
-      setIsSearching(false);
     }
   };
 

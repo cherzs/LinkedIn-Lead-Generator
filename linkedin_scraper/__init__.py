@@ -1,9 +1,7 @@
 from os.path import dirname, basename, isfile
 from .person import Person
 from .objects import Institution, Experience, Education, Contact
-from .company import Company
-from .jobs import Job
-from .job_search import JobSearch
+from .actions import login
 
 __version__ = "2.11.5"
 

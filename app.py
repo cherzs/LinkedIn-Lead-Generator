@@ -509,7 +509,6 @@ def index():
             '/api/linkedin/scrape-profile',
             '/api/clean-data',
             '/api/export/csv',
-            '/api/export/sheets',
             '/api/status'
         ]
     })
@@ -1034,16 +1033,6 @@ def export_csv():
     except Exception as e:
         logger.error(f"Error exporting to CSV: {str(e)}")
         return jsonify({"error": str(e)}), 500
-
-@app.route('/api/export/sheets', methods=['POST'])
-def export_sheets():
-    """Export leads to Google Sheets"""
-    # This function would require Google Sheets API setup
-    # For now, just return a message
-    return jsonify({
-        "message": "Google Sheets export not implemented yet. Please set up Google Sheets API credentials.",
-        "instructions": "See SETUP.md for instructions on setting up Google Sheets API."
-    })
 
 @app.route('/api/status', methods=['GET'])
 def api_status():
