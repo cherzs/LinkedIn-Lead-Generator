@@ -4,98 +4,93 @@ import '../styles/Dashboard.css';
 const Dashboard = () => {
   const [leads, setLeads] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchLocation, setSearchLocation] = useState('');
-  const [searchCount, setSearchCount] = useState(10);
   const [isSearching, setIsSearching] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [message, setMessage] = useState({ text: '', type: '' });
   const [editingLead, setEditingLead] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [websiteUrl, setWebsiteUrl] = useState('');
+  const [linkedinId, setLinkedinId] = useState('');
+  const [isScrapingLinkedin, setIsScrapingLinkedin] = useState(false);
+  const [showLinkedinForm, setShowLinkedinForm] = useState(false);
+  const [useAdvancedScraping, setUseAdvancedScraping] = useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
+  const [importData, setImportData] = useState('');
+  const [isImporting, setIsImporting] = useState(false);
 
   useEffect(() => {
-    // Function to fetch lead data from backend
-    const fetchLeads = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/leads');
-        const data = await response.json();
-        setLeads(data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching leads:', error);
-        setIsLoading(false);
-        setErrorMessage('Failed to fetch leads. Please try again.');
-      }
-    };
-
     fetchLeads();
   }, []);
 
-  const handleGenerateLeads = async () => {
-    if (!searchQuery.trim()) {
-      setErrorMessage('Please enter a search query first');
-      return;
-    }
-
-    setIsSearching(true);
-    setErrorMessage('');
-
+  const fetchLeads = async () => {
     try {
-      // Combine search query with location if provided
-      const fullQuery = searchLocation.trim() 
-        ? `${searchQuery} ${searchLocation}` 
-        : searchQuery;
-
-      const response = await fetch('http://localhost:5000/api/leads/search', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          query: fullQuery,
-          count: parseInt(searchCount),
-          validate: true
-        }),
+      const response = await fetch('http://localhost:5000/api/leads');
+      const data = await response.json();
+      
+      // Process data for display
+      const processedData = data.map(lead => {
+        // Ensure company name is properly formatted
+        if (lead.company) {
+          // Capitalize each word in company name
+          lead.company = lead.company
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(' ');
+        }
+        
+        // Process emails array for backward compatibility
+        if (!lead.emails && lead.email) {
+          lead.emails = lead.email.split(',').map(e => e.trim()).filter(Boolean);
+        }
+        
+        // If name is same as company or contains domain, use company as name
+        if (lead.name) {
+          if (lead.name.toLowerCase() === lead.company?.toLowerCase() || lead.name.includes('.')) {
+            lead.name = lead.company;
+          } else {
+            // Capitalize each word in name
+            lead.name = lead.name
+              .split(' ')
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+              .join(' ');
+          }
+        } else if (lead.company) {
+          lead.name = lead.company;
+        }
+        
+        // Clean up title field
+        if (lead.title) {
+          // Remove extra spaces and newlines
+          let cleanTitle = lead.title.replace(/\s+/g, ' ').trim();
+          
+          // Capitalize first letter
+          if (cleanTitle.length > 0) {
+            lead.title = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
+          }
+        }
+        
+        return lead;
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to generate leads');
-      }
-
-      const newLeads = await response.json();
       
-      // Refresh data
-      const updatedLeadsResponse = await fetch('http://localhost:5000/api/leads');
-      const updatedLeads = await updatedLeadsResponse.json();
-      setLeads(updatedLeads);
-      
-      setErrorMessage('');
+      setLeads(processedData);
+      setIsLoading(false);
     } catch (error) {
-      console.error('Error generating leads:', error);
-      setErrorMessage(error.message || 'Failed to generate leads. Please try again.');
-    } finally {
-      setIsSearching(false);
+      console.error('Error fetching leads:', error);
+      setIsLoading(false);
+      setMessage({ 
+        text: 'Failed to fetch profiles. Please try again.', 
+        type: 'error' 
+      });
     }
   };
 
   const handleExportData = async () => {
     if (leads.length === 0) {
-      setErrorMessage('No data to export');
+      setMessage({ text: 'No data to export', type: 'error' });
       return;
     }
 
     try {
-      // Create CSV file from leads data
-      const headers = [
-        'Name',
-        'Position',
-        'Company',
-        'Location',
-        'Email',
-        'Email Status',
-        'Profile URL'
-      ];
-
+      const headers = ['Name', 'Position', 'Company', 'Location', 'Email', 'Source URL'];
       const csvRows = [
         headers.join(','),
         ...leads.map(lead => [
@@ -104,28 +99,25 @@ const Dashboard = () => {
           `"${lead.company || ''}"`,
           `"${lead.location || ''}"`,
           `"${lead.email || ''}"`,
-          `"${lead.emailValid ? 'Valid' : lead.emailValid === false ? 'Invalid' : 'Not validated'}"`,
-          `"${lead.profile_url || ''}"`
+          `"${lead.source_url || ''}"`
         ].join(','))
       ];
 
       const csvContent = csvRows.join('\n');
-      
-      // Create file and download
       const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.setAttribute('href', url);
-      link.setAttribute('download', `linkedin_leads_${new Date().toISOString().slice(0,10)}.csv`);
+      link.setAttribute('download', `profiles_export_${new Date().toISOString().slice(0,10)}.csv`);
       link.style.visibility = 'hidden';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       
-      setErrorMessage('');
+      setMessage({ text: 'Data exported successfully', type: 'success' });
     } catch (error) {
       console.error('Error exporting data:', error);
-      setErrorMessage('Failed to export data. Please try again.');
+      setMessage({ text: 'Failed to export data', type: 'error' });
     }
   };
 
@@ -135,7 +127,7 @@ const Dashboard = () => {
   };
 
   const handleDelete = async (index) => {
-    if (!window.confirm('Are you sure you want to delete this lead?')) {
+    if (!window.confirm('Delete this profile?')) {
       return;
     }
 
@@ -145,43 +137,73 @@ const Dashboard = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to delete lead');
+        throw new Error('Failed to delete profile');
       }
 
-      // Update leads state by removing the deleted lead
       setLeads(prevLeads => prevLeads.filter((_, i) => i !== index));
+      setMessage({ text: 'Profile deleted', type: 'success' });
     } catch (error) {
       console.error('Error deleting lead:', error);
-      setErrorMessage('Failed to delete lead. Please try again.');
+      setMessage({ text: 'Failed to delete profile', type: 'error' });
+    }
+  };
+
+  const handleEditInputChange = (e) => {
+    const { name, value } = e.target;
+    
+    if (name === 'email') {
+      // When editing email field, update both email and emails array
+      const emailArray = value.split(',').map(e => e.trim()).filter(Boolean);
+      setEditingLead(prev => ({
+        ...prev,
+        [name]: value,
+        emails: emailArray
+      }));
+    } else {
+      setEditingLead(prev => ({
+        ...prev,
+        [name]: value
+      }));
     }
   };
 
   const handleSaveEdit = async () => {
     try {
+      // Make sure emails array is up to date with the email field
+      const updatedLead = {
+        ...editingLead
+      };
+      
+      // Make sure we have both email string and emails array consistent
+      if (updatedLead.email && !updatedLead.emails) {
+        updatedLead.emails = updatedLead.email.split(',').map(e => e.trim()).filter(Boolean);
+      } else if (updatedLead.emails && updatedLead.emails.length > 0) {
+        updatedLead.email = updatedLead.emails.join(', ');
+      }
+      
       const response = await fetch(`http://localhost:5000/api/leads/${editingLead.index}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: editingLead.name,
-          title: editingLead.title,
-          company: editingLead.company,
-          location: editingLead.location,
-          email: editingLead.email,
-          emailValid: editingLead.emailValid || editingLead.email_valid,
-          emailScore: editingLead.emailScore || editingLead.email_score,
-          profile_url: editingLead.profile_url
+          name: updatedLead.name,
+          title: updatedLead.title,
+          company: updatedLead.company,
+          location: updatedLead.location,
+          email: updatedLead.email,
+          emails: updatedLead.emails,
+          source_url: updatedLead.source_url
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to update lead');
+        throw new Error('Failed to update profile');
       }
 
-      const updatedLead = await response.json();
+      // We don't need to use the response data since we're using our local updatedLead object
+      await response.json(); // Still parse the response but don't assign to variable
 
-      // Update leads state with the edited lead
       setLeads(prevLeads => 
         prevLeads.map((lead, i) => 
           i === editingLead.index ? updatedLead : lead
@@ -190,171 +212,518 @@ const Dashboard = () => {
 
       setShowEditModal(false);
       setEditingLead(null);
+      setMessage({ text: 'Profile updated', type: 'success' });
     } catch (error) {
       console.error('Error updating lead:', error);
-      setErrorMessage('Failed to update lead. Please try again.');
+      setMessage({ text: 'Failed to update profile', type: 'error' });
     }
   };
 
-  const handleEditInputChange = (e) => {
-    const { name, value } = e.target;
-    setEditingLead(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  const handleScrapeWebsite = async () => {
+    if (!websiteUrl.trim()) {
+      setMessage({ text: 'Please enter a website URL', type: 'error' });
+      return;
+    }
+
+    setIsSearching(true);
+    setMessage({ text: 'Scraping website...', type: 'info' });
+
+    try {
+      const response = await fetch('http://localhost:5000/api/scrape-website', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url: websiteUrl.trim() }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || errorData.message || 'Failed to scrape website');
+      }
+
+      const scrapeResult = await response.json();
+      
+      if (!scrapeResult.results || scrapeResult.results.length === 0) {
+        setMessage({ 
+          text: `No profiles found on "${websiteUrl}"`, 
+          type: 'error' 
+        });
+      } else {
+        setMessage({ 
+          text: `Found ${scrapeResult.results.length} profiles`, 
+          type: 'success' 
+        });
+      }
+      
+      fetchLeads();
+    } catch (error) {
+      console.error('Error scraping website:', error);
+      setMessage({ 
+        text: error.message || 'Failed to scrape website', 
+        type: 'error' 
+      });
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
+  const handleScrapeLinkedin = async () => {
+    if (!linkedinId.trim()) {
+      setMessage({ text: 'Please enter a LinkedIn profile ID', type: 'error' });
+      return;
+    }
+
+    setIsScrapingLinkedin(true);
+    setMessage({ text: 'Scraping LinkedIn profile...', type: 'info' });
+
+    try {
+      const response = await fetch('http://localhost:5000/api/scrape-linkedin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          profile_id: linkedinId.trim(),
+          private: false
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || errorData.message || 'Failed to scrape LinkedIn profile');
+      }
+
+      const scrapeResult = await response.json();
+      
+      if (!scrapeResult.results || scrapeResult.results.length === 0) {
+        setMessage({ 
+          text: `No profile found for LinkedIn ID "${linkedinId}"`, 
+          type: 'error' 
+        });
+      } else {
+        setMessage({ 
+          text: scrapeResult.message || `Successfully scraped LinkedIn profile`, 
+          type: 'success' 
+        });
+        // Clear the input field after successful scraping
+        setLinkedinId('');
+        // Hide the LinkedIn form
+        setShowLinkedinForm(false);
+      }
+      
+      fetchLeads();
+    } catch (error) {
+      console.error('Error scraping LinkedIn profile:', error);
+      setMessage({ 
+        text: error.message || 'Failed to scrape LinkedIn profile', 
+        type: 'error' 
+      });
+    } finally {
+      setIsScrapingLinkedin(false);
+    }
+  };
+
+  const handleCleanData = async () => {
+    if (!window.confirm('This will group profiles by company and clean the data. Continue?')) {
+      return;
+    }
+    
+    try {
+      setIsLoading(true);
+      setMessage({ text: 'Cleaning data...', type: 'info' });
+      
+      const response = await fetch('http://localhost:5000/api/clean-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to clean data');
+      }
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setMessage({ text: 'Data cleaned successfully', type: 'success' });
+        // Fetch the cleaned data
+        fetchLeads();
+      } else {
+        setMessage({ text: result.message || 'No changes made', type: 'info' });
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error('Error cleaning data:', error);
+      setMessage({ text: 'Failed to clean data', type: 'error' });
+      setIsLoading(false);
+    }
+  };
+
+  const handleCleanAllData = async () => {
+    if (!window.confirm('This will completely reorganize all data, removing duplicates and fixing formatting. Continue?')) {
+      return;
+    }
+    
+    try {
+      setIsLoading(true);
+      setMessage({ text: 'Cleaning all data...', type: 'info' });
+      
+      const response = await fetch('http://localhost:5000/api/clean-all', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to clean data');
+      }
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setMessage({ text: result.message || 'Data cleaned successfully', type: 'success' });
+        // Fetch the cleaned data
+        fetchLeads();
+      } else {
+        setMessage({ text: result.message || 'No changes made', type: 'info' });
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error('Error cleaning all data:', error);
+      setMessage({ text: 'Failed to clean data', type: 'error' });
+      setIsLoading(false);
+    }
+  };
+
+  const handleAdvancedScrape = async () => {
+    if (!websiteUrl.trim()) {
+      setMessage({ text: 'Please enter a website URL', type: 'error' });
+      return;
+    }
+
+    setIsSearching(true);
+    setMessage({ text: 'Advanced scraping in progress...', type: 'info' });
+
+    try {
+      const response = await fetch('http://localhost:5000/api/scrape-website', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          url: websiteUrl.trim()
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || errorData.message || 'Failed to scrape website');
+      }
+
+      const scrapeResult = await response.json();
+      
+      if (!scrapeResult.results || scrapeResult.results.length === 0) {
+        setMessage({ 
+          text: `No profiles found on "${websiteUrl}" using advanced scraping`, 
+          type: 'error' 
+        });
+      } else {
+        setMessage({ 
+          text: `Found ${scrapeResult.results.length} profiles using advanced scraping`, 
+          type: 'success' 
+        });
+      }
+      
+      fetchLeads();
+    } catch (error) {
+      console.error('Error with advanced scraping:', error);
+      setMessage({ 
+        text: error.message || 'Failed to scrape website', 
+        type: 'error' 
+      });
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
+  const handleImportData = async () => {
+    if (!importData.trim()) {
+      setMessage({ text: 'Please enter data to import', type: 'error' });
+      return;
+    }
+
+    setIsImporting(true);
+    setMessage({ text: 'Importing data...', type: 'info' });
+
+    try {
+      // Try to parse the imported data as JSON
+      let profileData;
+      try {
+        profileData = JSON.parse(importData.trim());
+      } catch (e) {
+        // If not valid JSON, assume it's a plain text description
+        profileData = {
+          name: importData.trim().split('\n')[0], // First line is name
+          description: importData.trim() // Full text as description
+        };
+      }
+
+      const response = await fetch('http://localhost:5000/api/import-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ profile_data: profileData }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || errorData.message || 'Failed to import data');
+      }
+
+      const result = await response.json();
+      
+      setMessage({ 
+        text: result.message || 'Successfully imported profile data', 
+        type: 'success' 
+      });
+      
+      // Clear the import data field
+      setImportData('');
+      
+      // Close the import modal
+      setShowImportModal(false);
+      
+      // Refresh the leads list
+      fetchLeads();
+    } catch (error) {
+      console.error('Error importing data:', error);
+      setMessage({ 
+        text: error.message || 'Failed to import data', 
+        type: 'error' 
+      });
+    } finally {
+      setIsImporting(false);
+    }
   };
 
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <h1>LinkedIn Lead Generator</h1>
+        <h1>Profile Scraper</h1>
         <nav className="dashboard-nav">
           <button 
-            className={`nav-button ${isSearching ? 'disabled' : ''}`}
-            onClick={handleGenerateLeads}
-            disabled={isSearching}
+            className="nav-button"
+            onClick={handleCleanAllData}
+            disabled={leads.length === 0 || isSearching || isLoading}
           >
-            {isSearching ? 'Searching...' : 'Generate Leads'}
+            Fix Data
+          </button>
+          <button 
+            className="nav-button"
+            onClick={handleCleanData}
+            disabled={leads.length === 0 || isSearching || isLoading}
+          >
+            Clean Data
           </button>
           <button 
             className="nav-button"
             onClick={handleExportData}
-            disabled={leads.length === 0 || isSearching}
+            disabled={leads.length === 0 || isSearching || isLoading}
           >
-            Export Data
+            Export
           </button>
           <button className="nav-button logout">Logout</button>
         </nav>
       </header>
 
       <main className="dashboard-content">
-        {errorMessage && (
-          <div className="error-message">
-            {errorMessage}
+        {message.text && (
+          <div className={`${message.type}-message`}>
+            {message.text}
           </div>
         )}
 
         <section className="search-section">
-          <h2>Find New Leads</h2>
-          <div className="search-controls">
-            <div className="form-group">
-              <label htmlFor="searchQuery">Job Title or Keywords</label>
-              <input
-                type="text"
-                id="searchQuery"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="e.g. Software Engineer, Data Scientist"
-                disabled={isSearching}
-              />
+          <h2>Extract Profiles</h2>
+          
+          <div className="search-tabs">
+          </div>
+          
+          {showLinkedinForm ? (
+            <div className="search-controls">
+              <div className="form-group">
+                <input
+                  type="text"
+                  value={linkedinId || ''}
+                  onChange={(e) => setLinkedinId(e.target.value)}
+                  placeholder="LinkedIn profile ID (e.g., johndoe)"
+                  disabled={isScrapingLinkedin}
+                />
+              </div>
+              <button 
+                className={`search-button ${isScrapingLinkedin ? 'disabled' : ''}`}
+                onClick={handleScrapeLinkedin}
+                disabled={isScrapingLinkedin || !linkedinId}
+              >
+                {isScrapingLinkedin ? (
+                  <span className="button-with-loader">
+                    <span className="button-loader"></span>
+                    Scraping
+                  </span>
+                ) : 'Scrape LinkedIn'}
+              </button>
+              <button 
+                className="import-button"
+                onClick={() => setShowImportModal(true)}
+                disabled={isScrapingLinkedin}
+              >
+                Import Data
+              </button>
             </div>
-            <div className="form-group">
-              <label htmlFor="searchLocation">Location</label>
-              <input
-                type="text"
-                id="searchLocation"
-                value={searchLocation}
-                onChange={(e) => setSearchLocation(e.target.value)}
-                placeholder="e.g. Jakarta, Indonesia"
-                disabled={isSearching}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="searchCount">Number of Results</label>
-              <input
-                type="number"
-                id="searchCount"
-                value={searchCount}
-                onChange={(e) => setSearchCount(e.target.value)}
-                min="1"
-                max="50"
-                disabled={isSearching}
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className="lead-stats">
-          <div className="stat-card">
-            <h3>Total Leads</h3>
-            <p>{leads.length}</p>
-          </div>
-          <div className="stat-card">
-            <h3>Valid Emails</h3>
-            <p>{leads.filter(lead => lead.emailValid || lead.email_valid).length}</p>
-          </div>
-          <div className="stat-card">
-            <h3>Pending Validation</h3>
-            <p>{leads.filter(lead => lead.emailValid === null || lead.email_valid === null).length}</p>
-          </div>
-        </section>
-
-        <section className="lead-table-section">
-          <h2>Recent Leads</h2>
-          {isLoading ? (
-            <p>Loading leads...</p>
           ) : (
-            <table className="lead-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Company</th>
-                  <th>Location</th>
-                  <th>Email</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {leads.length > 0 ? (
-                  leads.map((lead, index) => (
-                    <tr key={index}>
-                      <td>{lead.name}</td>
-                      <td>{lead.title}</td>
-                      <td>{lead.company}</td>
-                      <td>{lead.location}</td>
-                      <td>{lead.email}</td>
-                      <td>{lead.emailValid || lead.email_valid ? 'Valid' : (lead.emailValid === false || lead.email_valid === false) ? 'Invalid' : 'Pending'}</td>
-                      <td>
-                        <button 
-                          className="action-btn" 
-                          onClick={() => handleEdit(lead, index)}
-                        >
-                          Edit
-                        </button>
-                        <button 
-                          className="action-btn delete" 
-                          onClick={() => handleDelete(index)}
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="7">No leads found. Generate some leads to get started!</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+            <div className="search-controls-container">
+              <div className="advanced-option">
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={useAdvancedScraping}
+                    onChange={() => setUseAdvancedScraping(!useAdvancedScraping)}
+                    disabled={isSearching}
+                  />
+                  Use dynamic scraping (for JavaScript-heavy sites)
+                </label>
+              </div>
+              <div className="search-controls">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    id="websiteUrl"
+                    value={websiteUrl || ''}
+                    onChange={(e) => setWebsiteUrl(e.target.value)}
+                    placeholder="https://company.com/team"
+                    disabled={isSearching}
+                  />
+                </div>
+                <button 
+                  className={`search-button ${isSearching ? 'disabled' : ''}`}
+                  onClick={useAdvancedScraping ? handleAdvancedScrape : handleScrapeWebsite}
+                  disabled={isSearching || !websiteUrl}
+                >
+                  {isSearching ? (
+                    <span className="button-with-loader">
+                      <span className="button-loader"></span>
+                      Scraping
+                    </span>
+                  ) : 'Scrape'}
+                </button>
+              </div>
+            </div>
           )}
         </section>
 
-        {/* Edit Modal */}
+        <div className="stats-and-table">
+          <section className="lead-stats">
+            <div className="stat-card">
+              <h3>Profiles</h3>
+              <p>{leads.length}</p>
+            </div>
+            <div className="stat-card">
+              <h3>Companies</h3>
+              <p>{new Set(leads.map(lead => lead.company?.toLowerCase()).filter(Boolean)).size}</p>
+            </div>
+            <div className="stat-card">
+              <h3>Locations</h3>
+              <p>{new Set(leads.map(lead => lead.location?.toLowerCase()).filter(Boolean)).size}</p>
+            </div>
+          </section>
+
+          <section className="lead-table-section">
+            <h2>Extracted Profiles</h2>
+            {isLoading ? (
+              <div className="loading-spinner">
+                <div className="spinner"></div>
+                <div className="loading-text">Loading profiles...</div>
+              </div>
+            ) : (
+              <div className="table-container">
+                <table className="lead-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Company</th>
+                      <th>Location</th>
+                      <th>Email</th>
+                      <th>Source</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {leads.length > 0 ? (
+                      leads.map((lead, index) => (
+                        <tr key={index}>
+                          <td>{lead.name || '—'}</td>
+                          <td>{lead.title || '—'}</td>
+                          <td>{lead.company || '—'}</td>
+                          <td>{lead.location || '—'}</td>
+                          <td>{lead.email || '—'}</td>
+                          <td>
+                            {lead.source_url ? (
+                              <a href={lead.source_url} target="_blank" rel="noopener noreferrer">
+                                View
+                              </a>
+                            ) : '—'}
+                          </td>
+                          <td>
+                            <button 
+                              className="action-btn" 
+                              onClick={() => handleEdit(lead, index)}
+                            >
+                              Edit
+                            </button>
+                            <button 
+                              className="action-btn delete" 
+                              onClick={() => handleDelete(index)}
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="7" className="empty-state">
+                          <div className="empty-state-message">
+                            <p>No profiles found</p>
+                            <small>Scrape a website to get started</small>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </section>
+        </div>
+
         {showEditModal && editingLead && (
           <div className="modal-overlay">
             <div className="modal">
-              <h2>Edit Lead</h2>
+              <h2>Edit Profile</h2>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  value={editingLead.name}
+                  value={editingLead.name || ''}
                   onChange={handleEditInputChange}
+                  placeholder="Full name"
                 />
               </div>
               <div className="form-group">
@@ -363,8 +732,9 @@ const Dashboard = () => {
                   type="text"
                   id="title"
                   name="title"
-                  value={editingLead.title}
+                  value={editingLead.title || ''}
                   onChange={handleEditInputChange}
+                  placeholder="Job title"
                 />
               </div>
               <div className="form-group">
@@ -373,8 +743,9 @@ const Dashboard = () => {
                   type="text"
                   id="company"
                   name="company"
-                  value={editingLead.company}
+                  value={editingLead.company || ''}
                   onChange={handleEditInputChange}
+                  placeholder="Company name"
                 />
               </div>
               <div className="form-group">
@@ -383,18 +754,31 @@ const Dashboard = () => {
                   type="text"
                   id="location"
                   name="location"
-                  value={editingLead.location}
+                  value={editingLead.location || ''}
                   onChange={handleEditInputChange}
+                  placeholder="City, Country"
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input
-                  type="text"
+                  type="email"
                   id="email"
                   name="email"
-                  value={editingLead.email}
+                  value={editingLead.email || ''}
                   onChange={handleEditInputChange}
+                  placeholder="Email address(es), comma separated"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="source_url">Source URL</label>
+                <input
+                  type="text"
+                  id="source_url"
+                  name="source_url"
+                  value={editingLead.source_url || ''}
+                  onChange={handleEditInputChange}
+                  placeholder="https://"
                 />
               </div>
               <div className="modal-actions">
@@ -418,6 +802,51 @@ const Dashboard = () => {
           </div>
         )}
       </main>
+      
+      {/* Import Data Modal */}
+      {showImportModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Import Profile Data</h2>
+            <div className="form-group">
+              <label htmlFor="importData">Enter JSON or Profile Information</label>
+              <textarea
+                id="importData"
+                name="importData"
+                value={importData}
+                onChange={(e) => setImportData(e.target.value)}
+                placeholder={`Enter JSON data or profile information. Example:\n{\n  "name": "John Doe",\n  "title": "CEO",\n  "company": "Example Corp",\n  "location": "New York",\n  "email": "john@example.com"\n}`}
+                rows={10}
+                disabled={isImporting}
+              />
+            </div>
+            <div className="modal-actions">
+              <button 
+                className="action-btn" 
+                onClick={handleImportData}
+                disabled={isImporting || !importData.trim()}
+              >
+                {isImporting ? (
+                  <span className="button-with-loader">
+                    <span className="button-loader"></span>
+                    Importing
+                  </span>
+                ) : 'Import'}
+              </button>
+              <button 
+                className="action-btn delete" 
+                onClick={() => {
+                  setShowImportModal(false);
+                  setImportData('');
+                }}
+                disabled={isImporting}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

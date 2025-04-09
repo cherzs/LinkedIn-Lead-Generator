@@ -1,122 +1,131 @@
 # LinkedIn Lead Generator
 
-Alat untuk mengumpulkan dan memvalidasi data kontak dari LinkedIn untuk tujuan Lead Generation.
+A tool to scrape website information and generate leads for LinkedIn outreach.
 
-## Fitur
+## Features
 
-- **Web Scraping Berbasis HTTP**: Mengekstrak profil pengguna dari LinkedIn menggunakan teknik scraping ringan tanpa perlu browser.
-- **Validasi Email**: Memvalidasi alamat email yang ditemukan dan memperkirakan alamat email potensial menggunakan Hunter.io API.
-- **Ekspor Data**: Ekspor hasil ke Google Sheets atau CSV untuk integrasi mudah dengan alur kerja bisnis.
+- 🌐 **Website Scraping**: Extract profile data from company websites
+- 📊 **Lead Management**: Store, update, and manage leads
+- 📝 **Data Cleaning**: Automatically normalize and deduplicate lead data
+- 📤 **Export Options**: Export leads to CSV or Google Sheets
 
-## Persiapan
+## Setup
 
-### Prasyarat
+### Prerequisites
 
-- Python 3.8 atau lebih baru
-- Akun LinkedIn (opsional)
-- API Key dari Hunter.io (opsional, untuk validasi email)
-- Kredensial Google Sheets API (opsional, untuk ekspor ke Google Sheets)
+- Python 3.8+
+- pip (Python package manager)
 
-### Instalasi
+### Installation
 
-1. Clone repositori ini:
-   ```
-   git clone https://github.com/username/linkedin-lead-generator.git
-   cd linkedin-lead-generator
-   ```
+1. Clone this repository:
+```
+git clone https://github.com/yourusername/LinkedIn-Lead-Generator.git
+cd LinkedIn-Lead-Generator
+```
 
-2. Instal dependencies:
+2. Install the required dependencies:
    ```
    pip install -r requirements.txt
    ```
 
-3. Siapkan file konfigurasi:
-   - Duplikat file `.env.example` menjadi `.env`
-   - Edit `.env` dengan kredensial dan konfigurasi Anda
+3. Create a `.env` file in the project root directory and add your API keys:
+```
+# LinkedIn Scraping API Key (if you plan to use ScrapingDog)
+SCRAPINGDOG_API_KEY="your_api_key_here"
 
-### Konfigurasi
-
-1. **Kredensial LinkedIn** (opsional):
-   - Tambahkan username dan password LinkedIn Anda di file `.env`:
-     ```
-     LINKEDIN_USERNAME=youremail@gmail.com
-     LINKEDIN_PASSWORD=yourpassword
-     ```
-   - Catatan: Versi saat ini menggunakan pencarian Google untuk menemukan profil LinkedIn tanpa login.
-
-2. **API Key Hunter.io** (opsional, untuk validasi email):
-   - Daftar akun di [Hunter.io](https://hunter.io/)
-   - Dapatkan API key dan tambahkan ke file `.env`:
-     ```
-     HUNTER_API_KEY=your_hunter_api_key
-     ```
-
-3. **Kredensial Google Sheets API** (opsional, untuk ekspor ke Google Sheets):
-   - Ikuti [petunjuk resmi Google](https://developers.google.com/sheets/api/quickstart/python) untuk membuat kredensial
-   - Simpan file kredensial sebagai `credentials.json` di direktori utama proyek
-   - Tambahkan ID spreadsheet ke file `.env`:
-     ```
-     GOOGLE_SHEETS_ID=your_google_sheets_id
-     ```
-
-## Penggunaan
-
-### Perintah Dasar
-
-```bash
-python app.py --search "software engineer jakarta" --count 10
+# Other environment variables
+# Add any other API keys or configuration here
 ```
 
-### Opsi-opsi Perintah
+## Running the Application
 
-- `--search`: Query pencarian LinkedIn (wajib)
-- `--count`: Jumlah profil yang akan diambil (default: 10)
-- `--validate`: Validasi email yang ditemukan menggunakan Hunter.io
-- `--export-sheets`: Ekspor hasil ke Google Sheets
-- `--export-csv`: Ekspor hasil ke file CSV
-- `--output`: Nama file output untuk CSV (default: leads_export.csv)
+### Starting the API Server
 
-### Contoh
+Run the API server with:
 
-1. Cari 20 profil dan validasi email:
-   ```bash
-   python app.py --search "product manager jakarta" --count 20 --validate
-   ```
+```
+python app.py
+```
 
-2. Cari 10 profil dan ekspor ke CSV:
-   ```bash
-   python app.py --search "data scientist jakarta" --count 10 --export-csv --output data_scientists.csv
-   ```
+This will start the API server on http://localhost:5000 by default.
 
-3. Cari 15 profil, validasi email, dan ekspor ke Google Sheets:
-   ```bash
-   python app.py --search "marketing manager jakarta" --count 15 --validate --export-sheets
-   ```
+### API Endpoints
 
-## Pertimbangan Etika dan Hukum
+The API has the following endpoints:
 
-- Gunakan alat ini dengan bijak dan patuhi Ketentuan Layanan situs yang di-scrape
-- Pastikan untuk memberikan jeda waktu antar permintaan untuk menghindari pembatasan atau pemblokiran
-- Simpan data yang dikumpulkan sesuai dengan peraturan privasi data (GDPR, dll.)
-- Hanya gunakan alat ini untuk keperluan bisnis yang sah
+- **GET `/api/leads`**: Get all leads
+- **GET `/api/leads/<id>`**: Get a specific lead
+- **POST `/api/leads`**: Add a new lead
+- **PUT `/api/leads/<id>`**: Update a lead
+- **DELETE `/api/leads/<id>`**: Delete a lead
+- **POST `/api/scrape-website`**: Scrape a website for leads
+- **POST `/api/clean-data`**: Clean and normalize leads data
+- **POST `/api/clean-all`**: Complete reset and normalize leads data
+- **POST `/api/export/csv`**: Export leads to CSV
+- **POST `/api/export/sheets`**: Export leads to Google Sheets
+- **GET `/api/status`**: Check API status
 
-## Pemecahan Masalah
+### Command Line Options
 
-### Masalah Rate Limiting
+The API server can be configured with the following command line options:
 
-Jika Anda melihat error terkait pembatasan permintaan:
+- `--port <port>`: Port to run the API server on (default: 5000)
+- `--host <host>`: Host to run the API server on (default: 0.0.0.0)
+- `--debug`: Run in debug mode
 
-1. Kurangi jumlah profil yang dicari dengan opsi `--count`
-2. Tingkatkan waktu jeda antara permintaan dengan mengedit nilai random di file `linkedinscraper.py`
-3. Gunakan proxy atau VPN untuk menghindari pembatasan IP (tidak disediakan dalam alat ini)
+## Frontend
 
-### Akurasi Data
+The application includes a React frontend for a user-friendly experience. To start the frontend:
 
-Data yang diekstrak dari halaman publik LinkedIn mungkin kurang lengkap dibandingkan profil lengkap:
+1. Navigate to the frontend directory:
+```
+cd frontend
+```
 
-1. Jalankan dengan opsi `--validate` untuk mencoba memperkaya data dengan informasi tambahan
-2. Gunakan alat ini sebagai langkah awal untuk pengumpulan lead, dan lakukan validasi manual untuk data kritis
+2. Install dependencies:
+```
+npm install
+```
 
-## Lisensi
+3. Start the development server:
+```
+npm start
+```
 
-Proyek ini dilisensikan di bawah lisensi MIT - lihat file [LICENSE](LICENSE) untuk detail. 
+4. Open your browser and go to http://localhost:3000
+
+## Data Storage
+
+All lead data is stored in a local JSON file (`leads_data.json`) in the following format:
+
+```json
+[
+  {
+    "name": "Example Person",
+    "title": "CEO",
+    "company": "Example Company",
+    "location": "New York, USA",
+    "email": "example@example.com",
+    "emails": ["example@example.com"],
+    "source_url": "https://example.com"
+  }
+]
+```
+
+## Technical Architecture
+
+The application consists of:
+
+- **API Server** (`api.py`): Flask-based REST API for the application
+- **Web Scraper** (`websitescraper.py`): Extracts profiles from websites
+- **Sheets Exporter** (`sheets_exporter.py`): Handles exporting to CSV and Google Sheets
+- **Frontend** (`/frontend`): React-based user interface
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details. 
