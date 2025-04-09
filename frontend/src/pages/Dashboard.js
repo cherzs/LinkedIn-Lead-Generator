@@ -586,17 +586,6 @@ const Dashboard = () => {
             </div>
           ) : (
             <div className="search-controls-container">
-              <div className="advanced-option">
-                <label className="checkbox-label">
-                  <input
-                    type="checkbox"
-                    checked={useAdvancedScraping}
-                    onChange={() => setUseAdvancedScraping(!useAdvancedScraping)}
-                    disabled={isSearching}
-                  />
-                  Use dynamic scraping (for JavaScript-heavy sites)
-                </label>
-              </div>
               <div className="search-controls">
                 <div className="form-group">
                   <input

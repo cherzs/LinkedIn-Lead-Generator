@@ -63,3 +63,7 @@ credentials.json
 
 pycache/
 __pycache__/
+
+
+# Data
+ledgen_data/
