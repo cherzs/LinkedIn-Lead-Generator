@@ -12,6 +12,7 @@ import tempfile
 from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
+import subprocess
 
 # Import LinkedIn scraper
 from linkedin_scraper import Person, actions
@@ -717,6 +718,35 @@ def api_status():
         'leads_count': leads_count,
         'version': '1.0.0'
     })
+
+@app.route('/api/run-test-scraper', methods=['POST'])
+def run_test_scraper():
+    """Run the test_scraper.py script in a separate process"""
+    try:
+        logger.info("Starting test_scraper.py script")
+        
+        # Get the absolute path to test_scraper.py
+        script_path = os.path.join(os.getcwd(), "test_scraper.py")
+        
+        # Start the script as a separate process
+        process = subprocess.Popen(
+            ["python3", script_path],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+        
+        # Return success response (script runs in background)
+        return jsonify({
+            "success": True,
+            "message": "LinkedIn login script started successfully. Please follow the instructions in the browser window."
+        })
+        
+    except Exception as e:
+        logger.error(f"Error running test_scraper.py: {str(e)}")
+        return jsonify({
+            "success": False,
+            "error": f"Failed to run LinkedIn login script: {str(e)}"
+        }), 500
 
 if __name__ == '__main__':
     # Parse command line arguments

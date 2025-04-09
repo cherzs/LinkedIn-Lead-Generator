@@ -12,14 +12,37 @@ const Dashboard = () => {
   const [linkedinId, setLinkedinId] = useState('');
   const [isScrapingLinkedin, setIsScrapingLinkedin] = useState(false);
   const [showLinkedinForm, setShowLinkedinForm] = useState(false);
-  const [useAdvancedScraping, setUseAdvancedScraping] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [useAdvancedScraping, _setUseAdvancedScraping] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [importData, setImportData] = useState('');
   const [isImporting, setIsImporting] = useState(false);
+  const [isLinkedinLoggedIn, setIsLinkedinLoggedIn] = useState(false);
+  const [isRunningTestScraper, setIsRunningTestScraper] = useState(false);
 
   useEffect(() => {
     fetchLeads();
+    checkLinkedinLoginStatus();
+    
+    // Poll for LinkedIn login status
+    const interval = setInterval(checkLinkedinLoginStatus, 10000);
+    return () => clearInterval(interval);
   }, []);
+
+  const checkLinkedinLoginStatus = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/linkedin/login-status');
+      const data = await response.json();
+      setIsLinkedinLoggedIn(data.logged_in);
+    } catch (error) {
+      console.error('Error checking LinkedIn login status:', error);
+    }
+  };
+
+  // eslint-disable-next-line no-unused-vars
+  const handleLinkedInLoginStatusChange = (status) => {
+    setIsLinkedinLoggedIn(status);
+  };
 
   const fetchLeads = async () => {
     try {
@@ -274,18 +297,25 @@ const Dashboard = () => {
       return;
     }
 
+    if (!isLinkedinLoggedIn) {
+      setMessage({ text: 'Please login to LinkedIn first', type: 'error' });
+      return;
+    }
+    
     setIsScrapingLinkedin(true);
     setMessage({ text: 'Scraping LinkedIn profile...', type: 'info' });
 
     try {
-      const response = await fetch('http://localhost:5000/api/scrape-linkedin', {
+      const profileUrl = `https://www.linkedin.com/in/${linkedinId.trim()}`;
+      const response = await fetch('http://localhost:5000/api/linkedin/scrape-profile', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          profile_id: linkedinId.trim(),
-          private: false
+          profile_url: profileUrl,
+          use_existing_session: true,
+          save: true
         }),
       });
 
@@ -296,7 +326,7 @@ const Dashboard = () => {
 
       const scrapeResult = await response.json();
       
-      if (!scrapeResult.results || scrapeResult.results.length === 0) {
+      if (!scrapeResult.success) {
         setMessage({ 
           text: `No profile found for LinkedIn ID "${linkedinId}"`, 
           type: 'error' 
@@ -510,6 +540,47 @@ const Dashboard = () => {
     }
   };
 
+  const handleRunTestScraper = async () => {
+    setIsRunningTestScraper(true);
+    setMessage({ text: 'Starting LinkedIn login script...', type: 'info' });
+
+    try {
+      const response = await fetch('http://localhost:5000/api/run-test-scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || errorData.message || 'Failed to run LinkedIn login script');
+      }
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setMessage({ 
+          text: 'LinkedIn login script started. Please follow the instructions in the opened browser window.',
+          type: 'success' 
+        });
+      } else {
+        setMessage({ 
+          text: result.error || 'Failed to start LinkedIn login script',
+          type: 'error' 
+        });
+      }
+    } catch (error) {
+      console.error('Error running test_scraper.py:', error);
+      setMessage({ 
+        text: error.message || 'Failed to run LinkedIn login script',
+        type: 'error' 
+      });
+    } finally {
+      setIsRunningTestScraper(false);
+    }
+  };
+
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
@@ -551,23 +622,62 @@ const Dashboard = () => {
           <h2>Extract Profiles</h2>
           
           <div className="search-tabs">
+            <button 
+              className={`tab-button ${!showLinkedinForm ? 'active' : ''}`}
+              onClick={() => setShowLinkedinForm(false)}
+            >
+              Website
+            </button>
+            <button 
+              className={`tab-button ${showLinkedinForm ? 'active' : ''}`}
+              onClick={() => setShowLinkedinForm(true)}
+            >
+              LinkedIn
+            </button>
           </div>
           
           {showLinkedinForm ? (
             <div className="search-controls">
+              <div className="linkedin-status">
+                <strong>LinkedIn Status:</strong>{' '}
+                {isLinkedinLoggedIn ? (
+                  <span className="text-success">Logged In</span>
+                ) : (
+                  <span className="text-danger">Not Logged In</span>
+                )}
+                {!isLinkedinLoggedIn && (
+                  <div className="login-actions">
+                    <p className="login-message">
+                      You need to login to LinkedIn before scraping profiles.
+                    </p>
+                    <button 
+                      className="login-button"
+                      onClick={handleRunTestScraper}
+                      disabled={isRunningTestScraper}
+                    >
+                      {isRunningTestScraper ? (
+                        <span className="button-with-loader">
+                          <span className="button-loader"></span>
+                          Starting Login...
+                        </span>
+                      ) : 'Run LinkedIn Login'}
+                    </button>
+                  </div>
+                )}
+              </div>
               <div className="form-group">
                 <input
                   type="text"
                   value={linkedinId || ''}
                   onChange={(e) => setLinkedinId(e.target.value)}
                   placeholder="LinkedIn profile ID (e.g., johndoe)"
-                  disabled={isScrapingLinkedin}
+                  disabled={isScrapingLinkedin || !isLinkedinLoggedIn}
                 />
               </div>
               <button 
                 className={`search-button ${isScrapingLinkedin ? 'disabled' : ''}`}
                 onClick={handleScrapeLinkedin}
-                disabled={isScrapingLinkedin || !linkedinId}
+                disabled={isScrapingLinkedin || !linkedinId || !isLinkedinLoggedIn}
               >
                 {isScrapingLinkedin ? (
                   <span className="button-with-loader">
@@ -575,14 +685,7 @@ const Dashboard = () => {
                     Scraping
                   </span>
                 ) : 'Scrape LinkedIn'}
-              </button>
-              <button 
-                className="import-button"
-                onClick={() => setShowImportModal(true)}
-                disabled={isScrapingLinkedin}
-              >
-                Import Data
-              </button>
+              </button>            
             </div>
           ) : (
             <div className="search-controls-container">
