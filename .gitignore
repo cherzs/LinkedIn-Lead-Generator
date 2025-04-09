@@ -60,3 +60,6 @@ credentials.json
 *.flv
 *.mov
 *.wmv
+
+pycache/
+__pycache__/
