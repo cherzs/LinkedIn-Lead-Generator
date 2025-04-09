@@ -67,3 +67,5 @@ __pycache__/
 
 # Data
 ledgen_data/
+ledgen.log
+ledgen.log.*

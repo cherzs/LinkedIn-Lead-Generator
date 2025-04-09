@@ -293,7 +293,7 @@ const Dashboard = () => {
 
   const handleScrapeLinkedin = async () => {
     if (!linkedinId.trim()) {
-      setMessage({ text: 'Please enter a LinkedIn profile ID', type: 'error' });
+      setMessage({ text: 'Please enter a LinkedIn profile URL', type: 'error' });
       return;
     }
 
@@ -328,7 +328,7 @@ const Dashboard = () => {
       
       if (!scrapeResult.success) {
         setMessage({ 
-          text: `No profile found for LinkedIn ID "${linkedinId}"`, 
+          text: `No profile found for LinkedIn URL "${linkedinId}"`, 
           type: 'error' 
         });
       } else {
@@ -545,11 +545,19 @@ const Dashboard = () => {
     setMessage({ text: 'Starting LinkedIn login script...', type: 'info' });
 
     try {
+      // Persiapkan data untuk dikirim ke API
+      const requestData = {};
+      if (linkedinId) {
+        // Jika ada URL profil, tambahkan ke request
+        requestData.profile_url = linkedinId;
+      }
+
       const response = await fetch('http://localhost:5000/api/run-test-scraper', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify(requestData)
       });
 
       if (!response.ok) {
@@ -561,9 +569,19 @@ const Dashboard = () => {
       
       if (result.success) {
         setMessage({ 
-          text: 'LinkedIn login script started. Please follow the instructions in the opened browser window.',
+          text: linkedinId 
+            ? 'LinkedIn login script started. Please follow the instructions in the opened browser window. Profile will be scraped automatically.'
+            : 'LinkedIn login script started. Please follow the instructions in the opened browser window.',
           type: 'success' 
         });
+        
+        // Reset URL jika berhasil dikirim untuk scraping
+        if (linkedinId) {
+          setLinkedinId('');
+        }
+        
+        // Set timeout untuk check status login setelah beberapa saat
+        setTimeout(checkLinkedinLoginStatus, 5000);
       } else {
         setMessage({ 
           text: result.error || 'Failed to start LinkedIn login script',
@@ -588,20 +606,6 @@ const Dashboard = () => {
         <nav className="dashboard-nav">
           <button 
             className="nav-button"
-            onClick={handleCleanAllData}
-            disabled={leads.length === 0 || isSearching || isLoading}
-          >
-            Fix Data
-          </button>
-          <button 
-            className="nav-button"
-            onClick={handleCleanData}
-            disabled={leads.length === 0 || isSearching || isLoading}
-          >
-            Clean Data
-          </button>
-          <button 
-            className="nav-button"
             onClick={handleExportData}
             disabled={leads.length === 0 || isSearching || isLoading}
           >
@@ -622,99 +626,80 @@ const Dashboard = () => {
           <h2>Extract Profiles</h2>
           
           <div className="search-tabs">
-            <button 
-              className={`tab-button ${!showLinkedinForm ? 'active' : ''}`}
-              onClick={() => setShowLinkedinForm(false)}
-            >
-              Website
-            </button>
-            <button 
-              className={`tab-button ${showLinkedinForm ? 'active' : ''}`}
-              onClick={() => setShowLinkedinForm(true)}
-            >
-              LinkedIn
-            </button>
+            
           </div>
           
-          {showLinkedinForm ? (
-            <div className="search-controls">
-              <div className="linkedin-status">
-                <strong>LinkedIn Status:</strong>{' '}
-                {isLinkedinLoggedIn ? (
-                  <span className="text-success">Logged In</span>
-                ) : (
-                  <span className="text-danger">Not Logged In</span>
-                )}
-                {!isLinkedinLoggedIn && (
-                  <div className="login-actions">
-                    <p className="login-message">
-                      You need to login to LinkedIn before scraping profiles.
-                    </p>
-                    <button 
-                      className="login-button"
-                      onClick={handleRunTestScraper}
-                      disabled={isRunningTestScraper}
-                    >
-                      {isRunningTestScraper ? (
-                        <span className="button-with-loader">
-                          <span className="button-loader"></span>
-                          Starting Login...
-                        </span>
-                      ) : 'Run LinkedIn Login'}
-                    </button>
-                  </div>
-                )}
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  value={linkedinId || ''}
-                  onChange={(e) => setLinkedinId(e.target.value)}
-                  placeholder="LinkedIn profile ID (e.g., johndoe)"
-                  disabled={isScrapingLinkedin || !isLinkedinLoggedIn}
-                />
-              </div>
-              <button 
-                className={`search-button ${isScrapingLinkedin ? 'disabled' : ''}`}
-                onClick={handleScrapeLinkedin}
-                disabled={isScrapingLinkedin || !linkedinId || !isLinkedinLoggedIn}
-              >
-                {isScrapingLinkedin ? (
-                  <span className="button-with-loader">
-                    <span className="button-loader"></span>
-                    Scraping
-                  </span>
-                ) : 'Scrape LinkedIn'}
-              </button>            
-            </div>
-          ) : (
-            <div className="search-controls-container">
-              <div className="search-controls">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    id="websiteUrl"
-                    value={websiteUrl || ''}
-                    onChange={(e) => setWebsiteUrl(e.target.value)}
-                    placeholder="https://company.com/team"
-                    disabled={isSearching}
-                  />
+          <div className="search-controls">
+            <div className="linkedin-status">
+              <strong>LinkedIn Status:</strong>{' '}
+              {isLinkedinLoggedIn ? (
+                <span className="text-success">Logged In</span>
+              ) : (
+                <span className="text-danger">Not Logged In</span>
+              )}
+              {!isLinkedinLoggedIn && (
+                <div className="login-actions">
+                  <p className="login-message">
+                    You need to login to LinkedIn before scraping profiles.
+                    {linkedinId && (
+                      <span className="emphasized-text"> Your entered URL will be scraped automatically after login.</span>
+                    )}
+                  </p>
+                  <button 
+                    className="login-button"
+                    onClick={handleRunTestScraper}
+                    disabled={isRunningTestScraper}
+                  >
+                    {isRunningTestScraper ? (
+                      <span className="button-with-loader">
+                        <span className="button-loader"></span>
+                        Starting Login...
+                      </span>
+                    ) : 'Run LinkedIn Login'}
+                  </button>
                 </div>
-                <button 
-                  className={`search-button ${isSearching ? 'disabled' : ''}`}
-                  onClick={useAdvancedScraping ? handleAdvancedScrape : handleScrapeWebsite}
-                  disabled={isSearching || !websiteUrl}
-                >
-                  {isSearching ? (
-                    <span className="button-with-loader">
-                      <span className="button-loader"></span>
-                      Scraping
-                    </span>
-                  ) : 'Scrape'}
-                </button>
-              </div>
+              )}
             </div>
-          )}
+            <div className="form-group">
+              <input
+                type="text"
+                value={linkedinId || ''}
+                onChange={(e) => setLinkedinId(e.target.value)}
+                placeholder="Enter LinkedIn profile URL here"
+                disabled={isScrapingLinkedin}
+                style={{width: '300px'}}
+              />
+            </div>
+            <button 
+              className={`search-button ${isScrapingLinkedin ? 'disabled' : ''}`}
+              onClick={handleScrapeLinkedin}
+              disabled={isScrapingLinkedin || !linkedinId || !isLinkedinLoggedIn}
+              style={{
+                padding: '6px 12px', 
+                fontSize: '13px',
+                width: '110px',
+                height: '34px',
+                minWidth: 'unset',
+                borderRadius: '4px',
+                margin: '0 0 0 10px'
+              }}
+            >
+              {isScrapingLinkedin ? (
+                <span className="button-with-loader">
+                  <span className="button-loader"></span>
+                  Scraping
+                </span>
+              ) : (
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '5px'}}>
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  Scrape
+                </>
+              )}
+            </button>            
+          </div>
         </section>
 
         <div className="stats-and-table">
@@ -746,10 +731,9 @@ const Dashboard = () => {
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>Position</th>
-                      <th>Company</th>
-                      <th>Location</th>
-                      <th>Email</th>
+                      <th>About</th>
+                      <th>Experiences</th>
+                      <th>Educations</th>
                       <th>Source</th>
                       <th>Actions</th>
                     </tr>
@@ -759,39 +743,74 @@ const Dashboard = () => {
                       leads.map((lead, index) => (
                         <tr key={index}>
                           <td>{lead.name || '—'}</td>
-                          <td>{lead.title || '—'}</td>
-                          <td>{lead.company || '—'}</td>
-                          <td>{lead.location || '—'}</td>
-                          <td>{lead.email || '—'}</td>
+                          <td>
+                            {lead.about ? (
+                              <div 
+                                className="about-content"
+                                data-content={lead.about}
+                              >
+                                {lead.about.length > 100 ? lead.about.substring(0, 100) + '...' : lead.about}
+                                {lead.about.length > 100 && (
+                                  <span className="view-more-tooltip">Hover to see more</span>
+                                )}
+                              </div>
+                            ) : '—'}
+                          </td>
+                          <td>
+                            {lead.experiences ? (
+                              <div className="badge">{lead.experiences.length}</div>
+                            ) : '—'}
+                          </td>
+                          <td>
+                            {lead.educations ? (
+                              <div className="badge">{lead.educations.length}</div>
+                            ) : '—'}
+                          </td>
                           <td>
                             {lead.source_url ? (
-                              <a href={lead.source_url} target="_blank" rel="noopener noreferrer">
-                                View
+                              <a href={lead.source_url} target="_blank" rel="noopener noreferrer" className="source-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                  <polyline points="15 3 21 3 21 9"></polyline>
+                                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
                               </a>
                             ) : '—'}
                           </td>
                           <td>
-                            <button 
-                              className="action-btn" 
-                              onClick={() => handleEdit(lead, index)}
-                            >
-                              Edit
-                            </button>
-                            <button 
-                              className="action-btn delete" 
-                              onClick={() => handleDelete(index)}
-                            >
-                              Delete
-                            </button>
+                            <div className="action-buttons">
+                              <button 
+                                className="action-btn" 
+                                onClick={() => handleEdit(lead, index)}
+                              >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '3px'}}>
+                                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                                Edit
+                              </button>
+                              <button 
+                                className="action-btn delete" 
+                                onClick={() => handleDelete(index)}
+                              >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '3px'}}>
+                                  <polyline points="3 6 5 6 21 6"></polyline>
+                                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                  <line x1="10" y1="11" x2="10" y2="17"></line>
+                                  <line x1="14" y1="11" x2="14" y2="17"></line>
+                                </svg>
+                                Delete
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="7" className="empty-state">
+                        <td colSpan="6" className="empty-state">
                           <div className="empty-state-message">
                             <p>No profiles found</p>
-                            <small>Scrape a website to get started</small>
+                            <small>Scrape a LinkedIn profile to get started</small>
                           </div>
                         </td>
                       </tr>
@@ -819,14 +838,14 @@ const Dashboard = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="title">Position</label>
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={editingLead.title || ''}
+                <label htmlFor="about">About</label>
+                <textarea
+                  id="about"
+                  name="about"
+                  value={editingLead.about || ''}
                   onChange={handleEditInputChange}
-                  placeholder="Job title"
+                  placeholder="About information"
+                  rows={4}
                 />
               </div>
               <div className="form-group">
@@ -849,17 +868,6 @@ const Dashboard = () => {
                   value={editingLead.location || ''}
                   onChange={handleEditInputChange}
                   placeholder="City, Country"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={editingLead.email || ''}
-                  onChange={handleEditInputChange}
-                  placeholder="Email address(es), comma separated"
                 />
               </div>
               <div className="form-group">
@@ -907,7 +915,7 @@ const Dashboard = () => {
                 name="importData"
                 value={importData}
                 onChange={(e) => setImportData(e.target.value)}
-                placeholder={`Enter JSON data or profile information. Example:\n{\n  "name": "John Doe",\n  "title": "CEO",\n  "company": "Example Corp",\n  "location": "New York",\n  "email": "john@example.com"\n}`}
+                placeholder={`Enter JSON data or profile information. Example:\n{\n  "name": "John Doe",\n  "about": "Professional summary...",\n  "experiences": [],\n  "educations": []\n}`}
                 rows={10}
                 disabled={isImporting}
               />

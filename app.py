@@ -725,12 +725,21 @@ def run_test_scraper():
     try:
         logger.info("Starting test_scraper.py script")
         
+        # Get profile URL from request if available
+        data = request.get_json()
+        profile_url = data.get('profile_url', '') if data else ''
+        
         # Get the absolute path to test_scraper.py
         script_path = os.path.join(os.getcwd(), "test_scraper.py")
         
         # Start the script as a separate process
+        cmd = ["python3", script_path]
+        if profile_url:
+            cmd.append(profile_url)
+            logger.info(f"Running test_scraper.py with profile URL: {profile_url}")
+        
         process = subprocess.Popen(
-            ["python3", script_path],
+            cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE
         )
