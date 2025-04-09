@@ -27,14 +27,14 @@ const Register = () => {
     
     // Validasi password
     if (formData.password !== formData.confirmPassword) {
-      setError('Password tidak cocok');
+      setError('Passwords do not match');
       return;
     }
 
     setIsLoading(true);
 
     try {
-      // Simulasi registrasi - ganti dengan panggilan API nyata
+      // Simulate registration - replace with actual API call
       const response = await fetch('http://localhost:5000/api/auth/register', {
         method: 'POST',
         headers: {
@@ -50,10 +50,10 @@ const Register = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Registrasi gagal');
+        throw new Error(data.message || 'Registration failed');
       }
 
-      // Registrasi berhasil, arahkan ke halaman login
+      // Registration successful, redirect to login page
       navigate('/login');
     } catch (error) {
       setError(error.message);
@@ -65,12 +65,12 @@ const Register = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2>Daftar LinkedIn Lead Generator</h2>
+        <h2>Register LinkedIn Lead Generator</h2>
         <form onSubmit={handleSubmit} className="auth-form">
           {error && <div className="error-message">{error}</div>}
           
           <div className="form-group">
-            <label htmlFor="name">Nama</label>
+            <label htmlFor="name">Name</label>
             <input
               type="text"
               id="name"
@@ -107,7 +107,7 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="confirmPassword">Konfirmasi Password</label>
+            <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               type="password"
               id="confirmPassword"
@@ -124,12 +124,12 @@ const Register = () => {
             className="auth-button" 
             disabled={isLoading}
           >
-            {isLoading ? 'Sedang mendaftar...' : 'Daftar'}
+            {isLoading ? 'Registering...' : 'Register'}
           </button>
         </form>
 
         <p className="auth-redirect">
-          Sudah memiliki akun? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>

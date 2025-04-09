@@ -8,5 +8,48 @@
     "emails": [],
     "source_url": "https://www.linkedin.com/in/john-doe/",
     "id": 1
+  },
+  {
+    "name": "Ramadhe Putra",
+    "title": "Engineer Junior Specialist Paint Shop",
+    "company": "PT. Hyundai Motor Manufacturing Indonesia \u00b7 Kontrak",
+    "location": "Jawa Timur, Indonesia",
+    "email": "",
+    "emails": [],
+    "source_url": "https://www.linkedin.com/in/ramadhe-putra-b4557a137/",
+    "about": "Hello, I am Ramadhe, Bachelor Degree of the Mechanical Engineering study program at Brawijaya University. \nApart from studying, I actively participate in internship program at PT Ketahanan Aspal Nasional to gain experience in professional field, especially Mechanical Engineering.\nI also actively participate joining English debate since I was in Senior High School student until present. Recently, I assist Senior High School and University student for preparing English Debate Competition\n\nI started to join English Debate when I was in Senior High School. I experienced in ton of English Debate Competitions and here are some my achievements:\n- Indonesia Representative for WUDC Thailand 2019\n- 2nd Runner Up of Asian English Olympic AEO 2019\n- 2nd Best Speaker of Asian English Olympic AEO 2019\n- East Java Representative for NUDC 2019",
+    "experiences": [
+      {
+        "title": "Engineer Junior Specialist Paint Shop",
+        "company": "PT. Hyundai Motor Manufacturing Indonesia \u00b7 Kontrak",
+        "duration": "1 thn"
+      },
+      {
+        "title": "Staff of Production Department",
+        "company": "PT Ketahanan Aspal Nasional \u00b7 Paruh Waktu",
+        "duration": "4 bln"
+      },
+      {
+        "title": "Purchasing and Logistic Staff",
+        "company": "PT.FOMINDO INTI SUKSES \u00b7 Paruh Waktu",
+        "duration": "8 bln"
+      },
+      {
+        "title": "Chairperson",
+        "company": "Forum Mahasiswa Studi Bahasa Inggris \u00b7 Magang",
+        "duration": "1 thn 1 bln"
+      }
+    ],
+    "educations": [
+      {
+        "school": "Universitas Brawijaya",
+        "degree": "Bachelor of Engineering - BE, Mechanical Engineering"
+      },
+      {
+        "school": "Universitas Brawijaya",
+        "degree": "Bachelor of Engineering - BE, Mechanical Engineering"
+      }
+    ],
+    "id": 3
   }
 ]

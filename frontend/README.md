@@ -7,7 +7,7 @@ This guide explains how to integrate the new LinkedIn login functionality into y
 First, make sure your backend API server is running on the correct port:
 
 ```bash
-python app.py --port 5001 --debug
+python app.py --port 5000 --debug
 ```
 
 ## 2. Add the LinkedIn Component to Dashboard
@@ -32,7 +32,7 @@ Make sure your frontend is configured to use the correct API endpoint:
 
 ```
 // In .env file or environment variables
-REACT_APP_API_BASE=http://localhost:5001
+REACT_APP_API_BASE=http://localhost:5000
 ```
 
 ## 4. New LinkedIn Workflow

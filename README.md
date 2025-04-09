@@ -1,126 +1,81 @@
 # LinkedIn Lead Generator
 
-A tool to scrape website information and generate leads for LinkedIn outreach.
+A powerful tool to scrape and collect LinkedIn profile data for lead generation and sales outreach. This application allows you to automate LinkedIn profile scraping while collecting essential contact information.
 
 ## Features
 
-- 🌐 **Website Scraping**: Extract profile data from company websites
-- 📊 **Lead Management**: Store, update, and manage leads
-- 📝 **Data Cleaning**: Automatically normalize and deduplicate lead data
-- 📤 **Export Options**: Export leads to CSV or Google Sheets
+- LinkedIn profile scraping with detailed information extraction
+- Clean, modern UI for managing leads
+- Interactive dashboard to monitor and control the scraping process
+- Export functionality to CSV
+- Contact information validation
+- Profile data organization and search
 
-## Setup
+## Installation
 
 ### Prerequisites
 
-- Python 3.8+
-- pip (Python package manager)
+- Python 3.8 or higher
+- Node.js and npm
+- Chrome browser installed
+- ChromeDriver matching your Chrome version
 
-### Installation
+### Setup
 
-1. Clone this repository:
-```
-git clone https://github.com/yourusername/LinkedIn-Lead-Generator.git
+1. Clone the repository:
+```bash
+git clone https://github.com/cherzs/LinkedIn-Lead-Generator.git
 cd LinkedIn-Lead-Generator
 ```
 
-2. Install the required dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
-
-3. Create a `.env` file in the project root directory and add your API keys:
-```
-# LinkedIn Scraping API Key (if you plan to use ScrapingDog)
-SCRAPINGDOG_API_KEY="your_api_key_here"
-
-# Other environment variables
-# Add any other API keys or configuration here
+2. Install backend dependencies:
+```bash
+pip install -r requirements.txt
 ```
 
-## Running the Application
-
-### Starting the API Server
-
-Run the API server with:
-
+3. Install frontend dependencies:
+```bash
+cd frontend
+npm install
+cd ..
 ```
+
+4. Configure ChromeDriver:
+   - Download ChromeDriver matching your Chrome version from [ChromeDriver official site](https://chromedriver.chromium.org/downloads)
+   - Place it in the `drivers/chromedriver-win64/` directory (for Windows)
+   - Or set the path in your environment variables
+
+## Usage
+
+1. Start the backend server:
+```bash
 python app.py
 ```
 
-This will start the API server on http://localhost:5000 by default.
-
-### API Endpoints
-
-The API has the following endpoints:
-
-- **GET `/api/leads`**: Get all leads
-- **GET `/api/leads/<id>`**: Get a specific lead
-- **POST `/api/leads`**: Add a new lead
-- **PUT `/api/leads/<id>`**: Update a lead
-- **DELETE `/api/leads/<id>`**: Delete a lead
-- **POST `/api/scrape-website`**: Scrape a website for leads
-- **POST `/api/clean-data`**: Clean and normalize leads data
-- **POST `/api/clean-all`**: Complete reset and normalize leads data
-- **POST `/api/export/csv`**: Export leads to CSV
-- **POST `/api/export/sheets`**: Export leads to Google Sheets
-- **GET `/api/status`**: Check API status
-
-### Command Line Options
-
-The API server can be configured with the following command line options:
-
-- `--port <port>`: Port to run the API server on (default: 5000)
-- `--host <host>`: Host to run the API server on (default: 0.0.0.0)
-- `--debug`: Run in debug mode
-
-## Frontend
-
-The application includes a React frontend for a user-friendly experience. To start the frontend:
-
-1. Navigate to the frontend directory:
-```
+2. Start the frontend development server:
+```bash
 cd frontend
-```
-
-2. Install dependencies:
-```
-npm install
-```
-
-3. Start the development server:
-```
 npm start
 ```
 
-4. Open your browser and go to http://localhost:3000
+3. Access the application at `http://localhost:3000`
 
-## Data Storage
+4. Login to LinkedIn:
+   - Click on "Run LinkedIn Login" in the dashboard
+   - When Chrome opens, manually log in to your LinkedIn account
+   - The session will be captured for scraping
 
-All lead data is stored in a local JSON file (`leads_data.json`) in the following format:
+5. Start scraping profiles:
+   - Enter a LinkedIn profile URL or username in the search box
+   - Click "Scrape" to extract profile data
+   - View results in the dashboard
 
-```json
-[
-  {
-    "name": "Example Person",
-    "title": "CEO",
-    "company": "Example Company",
-    "location": "New York, USA",
-    "email": "example@example.com",
-    "emails": ["example@example.com"],
-    "source_url": "https://example.com"
-  }
-]
-```
+## Technical Details
 
-## Technical Architecture
-
-The application consists of:
-
-- **API Server** (`api.py`): Flask-based REST API for the application
-- **Web Scraper** (`websitescraper.py`): Extracts profiles from websites
-- **Sheets Exporter** (`sheets_exporter.py`): Handles exporting to CSV and Google Sheets
-- **Frontend** (`/frontend`): React-based user interface
+- Backend: Flask (Python)
+- Frontend: React with custom styling
+- Browser Automation: Selenium
+- Data Storage: Local JSON files with optional API endpoints
 
 ## Contributing
 
@@ -128,4 +83,14 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Copyright (c) 2024 Muhammad Zhafran Ghaly (Cherzs)
+
+## Disclaimer
+
+This tool is for educational purposes only. Use responsibly and in accordance with LinkedIn's Terms of Service. The developer is not responsible for any misuse of this application or violation of LinkedIn's terms.
+
+## Contact
+
+Muhammad Zhafran Ghaly (Cherzs) - [GitHub Profile](https://github.com/cherzs) 

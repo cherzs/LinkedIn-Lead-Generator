@@ -13,11 +13,13 @@ from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
 import subprocess
+import platform
 
 # Import LinkedIn scraper
 from linkedin_scraper import Person, actions
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 import time
 
 # Setup logging
@@ -160,7 +162,17 @@ def get_domain_from_url(url):
 
 def setup_chrome_driver():
     """Setup and return a Chrome WebDriver instance"""
-    chromedriver_path = os.getenv("CHROMEDRIVER", os.path.join(os.getcwd(), "drivers/chromedriver-linux64/chromedriver"))
+    # Detect operating system and select appropriate ChromeDriver
+    system = platform.system()
+    logger.info(f"Detected OS: {system}")
+    
+    if system == "Windows":
+        chromedriver_path = os.getenv("CHROMEDRIVER", os.path.join(os.getcwd(), "drivers/chromedriver-win64/chromedriver.exe"))
+    elif system == "Linux":
+        chromedriver_path = os.getenv("CHROMEDRIVER", os.path.join(os.getcwd(), "drivers/chromedriver-linux64/chromedriver"))
+    else:  # For macOS
+        chromedriver_path = os.getenv("CHROMEDRIVER", os.path.join(os.getcwd(), "drivers/chromedriver-mac64/chromedriver"))
+    
     logger.info(f"Using ChromeDriver at: {chromedriver_path}")
     
     # Set Chrome options to ensure browser is visible
@@ -183,9 +195,24 @@ def scrape_linkedin_profile(profile_url, login_method="manual", email=None, pass
     
     try:
         # Check if we already have a logged-in session
-        if use_existing_session and linkedin_driver and linkedin_login_status["logged_in"]:
-            driver = linkedin_driver
-            logger.info("Using existing LinkedIn session")
+        if use_existing_session and linkedin_driver:
+            # Verify existing driver session status
+            try:
+                current_url = linkedin_driver.current_url
+                # Check if driver is still active and on a LinkedIn page
+                if any(domain in current_url for domain in ["linkedin.com/feed", "linkedin.com/checkpoint", "linkedin.com/in", "linkedin.com/mynetwork"]):
+                    driver = linkedin_driver
+                    linkedin_login_status["logged_in"] = True  # Make sure login status is updated
+                    logger.info(f"Using existing LinkedIn session (URL: {current_url})")
+                else:
+                    # Browser active but not on a page requiring login
+                    logger.warning(f"Existing driver found but URL doesn't indicate login: {current_url}")
+                    driver = linkedin_driver  # Still use existing driver
+            except Exception as e:
+                # Driver not active or error, create a new one
+                logger.warning(f"Error checking existing driver: {str(e)}")
+                driver = setup_chrome_driver()
+                linkedin_login_status["logged_in"] = False
         else:
             # Setup a new driver
             driver = setup_chrome_driver()
@@ -202,7 +229,7 @@ def scrape_linkedin_profile(profile_url, login_method="manual", email=None, pass
                 # Login manually
                 logger.info("Waiting for manual login")
                 logger.info("Please login to LinkedIn in the opened browser window")
-                # Give user 60 seconds to login manually
+                # Wait for a moment to allow the login page to open
                 time.sleep(60)
             
             # Check if login was successful
@@ -219,7 +246,7 @@ def scrape_linkedin_profile(profile_url, login_method="manual", email=None, pass
                 linkedin_login_status = {
                     "logged_in": True,
                     "timestamp": datetime.now().isoformat(),
-                    "message": "Logged in successfully"
+                    "message": "Logged in automatically"
                 }
             else:
                 logger.error("Login unsuccessful")
@@ -228,34 +255,236 @@ def scrape_linkedin_profile(profile_url, login_method="manual", email=None, pass
         
         # Scrape the profile
         logger.info(f"Starting profile scraping: {profile_url}")
-        person = Person(profile_url, driver=driver, close_on_complete=False)
         
-        # Create lead from scraped profile
-        lead = {
-            "name": person.name,
-            "title": person.job_title if person.job_title else "",
-            "company": person.company if person.company else "",
-            "location": person.location if hasattr(person, 'location') else "",
-            "email": "",  # LinkedIn doesn't expose email
-            "emails": [],
-            "source_url": profile_url,
-            "about": person.about if person.about else "",
-            "experiences": [
-                {
-                    "title": exp.position_title, 
-                    "company": exp.institution_name,
-                    "duration": exp.duration
-                } for exp in person.experiences
-            ] if hasattr(person, 'experiences') else [],
-            "educations": [
-                {
-                    "school": edu.institution_name,
-                    "degree": edu.degree
-                } for edu in person.educations
-            ] if hasattr(person, 'educations') else []
-        }
-        
-        return {"success": True, "lead": lead}
+        try:
+            # Navigate to profile URL
+            driver.get(profile_url)
+            time.sleep(3)  # Wait for a moment to allow the page to load
+            
+            # Check if redirected to login page (indicating session expired)
+            if "login" in driver.current_url:
+                logger.error("Redirected to login page - session expired")
+                linkedin_login_status["logged_in"] = False
+                return {"success": False, "error": "LinkedIn session expired. Please login again."}
+            
+            # Check if page not found or rate limited
+            if "page-not-found" in driver.current_url or driver.title == "Profile Unavailable":
+                logger.error(f"Profile not found or unavailable: {profile_url}")
+                return {"success": False, "error": f"LinkedIn profile not found or not available: {profile_url}"}
+            
+            try:
+                # Try to scrape profile with safe method
+                logger.info("Attempting to scrape profile with modified Person class")
+                
+                try:
+                    # Use direct Selenium scraping instead of library
+                    logger.info("Scraping profile directly with Selenium")
+                    
+                    # Extra wait to ensure the page is fully loaded
+                    time.sleep(5)
+                    
+                    # Initialize profile_data before use
+                    profile_data = {
+                        "name": "",
+                        "job_title": "",
+                        "company": "",
+                        "location": "",
+                        "about": "",
+                        "experiences": 0,
+                        "educations": 0
+                    }
+                    
+                    # Extract data from page
+                    try:
+                        name_element = driver.find_element(By.XPATH, "//h1")
+                        profile_data["name"] = name_element.text if name_element else "Unknown"
+                        logger.info(f"Name successfully extracted: {profile_data['name']}")
+                    except Exception as e:
+                        logger.error(f"Error extracting name: {str(e)}")
+                    
+                    # Extract job title/position
+                    try:
+                        title_selectors = [
+                            "//div[contains(@class, 'text-body-medium')]",
+                            "//div[contains(@class, 'pv-text-details__left-panel')]/div",
+                            "//*[contains(@class, 'pv-text-details__left-panel')]//h2",
+                            "//div[contains(@class, 'ph5')]/div[contains(@class, 'mt2')]//div[contains(@class, 'text-body-medium')]"
+                        ]
+                        
+                        for selector in title_selectors:
+                            try:
+                                elements = driver.find_elements(By.XPATH, selector)
+                                for element in elements:
+                                    if element and element.text.strip():
+                                        profile_data["job_title"] = element.text.strip()
+                                        logger.info(f"Job title successfully extracted: {profile_data['job_title']}")
+                                        break
+                                if profile_data["job_title"]:
+                                    break
+                            except Exception as sel_err:
+                                logger.debug(f"Error with selector {selector}: {str(sel_err)}")
+                    except Exception as e:
+                        logger.error(f"Error extracting job title: {str(e)}")
+                    
+                    # Extract current company
+                    try:
+                        company_selectors = [
+                            "//div[contains(@class, 'pv-entity__company-details')]/div",
+                            "//span[contains(@class, 'pv-entity__secondary-title')]",
+                            "//a[contains(@href, '/company/')]",
+                            "//div[contains(@class, 'inline-show-more-text')]/span"
+                        ]
+                        
+                        for selector in company_selectors:
+                            try:
+                                elements = driver.find_elements(By.XPATH, selector)
+                                for element in elements:
+                                    if element and element.text.strip():
+                                        profile_data["company"] = element.text.strip()
+                                        logger.info(f"Company successfully extracted: {profile_data['company']}")
+                                        break
+                                if profile_data["company"]:
+                                    break
+                            except Exception as sel_err:
+                                logger.debug(f"Error with company selector {selector}: {str(sel_err)}")
+                    except Exception as e:
+                        logger.error(f"Error extracting company: {str(e)}")
+                    
+                    # Extract company from job title if not found
+                    if not profile_data["company"] and " at " in profile_data.get("job_title", ""):
+                        parts = profile_data["job_title"].split(" at ", 1)
+                        profile_data["company"] = parts[1].strip() if len(parts) > 1 else ""
+                        logger.info(f"Company extracted from job title: {profile_data['company']}")
+                    
+                    # Count experiences
+                    try:
+                        exp_elements = driver.find_elements(By.XPATH, "//section[contains(@class,'experience')]//li")
+                        profile_data["experiences"] = len(exp_elements) if exp_elements else 0
+                    except Exception as e:
+                        logger.error(f"Error extracting experiences: {str(e)}")
+                    
+                    # Count educations
+                    try:
+                        edu_elements = driver.find_elements(By.XPATH, "//section[contains(@class,'education')]//li")
+                        profile_data["educations"] = len(edu_elements) if edu_elements else 0
+                    except Exception as e:
+                        logger.error(f"Error extracting educations: {str(e)}")
+                    
+                    # Extract About section
+                    try:
+                        # Try to find about section with various selectors
+                        about_selectors = [
+                            "//section[contains(@class, 'about')]//div[contains(@class, 'display-flex')]//span",
+                            "//section[.//span[text()='About' or text()='Tentang']]//div[contains(@class, 'display-flex')]//span",
+                            "//section[contains(@id, 'about')]//div[contains(@class, 'inline-show-more-text')]",
+                            "//section[.//span[text()='About' or text()='Tentang']]//p",
+                            "//div[contains(@class, 'about-section')]//p"
+                        ]
+                        
+                        for selector in about_selectors:
+                            try:
+                                # Try to click "see more" if present to see full text
+                                try:
+                                    see_more_buttons = driver.find_elements(By.XPATH, "//button[contains(text(), 'see more') or contains(text(), 'lihat selengkapnya')]")
+                                    for button in see_more_buttons:
+                                        if button.is_displayed():
+                                            driver.execute_script("arguments[0].click();", button)
+                                            time.sleep(1)
+                                except Exception as see_more_err:
+                                    logger.debug(f"Error clicking 'see more': {str(see_more_err)}")
+                                
+                                # Find about element and get its text
+                                elements = driver.find_elements(By.XPATH, selector)
+                                about_text = ""
+                                for element in elements:
+                                    if element and element.text.strip():
+                                        about_text += element.text.strip() + " "
+                                
+                                if about_text:
+                                    profile_data["about"] = about_text.strip()
+                                    logger.info(f"About section successfully extracted: {profile_data['about'][:50]}...")
+                                    break
+                            except Exception as sel_err:
+                                logger.debug(f"Error with about selector {selector}: {str(sel_err)}")
+                    except Exception as e:
+                        logger.error(f"Error extracting about section: {str(e)}")
+                    
+                    # Take screenshot for debugging
+                    try:
+                        screenshot_path = f"profile_screenshot_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
+                        driver.save_screenshot(screenshot_path)
+                        logger.info(f"Screenshot saved: {screenshot_path}")
+                    except Exception as e:
+                        logger.error(f"Error saving screenshot: {str(e)}")
+                    
+                    # Send data to scrape-profile endpoint
+                    try:
+                        api_url = "http://localhost:5000/api/linkedin/scrape-profile"
+                        response = requests.post(
+                            api_url,
+                            json={"profile_data": profile_data, "use_existing_session": True, "profile_url": profile_url},
+                            timeout=10
+                        )
+                        
+                        if response.status_code == 200:
+                            logger.info("Profile data successfully sent to backend")
+                        else:
+                            logger.error(f"Failed to send profile data: {response.status_code}")
+                    except Exception as e:
+                        logger.error(f"Error sending profile data: {str(e)}")
+                except Exception as scrape_e:
+                    logger.error(f"Error during direct Selenium scraping: {str(scrape_e)}")
+                    
+                    # Initialize empty Person object
+                    person = type('Person', (), {})()
+                    person.name = ""
+                    person.about = ""
+                    person.location = ""
+                    person.experiences = []
+                    person.educations = []
+                    person.company = ""
+                    
+                    # Try alternative approach - basic scraping for minimal data
+                    try:
+                        # Get name
+                        try:
+                            name_elem = driver.find_element(By.TAG_NAME, "h1")
+                            person.name = name_elem.text if name_elem else ""
+                        except:
+                            logger.warning("Failed to extract name with basic fallback method")
+                    except Exception as basic_error:
+                        logger.error(f"Basic extraction failed too: {str(basic_error)}")
+                
+                # Create lead from scraped profile
+                lead = {
+                    "name": profile_data.get("name", ""),
+                    "title": profile_data.get("job_title", ""),
+                    "company": profile_data.get("company", ""),
+                    "location": profile_data.get("location", ""),
+                    "email": "",  # LinkedIn doesn't expose email
+                    "emails": [],
+                    "source_url": profile_url,
+                    "about": profile_data.get("about", ""),
+                    "experiences": profile_data.get("experiences", 0),
+                    "educations": profile_data.get("educations", 0)
+                }
+                
+                return {"success": True, "lead": lead}
+            except Exception as scrape_error:
+                logger.error(f"Error during profile scraping: {str(scrape_error)}")
+                # Check if problem is login-related
+                if "login" in driver.current_url:
+                    linkedin_login_status["logged_in"] = False
+                    return {"success": False, "error": "LinkedIn session expired. Please login again."}
+                return {"success": False, "error": f"Failed to retrieve profile data: {str(scrape_error)}"}
+            
+        except Exception as scrape_error:
+            logger.error(f"Error during profile scraping: {str(scrape_error)}")
+            # Check if problem is login-related
+            if "login" in driver.current_url:
+                linkedin_login_status["logged_in"] = False
+                return {"success": False, "error": "LinkedIn session expired. Please login again."}
+            return {"success": False, "error": f"Failed to retrieve profile data: {str(scrape_error)}"}
             
     except Exception as e:
         logger.error(f"Error scraping LinkedIn profile: {str(e)}")
@@ -375,13 +604,50 @@ def linkedin_login():
         email = data.get('email')
         password = data.get('password')
         
+        # Check if test_scraper.py is sending login status only
+        if 'status' in data:
+            # Update login status based on notification from test_scraper.py
+            login_status = data.get('status', False)
+            timestamp = data.get('timestamp', datetime.now().isoformat())
+            
+            # Log more detailed response
+            logger.info(f"Received login status update from test_scraper.py: {login_status}")
+            logger.info(f"Full payload: {data}")
+            
+            linkedin_login_status = {
+                "logged_in": login_status,
+                "timestamp": timestamp,
+                "message": "Login status updated from test_scraper.py"
+            }
+            
+            # Actively verify driver also if exists
+            if linkedin_driver:
+                try:
+                    current_url = linkedin_driver.current_url
+                    if any(domain in current_url for domain in ["linkedin.com/feed", "linkedin.com/checkpoint", "linkedin.com/in", "linkedin.com/mynetwork"]):
+                        # URL indicates user is already logged in
+                        if not login_status:
+                            logger.info(f"Driver shows user is logged in (URL: {current_url}) but received status is False. Overriding.")
+                            login_status = True
+                            linkedin_login_status["logged_in"] = True
+                            linkedin_login_status["message"] = "Login confirmed by URL check"
+                except Exception as e:
+                    logger.error(f"Error checking driver status: {str(e)}")
+            
+            return jsonify({
+                "success": True, 
+                "status": "login_status_updated",
+                "logged_in": linkedin_login_status["logged_in"],
+                "message": f"LinkedIn login status updated: {'Logged in' if linkedin_login_status['logged_in'] else 'Not logged in'}"
+            })
+        
+        # Normal login process if not notification from test_scraper.py
         # If there's already an active session, close it
         if linkedin_driver:
             try:
                 linkedin_driver.quit()
             except:
                 pass
-            linkedin_driver = None
         
         # Setup a new driver
         driver = setup_chrome_driver()
@@ -438,26 +704,32 @@ def linkedin_login():
 
 @app.route('/api/linkedin/login-status', methods=['GET'])
 def check_login_status():
-    """Check if user is logged in to LinkedIn"""
+    """Check if user is logged in to LinkedIn without opening a new browser"""
     global linkedin_driver, linkedin_login_status
     
-    if linkedin_driver and linkedin_login_status["logged_in"] == False:
+    # Only check existing driver status, don't create a new one
+    if linkedin_driver:
         # Check if user has completed manual login
         try:
-            if "feed" in linkedin_driver.current_url or "checkpoint" in linkedin_driver.current_url:
-                linkedin_login_status = {
-                    "logged_in": True,
-                    "timestamp": datetime.now().isoformat(),
-                    "message": "Logged in manually"
-                }
-        except:
+            current_url = linkedin_driver.current_url
+            if any(domain in current_url for domain in ["linkedin.com/feed", "linkedin.com/checkpoint", "linkedin.com/in", "linkedin.com/mynetwork"]):
+                # If browser looks like still logged in but status not updated
+                if not linkedin_login_status["logged_in"]:
+                    linkedin_login_status = {
+                        "logged_in": True,
+                        "timestamp": datetime.now().isoformat(),
+                        "message": "Logged in (detected from URL check)"
+                    }
+                    logger.info(f"Login status updated to TRUE based on URL: {current_url}")
+            else:
+                # URL doesn't indicate login
+                if linkedin_login_status["logged_in"]:
+                    logger.info(f"Current URL doesn't indicate login: {current_url}")
+        except Exception as e:
             # Session might be broken
-            linkedin_login_status = {
-                "logged_in": False,
-                "timestamp": datetime.now().isoformat(),
-                "message": "Session error, please login again"
-            }
+            logger.error(f"Error checking driver status: {str(e)}")
     
+    # Send last known status
     return jsonify({
         "logged_in": linkedin_login_status["logged_in"],
         "timestamp": linkedin_login_status["timestamp"],
@@ -499,14 +771,78 @@ def scrape_linkedin():
         save_profile = data.get('save', True)  # Default to saving the profile
         use_existing_session = data.get('use_existing_session', True)  # Use existing session if available
         
-        if not profile_url:
-            return jsonify({"error": "LinkedIn profile URL is required"}), 400
+        # Check if profile data is sent directly from test_scraper.py
+        profile_data = data.get('profile_data')
+        if profile_data and profile_url:
+            logger.info(f"Menerima data profil langsung dari test_scraper.py: {profile_url}")
             
-        if not profile_url.startswith('https://www.linkedin.com/'):
-            return jsonify({"error": "Invalid LinkedIn profile URL"}), 400
+            # Create lead from sent profile data
+            lead = {
+                "name": profile_data.get("name", ""),
+                "about": profile_data.get("about", ""),
+                "title": "",  # Not in sent data
+                "company": "",  # Not in sent data
+                "location": "",  # Not in sent data
+                "email": "",
+                "emails": [],
+                "source_url": profile_url,
+                "experiences": profile_data.get("experiences", 0),
+                "educations": profile_data.get("educations", 0)
+            }
+            
+            # Save profile
+            if save_profile:
+                leads = load_leads()
+                
+                # Check if this profile already exists by URL
+                existing_lead = next((ld for ld in leads if ld.get("source_url") == profile_url), None)
+                
+                if existing_lead:
+                    # Update existing lead
+                    for key, value in lead.items():
+                        if value and key != "id":
+                            existing_lead[key] = value
+                    lead = existing_lead
+                else:
+                    # Add new lead
+                    lead["id"] = generate_lead_id(leads)
+                    leads.append(lead)
+                
+                save_leads(leads)
+            
+            return jsonify({
+                "success": True, 
+                "message": "Profile data received from test_scraper.py and saved",
+                "lead": lead
+            })
         
+        if not profile_url:
+            return jsonify({"success": False, "error": "LinkedIn profile URL is required"}), 400
+        
+        # Normalize LinkedIn URL
+        # If URL is only username or format, convert to full URL format
+        if not profile_url.startswith('http'):
+            # Check if it's only username
+            if "/" not in profile_url:
+                profile_url = f"https://www.linkedin.com/in/{profile_url}"
+            # If given format linkedin.com/in/username without https
+            elif "linkedin.com/in/" in profile_url:
+                profile_url = f"https://www.{profile_url}"
+        
+        # Ensure URL starts with correct format
+        if not (profile_url.startswith('https://www.linkedin.com/') or profile_url.startswith('http://www.linkedin.com/')):
+            logger.warning(f"URL not valid: {profile_url}, trying to correct format")
+            # Try to extract username from possibly incorrect format
+            if '/in/' in profile_url:
+                username = profile_url.split('/in/')[1].split('/')[0].split('?')[0]
+                profile_url = f"https://www.linkedin.com/in/{username}"
+                logger.info(f"URL corrected to: {profile_url}")
+            else:
+                return jsonify({"success": False, "error": "LinkedIn URL format not valid. Use format https://www.linkedin.com/in/username"}), 400
+            
         # Check if we need to ensure login first
         if not linkedin_login_status["logged_in"] and use_existing_session:
+            logger.warning(f"Trying to scrape {profile_url} without login")
             return jsonify({
                 "success": False, 
                 "error": "Not logged in to LinkedIn. Please login first.",
@@ -514,6 +850,7 @@ def scrape_linkedin():
             }), 401
             
         # Scrape the LinkedIn profile
+        logger.info(f"Starting to scrape profile: {profile_url}")
         result = scrape_linkedin_profile(
             profile_url, 
             login_method, 
@@ -523,6 +860,7 @@ def scrape_linkedin():
         )
         
         if not result["success"]:
+            logger.error(f"Failed scraping: {result.get('error', 'Unknown error')}")
             return jsonify(result), 400
             
         lead = result["lead"]
@@ -550,7 +888,7 @@ def scrape_linkedin():
         return jsonify({"success": True, "lead": lead})
     except Exception as e:
         logger.error(f"Error scraping LinkedIn profile: {str(e)}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"success": False, "error": str(e)}), 500
 
 @app.route('/api/scrape-website', methods=['POST'])
 def scrape_website():
@@ -721,41 +1059,646 @@ def api_status():
 
 @app.route('/api/run-test-scraper', methods=['POST'])
 def run_test_scraper():
-    """Run the test_scraper.py script in a separate process"""
+    """Run LinkedIn login process directly using WebDriver instead of test_scraper.py"""
     try:
-        logger.info("Starting test_scraper.py script")
+        logger.info("Starting LinkedIn login process directly")
         
         # Get profile URL from request if available
         data = request.get_json()
         profile_url = data.get('profile_url', '') if data else ''
         
-        # Get the absolute path to test_scraper.py
-        script_path = os.path.join(os.getcwd(), "test_scraper.py")
+        # Setup Chrome WebDriver
+        driver = setup_chrome_driver()
         
-        # Start the script as a separate process
-        cmd = ["python3", script_path]
-        if profile_url:
-            cmd.append(profile_url)
-            logger.info(f"Running test_scraper.py with profile URL: {profile_url}")
+        # Inisiasi proses login dalam thread terpisah
+        import threading
         
-        process = subprocess.Popen(
-            cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        )
+        def login_process():
+            global linkedin_driver, linkedin_login_status
+            
+            try:
+                # Buka halaman login LinkedIn
+                logger.info("Opening LinkedIn login page...")
+                driver.get("https://www.linkedin.com/login")
+                
+                # Wait for a moment to allow the login page to open
+                time.sleep(2)
+                
+                # Tampilkan pesan instruksi
+                logger.info("Waiting for user to login manually")
+                
+                # Cek status login setiap beberapa detik
+                max_wait_time = 300  # 5 minutes
+                start_time = time.time()
+                login_successful = False
+                last_url = ""  # Simpan URL terakhir untuk mengurangi spam log
+                
+                while time.time() - start_time < max_wait_time:
+                    try:
+                        current_url = driver.current_url
+                        
+                        # Hanya log jika URL berubah untuk mengurangi spam
+                        if current_url != last_url:
+                            logger.info(f"Current URL: {current_url}")
+                            last_url = current_url
+                        
+                        # Cek apakah user sudah login dengan kondisi yang lebih ketat
+                        if (
+                            "feed" in current_url or 
+                            "mynetwork" in current_url or
+                            "messaging" in current_url or
+                            "/in/" in current_url and "login" not in current_url or
+                            "checkpoint" in current_url or
+                            (not "login" in current_url and "linkedin.com" in current_url)
+                        ):
+                            # Extra wait to ensure the page is fully loaded
+                            time.sleep(2)
+                            
+                            # Coba verifikasi status login dengan cara lain
+                            try:
+                                # Cek cookies LinkedIn
+                                cookies = driver.get_cookies()
+                                li_at_cookie = next((c for c in cookies if c['name'] == 'li_at'), None)
+                                
+                                if li_at_cookie:
+                                    logger.info("LinkedIn auth cookie (li_at) found")
+                                    login_successful = True
+                                elif "login" not in current_url:
+                                    # If there are no cookies but URL is not login, consider it successful
+                                    login_successful = True
+                            except Exception as cookie_e:
+                                logger.warning(f"Error checking cookies: {str(cookie_e)}")
+                                # Tetap gunakan URL sebagai indikator login jika error
+                                login_successful = True
+                            
+                            if login_successful:
+                                logger.info(f"LinkedIn login confirmed: {current_url}")
+                                
+                                # Update status login dengan pesan yang jelas
+                                linkedin_login_status = {
+                                    "logged_in": True,
+                                    "timestamp": datetime.now().isoformat(),
+                                    "message": f"Login successful via WebDriver (URL: {current_url})"
+                                }
+                                
+                                # Simpan status ke file
+                                try:
+                                    cookie_count = len(driver.get_cookies())
+                                    status_data = {
+                                        "status": True,
+                                        "timestamp": datetime.now().isoformat(),
+                                        "url": driver.current_url,
+                                        "source": "direct_webdriver_login",
+                                        "cookies": cookie_count
+                                    }
+                                    
+                                    with open("linkedin_login_status.json", "w") as f:
+                                        json.dump(status_data, f)
+                                    logger.info(f"Login status saved to file (cookies: {cookie_count})")
+                                except Exception as e:
+                                    logger.error(f"Failed to save status to file: {str(e)}")
+                                
+                                # Update global driver after successful login
+                                if linkedin_driver:
+                                    try:
+                                        linkedin_driver.quit()
+                                    except Exception as e:
+                                        logger.error(f"Error closing existing driver: {str(e)}")
+                                
+                                # Set driver global
+                                linkedin_driver = driver
+                                
+                                # Panggil API untuk update status
+                                try:
+                                    # Gunakan API manual-update yang lebih stabil
+                                    requests.post(
+                                        "http://localhost:5000/api/linkedin/manual-update",
+                                        json={
+                                            "status": True, 
+                                            "message": f"Updated from WebDriver login process - URL: {current_url}"
+                                        },
+                                        timeout=5
+                                    )
+                                    logger.info("Status update API called successfully")
+                                except Exception as api_e:
+                                    logger.error(f"Error calling update API: {str(api_e)}")
+                                
+                                # Proses scraping profil jika URL tersedia
+                                if profile_url:
+                                    logger.info(f"Scraping profile: {profile_url}")
+                                    try:
+                                        # Wait for a moment
+                                        time.sleep(2)
+                                        
+                                        # Buka profil LinkedIn
+                                        driver.get(profile_url)
+                                        time.sleep(5)  # Wait for profile page to open
+                                        
+                                        # Ambil data dari halaman
+                                        name_element = driver.find_element(By.XPATH, "//h1")
+                                        name = name_element.text if name_element else "Unknown"
+                                        
+                                        # Coba ambil data 'about'
+                                        about = ""
+                                        try:
+                                            about_elements = driver.find_elements(By.XPATH, "//section[contains(@class,'summary')]//div[contains(@class,'display-flex')]")
+                                            if about_elements:
+                                                about = about_elements[0].text
+                                        except:
+                                            pass
+                                        
+                                        # Ekstrak job title/posisi dengan selector alternatif
+                                        try:
+                                            title_selectors = [
+                                                "//div[contains(@class, 'text-body-medium')]",
+                                                "//div[contains(@class, 'pv-text-details__left-panel')]/div",
+                                                "//*[contains(@class, 'pv-text-details__left-panel')]//h2",
+                                                "//div[contains(@class, 'ph5')]/div[contains(@class, 'mt2')]//div[contains(@class, 'text-body-medium')]"
+                                            ]
+                                            
+                                            for selector in title_selectors:
+                                                try:
+                                                    elements = driver.find_elements(By.XPATH, selector)
+                                                    for element in elements:
+                                                        if element and element.text.strip():
+                                                            text = element.text.strip()
+                                                            # Jika teks terlalu panjang, mungkin bukan jabatan
+                                                            if len(text) < 100:
+                                                                profile_data["job_title"] = text
+                                                                logger.info(f"Job title successfully extracted: {profile_data['job_title']}")
+                                                                break
+                                                    if profile_data.get("job_title"):
+                                                        break
+                                                except Exception as sel_err:
+                                                    logger.debug(f"Error with selector {selector}: {str(sel_err)}")
+                                        except Exception as sel_err:
+                                            logger.debug(f"Error with selector {selector}: {str(sel_err)}")
+                                            continue
+                                        
+                                        # Pastikan job_title selalu ada meskipun kosong
+                                        if "job_title" not in profile_data:
+                                            profile_data["job_title"] = ""
+                                        
+                                        # Hitung jumlah experience
+                                        experiences = 0
+                                        try:
+                                            exp_elements = driver.find_elements(By.XPATH, "//section[contains(@class,'experience')]//li")
+                                            experiences = len(exp_elements)
+                                        except:
+                                            pass
+                                        
+                                        # Hitung jumlah education
+                                        educations = 0
+                                        try:
+                                            edu_elements = driver.find_elements(By.XPATH, "//section[contains(@class,'education')]//li")
+                                            educations = len(edu_elements)
+                                        except:
+                                            pass
+                                        
+                                        # Kirim data ke endpoint scrape-profile
+                                        profile_data = {
+                                            "name": name,
+                                            "about": about,
+                                            "experiences": experiences,
+                                            "educations": educations,
+                                            "source_url": profile_url
+                                        }
+                                        
+                                        try:
+                                            api_url = "http://localhost:5000/api/linkedin/scrape-profile"
+                                            response = requests.post(
+                                                api_url,
+                                                json={"profile_data": profile_data, "use_existing_session": True, "profile_url": profile_url},
+                                                timeout=10
+                                            )
+                                            
+                                            if response.status_code == 200:
+                                                logger.info("Profile data successfully sent to backend")
+                                            else:
+                                                logger.error(f"Failed to send profile data: {response.status_code}")
+                                        except Exception as e:
+                                            logger.error(f"Error sending profile data: {str(e)}")
+                                    except Exception as e:
+                                        logger.error(f"Error scraping profile: {str(e)}")
+                                
+                                # Keluar dari loop setelah login berhasil
+                                break
+                        
+                        # Wait before checking again
+                        time.sleep(5)
+                    
+                    except Exception as url_e:
+                        # Jika error mengakses URL, coba lagi
+                        logger.warning(f"Error checking URL: {str(url_e)}")
+                        time.sleep(5)
+                
+                if not login_successful:
+                    logger.warning("Login timeout reached, no login detected")
+                    # Update status login
+                    linkedin_login_status = {
+                        "logged_in": False,
+                        "timestamp": datetime.now().isoformat(),
+                        "message": "Login timeout reached, no login detected"
+                    }
+                    
+                    # Tutup driver jika login gagal
+                    try:
+                        driver.quit()
+                    except:
+                        pass
+            except Exception as e:
+                logger.error(f"Error in login process: {str(e)}")
+                # Tutup driver jika terjadi error
+                try:
+                    driver.quit()
+                except:
+                    pass
+                
+                # Update status login
+                linkedin_login_status = {
+                    "logged_in": False,
+                    "timestamp": datetime.now().isoformat(),
+                    "message": f"Error dalam proses login: {str(e)}"
+                }
         
-        # Return success response (script runs in background)
+        # Jalankan proses login di thread terpisah
+        threading.Thread(target=login_process, daemon=True).start()
+        
+        # Return response
         return jsonify({
             "success": True,
-            "message": "LinkedIn login script started successfully. Please follow the instructions in the browser window."
+            "message": "LinkedIn login process started. Please login in the opened browser window."
         })
         
     except Exception as e:
-        logger.error(f"Error running test_scraper.py: {str(e)}")
+        logger.error(f"Error starting LinkedIn login process: {str(e)}")
         return jsonify({
             "success": False,
-            "error": f"Failed to run LinkedIn login script: {str(e)}"
+            "error": f"Failed to start LinkedIn login process: {str(e)}"
         }), 500
+
+@app.route('/api/linkedin/check-status-file', methods=['GET'])
+def check_status_file():
+    """Check LinkedIn login status from file"""
+    global linkedin_driver, linkedin_login_status
+    status_file = os.path.join(os.getcwd(), "linkedin_login_status.json")
+    
+    try:
+        if os.path.exists(status_file):
+            with open(status_file, "r") as f:
+                status_data = json.load(f)
+            
+            # Perbarui status login global
+            is_logged_in = status_data.get("status", False)
+            
+            # Jika ada URL di status data, coba buat driver baru
+            browser_url = status_data.get("url", "")
+            if is_logged_in and browser_url and "linkedin.com" in browser_url:
+                logger.info(f"URL ditemukan di file status: {browser_url}")
+                
+                try:
+                    # Buat driver baru
+                    temp_driver = setup_chrome_driver()
+                    temp_driver.get(browser_url)
+                    time.sleep(3)  # Wait for browser to load
+                    
+                    # Jika berhasil dan tidak di halaman login
+                    if "login" not in temp_driver.current_url:
+                        # Update driver global
+                        if linkedin_driver:
+                            try:
+                                linkedin_driver.quit()
+                            except:
+                                pass
+                            
+                        linkedin_driver = temp_driver
+                        logger.info(f"Driver diperbarui berdasarkan URL dari file status: {temp_driver.current_url}")
+                    else:
+                        # Tutup driver jika tidak berhasil
+                        temp_driver.quit()
+                        logger.warning(f"URL di file status tidak valid: {browser_url}")
+                except Exception as e:
+                    logger.error(f"Error membuat driver dari URL di file status: {str(e)}")
+                    try:
+                        if 'temp_driver' in locals():
+                            temp_driver.quit()
+                    except:
+                        pass
+            
+            linkedin_login_status = {
+                "logged_in": is_logged_in,
+                "timestamp": status_data.get("timestamp", datetime.now().isoformat()),
+                "message": "Login status successfully updated from file"
+            }
+            
+            # Hapus file status agar tidak digunakan lagi
+            try:
+                os.remove(status_file)
+                logger.info("Status file successfully deleted after use")
+            except Exception as e:
+                logger.warning(f"Failed to delete status file: {str(e)}")
+                
+            return jsonify({
+                "success": True,
+                "logged_in": is_logged_in,
+                "message": "Login status successfully updated from file"
+            })
+        else:
+            return jsonify({
+                "success": False,
+                "message": "Status file not found"
+            })
+    except Exception as e:
+        logger.error(f"Error checking status file: {str(e)}")
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        })
+
+@app.route('/api/linkedin/force-login', methods=['POST'])
+def force_login_status():
+    """Force update the LinkedIn login status without checking browser"""
+    global linkedin_driver, linkedin_login_status
+    
+    try:
+        data = request.json
+        force_status = data.get('status', True)  # Default to logged in
+        custom_message = data.get('message', "Status login diperbarui manual")
+        
+        # Update status login global tanpa membuka browser baru
+        linkedin_login_status = {
+            "logged_in": force_status,
+            "timestamp": datetime.now().isoformat(),
+            "message": custom_message
+        }
+        
+        logger.info(f"LinkedIn login status forced to: {force_status}")
+        
+        return jsonify({
+            "success": True,
+            "logged_in": force_status,
+            "message": f"LinkedIn login status successfully updated: {'Logged in' if force_status else 'Not logged in'}"
+        })
+    except Exception as e:
+        logger.error(f"Error updating LinkedIn login status manually: {str(e)}")
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        })
+
+@app.route('/api/linkedin/set-logged-in', methods=['GET'])
+def set_logged_in():
+    """Update LinkedIn login status to logged in (for browser access)"""
+    global linkedin_login_status
+    
+    try:
+        linkedin_login_status = {
+            "logged_in": True,
+            "timestamp": datetime.now().isoformat(),
+            "message": "Login status successfully updated"
+        }
+        
+        logger.info("LinkedIn login status set to TRUE via browser endpoint")
+        
+        # Return HTML untuk browser
+        return """
+        <html>
+            <head>
+                <title>LinkedIn Status Updated</title>
+                <style>
+                    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+                    .success { color: green; font-size: 24px; }
+                    button { padding: 10px 20px; margin-top: 20px; cursor: pointer; }
+                </style>
+            </head>
+            <body>
+                <h1 class="success">LinkedIn login status successfully updated: Logged In</h1>
+                <p>The status in the web application should now be changed to "Logged In".</p>
+                <p>You can close this window and return to the application.</p>
+                <button onclick="window.close()">Close Window</button>
+            </body>
+        </html>
+        """
+    except Exception as e:
+        logger.error(f"Error updating LinkedIn login status via browser endpoint: {str(e)}")
+        return f"Error: {str(e)}", 500
+
+@app.route('/api/linkedin/manual-update', methods=['POST'])
+def manual_update_login():
+    """Update LinkedIn login status manually from frontend"""
+    global linkedin_login_status
+    
+    try:
+        data = request.json
+        status = data.get('status', True)
+        message = data.get('message', 'Status login diperbarui secara manual dari frontend')
+        
+        linkedin_login_status = {
+            "logged_in": status,
+            "timestamp": datetime.now().isoformat(),
+            "message": message
+        }
+        
+        logger.info(f"LinkedIn login status manually updated to {status} from frontend")
+        
+        return jsonify({
+            "success": True,
+            "logged_in": status,
+            "message": "Status login berhasil diperbarui"
+        })
+    except Exception as e:
+        logger.error(f"Error updating LinkedIn login status manually from frontend: {str(e)}")
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        }), 500
+
+@app.route('/api/linkedin/browser-check', methods=['GET'])
+def check_browser_session():
+    """Check if there's an active LinkedIn session in a browser"""
+    global linkedin_driver, linkedin_login_status
+    
+    try:
+        # Coba buat driver baru untuk periksa status login
+        logger.info("Creating new driver to check for active LinkedIn session")
+        
+        try:
+            temp_driver = setup_chrome_driver()
+            # Langsung akses feed LinkedIn
+            temp_driver.get("https://www.linkedin.com/feed/")
+            time.sleep(3)  # Berikan waktu untuk browser load
+            
+            # Cek apakah diarahkan ke halaman login
+            current_url = temp_driver.current_url
+            is_logged_in = "login" not in current_url
+            
+            logger.info(f"Browser check URL: {current_url}, logged in: {is_logged_in}")
+            
+            # Jika terdeteksi login (tidak di halaman login), perbarui
+            if is_logged_in:
+                # Jika browser sebelumnya masih ada, matikan
+                if linkedin_driver:
+                    try:
+                        linkedin_driver.quit()
+                    except:
+                        pass
+                
+                # Gunakan driver baru sebagai driver global
+                linkedin_driver = temp_driver
+                linkedin_login_status = {
+                    "logged_in": True,
+                    "timestamp": datetime.now().isoformat(),
+                    "message": "Login detected via browser check"
+                }
+                
+                logger.info("Active LinkedIn session found and driver updated")
+                
+                return jsonify({
+                    "success": True,
+                    "logged_in": True,
+                    "message": "Active LinkedIn session detected and driver updated"
+                })
+            else:
+                # Tutup driver jika tidak terdeteksi login
+                temp_driver.quit()
+                logger.info("No active LinkedIn session found in browser")
+                
+                return jsonify({
+                    "success": True,
+                    "logged_in": False,
+                    "message": "No active LinkedIn session detected in browser"
+                })
+                
+        except Exception as e:
+            logger.error(f"Error checking browser session: {str(e)}")
+            # Pastikan driver sementara dimatikan jika terjadi error
+            try:
+                if 'temp_driver' in locals():
+                    temp_driver.quit()
+            except:
+                pass
+                
+            return jsonify({
+                "success": False,
+                "error": f"Failed to check browser session: {str(e)}"
+            })
+            
+    except Exception as e:
+        logger.error(f"Error in browser session check: {str(e)}")
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        })
+
+@app.route('/api/linkedin/verify-login', methods=['GET'])
+def verify_linkedin_login():
+    """Verify LinkedIn login by checking if the driver is still active and logged in"""
+    global linkedin_driver, linkedin_login_status
+    
+    try:
+        # Cek apakah driver masih aktif
+        is_active = False
+        is_logged_in = False
+        message = ""
+        
+        if linkedin_driver:
+            try:
+                # Coba akses current_url untuk melihat apakah driver masih hidup
+                current_url = linkedin_driver.current_url
+                is_active = True
+                
+                # Jika URL mengandung indikasi halaman LinkedIn yang memerlukan login
+                if any(domain in current_url for domain in ["linkedin.com/feed", "linkedin.com/checkpoint", "linkedin.com/in", "linkedin.com/mynetwork"]):
+                    is_logged_in = True
+                    message = f"Verified active session at {current_url}"
+                    logger.info(f"LinkedIn driver active and logged in at URL: {current_url}")
+                else:
+                    message = f"Driver active but not on LinkedIn page: {current_url}"
+                    logger.warning(message)
+            except Exception as e:
+                message = f"Error checking driver: {str(e)}"
+                logger.error(message)
+                is_active = False
+        else:
+            message = "No active Chrome driver instance found"
+            logger.warning(message)
+            
+            # Jika tidak ada driver aktif, periksa file status saja
+            status_file = os.path.join(os.getcwd(), "linkedin_login_status.json")
+            if os.path.exists(status_file):
+                try:
+                    with open(status_file, "r") as f:
+                        status_data = json.load(f)
+                    is_logged_in = status_data.get("status", False)
+                    if is_logged_in:
+                        message = "Status login diambil dari file status"
+                        logger.info(message)
+                except Exception as file_e:
+                    logger.error(f"Error reading status file: {str(file_e)}")
+        
+        # Update status login global berdasarkan pemeriksaan
+        if is_active and is_logged_in:
+            linkedin_login_status = {
+                "logged_in": True,
+                "timestamp": datetime.now().isoformat(),
+                "message": "Login verified by active session check"
+            }
+        elif not is_active and not is_logged_in:
+            # Driver tidak aktif dan tidak ada bukti login
+            linkedin_login_status = {
+                "logged_in": False,
+                "timestamp": datetime.now().isoformat(),
+                "message": "No active login detected"
+            }
+        
+        return jsonify({
+            "success": True,
+            "driver_active": is_active,
+            "logged_in": is_logged_in or linkedin_login_status.get("logged_in", False),
+            "status": linkedin_login_status,
+            "message": message
+        })
+    except Exception as e:
+        error_msg = f"Error verifying LinkedIn login: {str(e)}"
+        logger.error(error_msg)
+        return jsonify({
+            "success": False,
+            "error": error_msg
+        })
+
+@app.route('/api/linkedin/profile-details/<int:lead_id>', methods=['GET'])
+def get_profile_details(lead_id):
+    """Get detailed LinkedIn profile data for a specific lead"""
+    try:
+        leads = load_leads()
+        lead = next((lead for lead in leads if lead.get("id") == lead_id), None)
+        
+        if not lead:
+            return jsonify({"success": False, "error": "Lead not found"}), 404
+        
+        if not lead.get("source_url") or "linkedin.com" not in lead.get("source_url", ""):
+            return jsonify({"success": False, "error": "Not a LinkedIn profile or missing URL"}), 400
+        
+        # Return existing detailed data
+        return jsonify({
+            "success": True,
+            "profile": {
+                "id": lead.get("id"),
+                "name": lead.get("name", ""),
+                "title": lead.get("title", ""),
+                "company": lead.get("company", ""),
+                "location": lead.get("location", ""),
+                "about": lead.get("about", ""),
+                "experiences": lead.get("experiences", []),
+                "educations": lead.get("educations", []),
+                "source_url": lead.get("source_url", ""),
+                "email": lead.get("email", ""),
+                "emails": lead.get("emails", [])
+            }
+        })
+    except Exception as e:
+        logger.error(f"Error getting profile details: {str(e)}")
+        return jsonify({"success": False, "error": str(e)}), 500
 
 if __name__ == '__main__':
     # Parse command line arguments

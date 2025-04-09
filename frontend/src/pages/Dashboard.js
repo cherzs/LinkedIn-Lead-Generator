@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Dashboard.css';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const [leads, setLeads] = useState([]);
@@ -19,21 +20,95 @@ const Dashboard = () => {
   const [isImporting, setIsImporting] = useState(false);
   const [isLinkedinLoggedIn, setIsLinkedinLoggedIn] = useState(false);
   const [isRunningTestScraper, setIsRunningTestScraper] = useState(false);
+  const [selectedProfile, setSelectedProfile] = useState(null);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   useEffect(() => {
     fetchLeads();
     checkLinkedinLoginStatus();
     
-    // Poll for LinkedIn login status
-    const interval = setInterval(checkLinkedinLoginStatus, 10000);
+    // Poll for LinkedIn login status more frequently
+    const interval = setInterval(checkLinkedinLoginStatus, 5000);  // Poll every 5 seconds instead of 10
+    
+    // Check if LinkedIn is already opened in another tab
+    tryDetectLinkedInBrowser();
+    
     return () => clearInterval(interval);
   }, []);
 
   const checkLinkedinLoginStatus = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/linkedin/login-status');
+      console.log('Checking LinkedIn login status...');
+      
+      // Tambah random query parameter untuk menghindari caching
+      const timestamp = new Date().getTime();
+      
+      // Gunakan endpoint verifikasi terlebih dahulu
+      try {
+        console.log('Calling verify-login endpoint...');
+        const verifyResponse = await fetch(`http://localhost:5000/api/linkedin/verify-login?_t=${timestamp}`);
+        const verifyData = await verifyResponse.json();
+        
+        console.log('Verify login response:', verifyData);
+        
+        if (verifyData.success) {
+          // Update status berdasarkan verifikasi aktif
+          if (verifyData.logged_in) {
+            setIsLinkedinLoggedIn(true);
+            setMessage({
+              text: 'LinkedIn session detected may not be accurate. Browser session may be closed.',
+              type: 'warning'
+            });
+            return;
+          }
+          
+          // If driver is not active but login status is still true, show message
+          if (!verifyData.driver_active && verifyData.status.logged_in) {
+            setMessage({
+              text: 'LinkedIn session detected may not be accurate. Browser session may be closed.',
+              type: 'warning'
+            });
+          }
+        }
+      } catch (verifyError) {
+        console.error('Error verifying LinkedIn status:', verifyError);
+      }
+      
+      // Fallback to endpoint status login standard
+      const response = await fetch(`http://localhost:5000/api/linkedin/login-status?_t=${timestamp}`);
       const data = await response.json();
-      setIsLinkedinLoggedIn(data.logged_in);
+      
+      console.log('Login status response:', data);
+      
+      if (data.logged_in) {
+        setIsLinkedinLoggedIn(true);
+        setMessage({
+          text: 'Login status successfully updated: Logged In',
+          type: 'success'
+        });
+        return; // If already logged in, no need to check again
+      } else {
+        setIsLinkedinLoggedIn(false);
+      }
+      
+      // If not logged in, try to check status file as fallback
+      try {
+        const fileStatusResponse = await fetch(`http://localhost:5000/api/linkedin/check-status-file?_t=${timestamp}`);
+        const fileStatusData = await fileStatusResponse.json();
+        
+        console.log('File status response:', fileStatusData);
+        
+        if (fileStatusData.success && fileStatusData.logged_in) {
+          console.log('Login status successfully retrieved from file');
+          setIsLinkedinLoggedIn(true);
+          setMessage({
+            text: 'Login status updated from status file',
+            type: 'success'
+          });
+        }
+      } catch (fileError) {
+        console.error('Error checking status file:', fileError);
+      }
     } catch (error) {
       console.error('Error checking LinkedIn login status:', error);
     }
@@ -149,25 +224,37 @@ const Dashboard = () => {
     setShowEditModal(true);
   };
 
-  const handleDelete = async (index) => {
-    if (!window.confirm('Delete this profile?')) {
-      return;
-    }
-
-    try {
-      const response = await fetch(`http://localhost:5000/api/leads/${index}`, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to delete profile');
+  const handleDelete = async (leadId) => {
+    if (window.confirm('Are you sure you want to delete this lead?')) {
+      try {
+        setIsLoading(true);
+        const response = await fetch(`http://localhost:5000/api/leads/${leadId}`, {
+          method: 'DELETE'
+        });
+        
+        if (response.ok) {
+          // Hapus lead dari state
+          setLeads(leads.filter(lead => lead.id !== leadId));
+          setMessage({
+            text: 'Lead successfully deleted',
+            type: 'success'
+          });
+        } else {
+          const data = await response.json();
+          setMessage({
+            text: data.error || 'Failed to delete lead',
+            type: 'error'
+          });
+        }
+      } catch (error) {
+        console.error("Error deleting lead:", error);
+        setMessage({
+          text: 'Error saat menghapus lead',
+          type: 'error'
+        });
+      } finally {
+        setIsLoading(false);
       }
-
-      setLeads(prevLeads => prevLeads.filter((_, i) => i !== index));
-      setMessage({ text: 'Profile deleted', type: 'success' });
-    } catch (error) {
-      console.error('Error deleting lead:', error);
-      setMessage({ text: 'Failed to delete profile', type: 'error' });
     }
   };
 
@@ -306,7 +393,24 @@ const Dashboard = () => {
     setMessage({ text: 'Scraping LinkedIn profile...', type: 'info' });
 
     try {
-      const profileUrl = `https://www.linkedin.com/in/${linkedinId.trim()}`;
+      // Normalisasi URL LinkedIn
+      let profileUrl = linkedinId.trim();
+      
+      // Jika hanya username, tambahkan URL lengkap
+      if (!profileUrl.includes('linkedin.com') && !profileUrl.startsWith('http')) {
+        // Hapus @ jika ada
+        if (profileUrl.startsWith('@')) {
+          profileUrl = profileUrl.substring(1);
+        }
+        
+        // Hapus karakter non-alfanumerik dan strip
+        profileUrl = profileUrl.replace(/[^a-zA-Z0-9-]/g, '');
+        
+        // Tambahkan URL lengkap
+        profileUrl = `https://www.linkedin.com/in/${profileUrl}`;
+        console.log('Normalized LinkedIn URL:', profileUrl);
+      }
+      
       const response = await fetch('http://localhost:5000/api/linkedin/scrape-profile', {
         method: 'POST',
         headers: {
@@ -319,16 +423,23 @@ const Dashboard = () => {
         }),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || errorData.message || 'Failed to scrape LinkedIn profile');
-      }
-
       const scrapeResult = await response.json();
       
-      if (!scrapeResult.success) {
+      // Cek error secara spesifik
+      if (!response.ok) {
+        if (response.status === 401) {
+          // Error login
+          setMessage({ 
+            text: `You need to login to LinkedIn first. Click the "Force Login" or "Run LinkedIn Login" button`, 
+            type: 'error' 
+          });
+        } else {
+          // Error lainnya
+          throw new Error(scrapeResult.error || `Failed to scrape LinkedIn profile (Error ${response.status})`);
+        }
+      } else if (!scrapeResult.success) {
         setMessage({ 
-          text: `No profile found for LinkedIn URL "${linkedinId}"`, 
+          text: scrapeResult.error || `Could not find profile for "${linkedinId}"`, 
           type: 'error' 
         });
       } else {
@@ -336,13 +447,14 @@ const Dashboard = () => {
           text: scrapeResult.message || `Successfully scraped LinkedIn profile`, 
           type: 'success' 
         });
-        // Clear the input field after successful scraping
+        // Bersihkan input setelah berhasil
         setLinkedinId('');
-        // Hide the LinkedIn form
+        // Sembunyikan form LinkedIn
         setShowLinkedinForm(false);
+        
+        // Refresh data profil
+        fetchLeads();
       }
-      
-      fetchLeads();
     } catch (error) {
       console.error('Error scraping LinkedIn profile:', error);
       setMessage({ 
@@ -548,7 +660,7 @@ const Dashboard = () => {
       // Persiapkan data untuk dikirim ke API
       const requestData = {};
       if (linkedinId) {
-        // Jika ada URL profil, tambahkan ke request
+        // If profile URL exists, add to request
         requestData.profile_url = linkedinId;
       }
 
@@ -575,7 +687,7 @@ const Dashboard = () => {
           type: 'success' 
         });
         
-        // Reset URL jika berhasil dikirim untuk scraping
+        // Reset URL if successfully sent for scraping
         if (linkedinId) {
           setLinkedinId('');
         }
@@ -596,6 +708,87 @@ const Dashboard = () => {
       });
     } finally {
       setIsRunningTestScraper(false);
+    }
+  };
+
+  // Fungsi untuk deteksi keberadaan LinkedIn di tab lain dan set login otomatis
+  const tryDetectLinkedInBrowser = () => {
+    console.log("Trying to detect LinkedIn browser already logged in...");
+    
+    // Panggil force-login endpoint dengan lebih agresif
+    fetch('http://localhost:5000/api/linkedin/force-login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        status: true,
+        message: "Auto-detection check pada load halaman"
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success && data.logged_in) {
+        console.log("Login status successfully forced:", data);
+        // Segera update status
+        setIsLinkedinLoggedIn(true);
+        setMessage({
+          text: 'Login status updated to Logged In manually',
+          type: 'success'
+        });
+      } else {
+        console.log("Could not auto-detect LinkedIn login");
+        // Coba cek status file sebagai fallback
+        setTimeout(() => {
+          fetch('http://localhost:5000/api/linkedin/check-status-file', {
+            method: 'GET'
+          })
+          .then(response => response.json())
+          .then(fileData => {
+            if (fileData.success && fileData.logged_in) {
+              console.log("Session LinkedIn terdeteksi via file status");
+              setIsLinkedinLoggedIn(true);
+              setMessage({
+                text: 'Login status updated from status file',
+                type: 'success'
+              });
+            }
+          })
+          .catch(err => {
+            console.error("Error pada file status check:", err);
+          });
+        }, 5000);
+      }
+    })
+    .catch(err => {
+      console.error("Error force login:", err);
+    });
+  };
+
+  // Fungsi untuk menampilkan detail profil
+  const viewProfileDetails = async (leadId) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(`http://localhost:5000/api/linkedin/profile-details/${leadId}`);
+      const data = await response.json();
+      
+      if (data.success) {
+        setSelectedProfile(data.profile);
+        setIsProfileModalOpen(true);
+      } else {
+        setMessage({
+          text: data.error || 'Failed to retrieve profile details',
+          type: 'error'
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching profile details:", error);
+      setMessage({
+        text: 'Error while fetching profile details',
+        type: 'error'
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -633,30 +826,151 @@ const Dashboard = () => {
             <div className="linkedin-status">
               <strong>LinkedIn Status:</strong>{' '}
               {isLinkedinLoggedIn ? (
-                <span className="text-success">Logged In</span>
+                <>
+                  <span className="text-success">Logged In</span>
+                  <button 
+                    onClick={() => {
+                      // Panggil API untuk reset status login
+                      fetch('http://localhost:5000/api/linkedin/force-login', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ status: false })
+                      })
+                      .then(response => response.json())
+                      .then(data => {
+                        if (data.success) {
+                          setIsLinkedinLoggedIn(false);
+                          setMessage({ 
+                            text: 'Login status updated to Not Logged In', 
+                            type: 'warning' 
+                          });
+                        }
+                      })
+                      .catch(err => {
+                        console.error("Error resetting login status:", err);
+                      });
+                    }}
+                    style={{
+                      marginLeft: '10px',
+                      padding: '3px 8px',
+                      fontSize: '12px',
+                      color: '#d32f2f',
+                      background: 'none',
+                      border: '1px solid #d32f2f',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Reset Status
+                  </button>
+                </>
               ) : (
-                <span className="text-danger">Not Logged In</span>
+                <>
+                  <span className="text-danger">Not Logged In</span>
+                  
+                  {/* Tombol Force Update Status Baru */}
+                  <button 
+                    onClick={() => {
+                      // Panggil API force login
+                      fetch('http://localhost:5000/api/linkedin/force-login', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ 
+                          status: true,
+                          message: "Status updated manually from UI"
+                        })
+                      })
+                      .then(response => response.json())
+                      .then(data => {
+                        if (data.success) {
+                          setIsLinkedinLoggedIn(true);
+                          setMessage({ 
+                            text: 'Login status updated to Logged In manually', 
+                            type: 'success' 
+                          });
+                        }
+                      })
+                      .catch(err => {
+                        console.error("Error updating login status:", err);
+                      });
+                    }}
+                    style={{
+                      marginLeft: '10px',
+                      padding: '5px 12px',
+                      fontSize: '14px',
+                      color: 'white',
+                      background: '#4caf50',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      fontWeight: 'bold',
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                      display: 'inline-flex',
+                      alignItems: 'center'
+                    }}
+                  >
+                    <span role="img" aria-label="force" style={{ marginRight: '5px' }}>⚡</span>
+                    Force Login
+                  </button>
+                </>
               )}
               {!isLinkedinLoggedIn && (
                 <div className="login-actions">
-                  <p className="login-message">
-                    You need to login to LinkedIn before scraping profiles.
-                    {linkedinId && (
-                      <span className="emphasized-text"> Your entered URL will be scraped automatically after login.</span>
-                    )}
-                  </p>
-                  <button 
-                    className="login-button"
-                    onClick={handleRunTestScraper}
-                    disabled={isRunningTestScraper}
-                  >
-                    {isRunningTestScraper ? (
-                      <span className="button-with-loader">
-                        <span className="button-loader"></span>
-                        Starting Login...
-                      </span>
-                    ) : 'Run LinkedIn Login'}
-                  </button>
+                  <div className="login-help-box" style={{
+                    border: '2px dashed #2196f3',
+                    borderRadius: '5px',
+                    padding: '15px',
+                    marginBottom: '15px',
+                    backgroundColor: '#e3f2fd'
+                  }}>
+                    <h3 style={{ color: '#1976d2', margin: '0 0 10px', fontSize: '16px' }}>
+                      <span role="img" aria-label="tip">💡</span> Login LinkedIn
+                    </h3>
+                  </div>
+                  
+                  <div className="button-group" style={{ display: 'flex', gap: '10px' }}>
+                    <button 
+                      className="login-button"
+                      onClick={handleRunTestScraper}
+                      disabled={isRunningTestScraper}
+                      style={{ flex: '1' }}
+                    >
+                      {isRunningTestScraper ? (
+                        <span className="button-with-loader">
+                          <span className="button-loader"></span>
+                          Starting Login...
+                        </span>
+                      ) : 'Run LinkedIn Login'}
+                    </button>
+                    <button 
+                      className="refresh-button"
+                      onClick={() => {
+                        // Cek status secara manual
+                        checkLinkedinLoginStatus();
+                        // Tampilkan pesan sedang refresh
+                        setMessage({ 
+                          text: 'Memeriksa status login LinkedIn...', 
+                          type: 'info' 
+                        });
+                        // Set ulang pesan setelah beberapa detik
+                        setTimeout(() => {
+                          setMessage({
+                            text: isLinkedinLoggedIn 
+                              ? 'Login status successfully updated: Logged In' 
+                              : 'Login status updated: Still Not Logged In',
+                            type: isLinkedinLoggedIn ? 'success' : 'warning'
+                          });
+                        }, 1000);
+                      }}
+                      style={{ flex: '1' }}
+                    >
+                      Refresh Status
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
@@ -731,7 +1045,7 @@ const Dashboard = () => {
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>About</th>
+                      <th>Company</th>
                       <th>Experiences</th>
                       <th>Educations</th>
                       <th>Source</th>
@@ -744,15 +1058,17 @@ const Dashboard = () => {
                         <tr key={index}>
                           <td>{lead.name || '—'}</td>
                           <td>
-                            {lead.about ? (
-                              <div 
-                                className="about-content"
-                                data-content={lead.about}
-                              >
-                                {lead.about.length > 100 ? lead.about.substring(0, 100) + '...' : lead.about}
-                                {lead.about.length > 100 && (
-                                  <span className="view-more-tooltip">Hover to see more</span>
-                                )}
+                            {lead.company ? (
+                              <div className="dropdown-container">
+                                <div 
+                                  className="company-name"
+                                  onClick={() => {
+                                    setSelectedProfile(lead);
+                                    setIsProfileModalOpen(true);
+                                  }}
+                                >
+                                  {lead.company}
+                                </div>
                               </div>
                             ) : '—'}
                           </td>
@@ -777,31 +1093,22 @@ const Dashboard = () => {
                               </a>
                             ) : '—'}
                           </td>
-                          <td>
-                            <div className="action-buttons">
-                              <button 
-                                className="action-btn" 
-                                onClick={() => handleEdit(lead, index)}
-                              >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '3px'}}>
-                                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                </svg>
-                                Edit
-                              </button>
-                              <button 
-                                className="action-btn delete" 
-                                onClick={() => handleDelete(index)}
-                              >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '3px'}}>
-                                  <polyline points="3 6 5 6 21 6"></polyline>
-                                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                  <line x1="10" y1="11" x2="10" y2="17"></line>
-                                  <line x1="14" y1="11" x2="14" y2="17"></line>
-                                </svg>
-                                Delete
-                              </button>
-                            </div>
+                          <td className="action-cell">
+                            <button
+                              className="view-button"
+                              onClick={() => viewProfileDetails(lead.id)}
+                            >
+                              <i className="fas fa-eye"></i> Detail
+                            </button>
+                            <Link to={`/edit/${lead.id}`} className="edit-button">
+                              <i className="fas fa-edit"></i> Edit
+                            </Link>
+                            <button
+                              className="delete-button"
+                              onClick={() => handleDelete(lead.id)}
+                            >
+                              <i className="fas fa-trash"></i> Delete
+                            </button>
                           </td>
                         </tr>
                       ))
@@ -942,6 +1249,91 @@ const Dashboard = () => {
                 disabled={isImporting}
               >
                 Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Detail Profil */}
+      {isProfileModalOpen && selectedProfile && (
+        <div className="profile-modal">
+          <div className="profile-modal-content">
+            <div className="profile-modal-header">
+              <h2>{selectedProfile.name || "Profile Details"}</h2>
+              <button 
+                className="close-button" 
+                onClick={() => setIsProfileModalOpen(false)}
+              >
+                &times;
+              </button>
+            </div>
+            <div className="profile-modal-body">
+              <div className="profile-section">
+                <h3>Basic Information</h3>
+                <p><strong>Name:</strong> {selectedProfile.name || "Not available"}</p>
+                <p><strong>Position:</strong> {selectedProfile.title || "Not available"}</p>
+                <p><strong>Company:</strong> {selectedProfile.company || "Not available"}</p>
+                <p><strong>Location:</strong> {selectedProfile.location || "Not available"}</p>
+                <p><strong>Email:</strong> {selectedProfile.email || "Not available"}</p>
+              </div>
+              
+              {selectedProfile.about && (
+                <div className="profile-section">
+                  <h3>About</h3>
+                  <div className="profile-about">
+                    {selectedProfile.about}
+                  </div>
+                </div>
+              )}
+              
+              {selectedProfile.experiences && selectedProfile.experiences.length > 0 && (
+                <div className="profile-section">
+                  <h3>Experience ({selectedProfile.experiences.length})</h3>
+                  <ul className="experience-list no-dots">
+                    {selectedProfile.experiences.map((exp, index) => (
+                      <li key={`exp-${index}`} className="experience-item">
+                        <div className="experience-title">{exp.title || "Position not specified"}</div>
+                        {exp.company && <div className="experience-company">{exp.company}</div>}
+                        {exp.duration && <div className="experience-duration">{exp.duration}</div>}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              
+              {selectedProfile.educations && selectedProfile.educations.length > 0 && (
+                <div className="profile-section">
+                  <h3>Education ({selectedProfile.educations.length})</h3>
+                  <ul className="education-list no-dots">
+                    {selectedProfile.educations.map((edu, index) => (
+                      <li key={`edu-${index}`} className="education-item">
+                        <div className="education-school">{edu.school || "Institution not specified"}</div>
+                        {edu.degree && <div className="education-degree">{edu.degree}</div>}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              
+              <div className="profile-section">
+                <h3>Source</h3>
+                <a 
+                  href={selectedProfile.source_url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="profile-source-link"
+                >
+                  View Original LinkedIn Profile
+                </a>
+              </div>
+            </div>
+            <div className="profile-modal-footer">
+              <button 
+                className="close-modal-button" 
+                onClick={() => setIsProfileModalOpen(false)}
+              >
+                Close
               </button>
             </div>
           </div>
