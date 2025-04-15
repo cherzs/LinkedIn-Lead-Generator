@@ -163,7 +163,12 @@ def setup_chrome_driver():
     elif system == "Linux":
         chromedriver_path = os.getenv("CHROMEDRIVER", os.path.join(os.getcwd(), "drivers/chromedriver-linux64/chromedriver"))
     else:  # For macOS
-        chromedriver_path = os.getenv("CHROMEDRIVER", os.path.join(os.getcwd(), "drivers/chromedriver-mac64/chromedriver"))
+        # Check if Apple Silicon (arm64) or Intel
+        arch = platform.machine()
+        if arch == "arm64":
+            chromedriver_path = os.getenv("CHROMEDRIVER", os.path.join(os.getcwd(), "drivers/chromedriver-mac64/chromedriver"))
+        else:
+            chromedriver_path = os.getenv("CHROMEDRIVER", os.path.join(os.getcwd(), "drivers/chromedriver-mac64/chromedriver"))
     
     logger.info(f"Using ChromeDriver at: {chromedriver_path}")
     

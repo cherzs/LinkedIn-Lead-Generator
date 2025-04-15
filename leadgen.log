@@ -8261,3 +8261,1601 @@ Stacktrace:
 2025-04-10 00:07:15,977 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:15] "GET /api/linkedin/verify-login?_t=1744218435961 HTTP/1.1" 200 -
 2025-04-10 00:07:16,311 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:16] "GET /api/linkedin/login-status?_t=1744218435961 HTTP/1.1" 200 -
 2025-04-10 00:07:16,561 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 00:07:16] "GET /api/linkedin/check-status-file?_t=1744218435961 HTTP/1.1" 200 -
+2025-04-15 23:53:15,069 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.18.56:5001
+2025-04-15 23:53:15,069 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 23:53:32,297 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.18.56:5001
+2025-04-15 23:53:32,297 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 23:54:22,069 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:54:22] "GET / HTTP/1.1" 200 -
+2025-04-15 23:54:22,467 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:54:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-15 23:56:03,258 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.18.56:5001
+2025-04-15 23:56:03,258 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 23:57:01,892 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.18.56:5000
+2025-04-15 23:57:01,893 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 23:57:05,368 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:05,371 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:05] "GET /api/linkedin/verify-login?_t=1744736225362 HTTP/1.1" 200 -
+2025-04-15 23:57:05,375 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:05] "GET /api/linkedin/login-status?_t=1744736225362 HTTP/1.1" 200 -
+2025-04-15 23:57:05,378 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:05] "GET /api/linkedin/check-status-file?_t=1744736225362 HTTP/1.1" 200 -
+2025-04-15 23:57:08,160 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "OPTIONS /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-15 23:57:08,161 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "GET /api/leads HTTP/1.1" 200 -
+2025-04-15 23:57:08,162 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:08,163 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "OPTIONS /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-15 23:57:08,163 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "GET /api/linkedin/verify-login?_t=1744736228153 HTTP/1.1" 200 -
+2025-04-15 23:57:08,164 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:08,164 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-15 23:57:08,165 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "GET /api/linkedin/verify-login?_t=1744736228154 HTTP/1.1" 200 -
+2025-04-15 23:57:08,165 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-15 23:57:08,166 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "GET /api/leads HTTP/1.1" 200 -
+2025-04-15 23:57:08,171 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-15 23:57:08,173 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-15 23:57:08,176 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "GET /api/linkedin/login-status?_t=1744736228153 HTTP/1.1" 200 -
+2025-04-15 23:57:08,176 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "GET /api/linkedin/login-status?_t=1744736228154 HTTP/1.1" 200 -
+2025-04-15 23:57:08,188 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-15 23:57:13,157 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:13,157 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:13] "GET /api/linkedin/verify-login?_t=1744736233155 HTTP/1.1" 200 -
+2025-04-15 23:57:13,160 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:13] "GET /api/linkedin/login-status?_t=1744736233155 HTTP/1.1" 200 -
+2025-04-15 23:57:13,163 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:13] "GET /api/linkedin/check-status-file?_t=1744736233155 HTTP/1.1" 200 -
+2025-04-15 23:57:18,157 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:18,158 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:18] "GET /api/linkedin/verify-login?_t=1744736238155 HTTP/1.1" 200 -
+2025-04-15 23:57:18,161 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:18] "GET /api/linkedin/login-status?_t=1744736238155 HTTP/1.1" 200 -
+2025-04-15 23:57:18,164 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:18] "GET /api/linkedin/check-status-file?_t=1744736238155 HTTP/1.1" 200 -
+2025-04-15 23:57:20,730 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:20] "OPTIONS /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-15 23:57:20,732 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-15 23:57:20,732 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:20] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-15 23:57:23,159 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:23,159 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:23] "GET /api/linkedin/verify-login?_t=1744736243155 HTTP/1.1" 200 -
+2025-04-15 23:57:23,162 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:23] "GET /api/linkedin/login-status?_t=1744736243155 HTTP/1.1" 200 -
+2025-04-15 23:57:23,166 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:23] "GET /api/linkedin/check-status-file?_t=1744736243155 HTTP/1.1" 200 -
+2025-04-15 23:57:28,165 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:28,165 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:28] "GET /api/linkedin/verify-login?_t=1744736248155 HTTP/1.1" 200 -
+2025-04-15 23:57:28,177 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:28] "GET /api/linkedin/login-status?_t=1744736248155 HTTP/1.1" 200 -
+2025-04-15 23:57:28,180 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:28] "GET /api/linkedin/check-status-file?_t=1744736248155 HTTP/1.1" 200 -
+2025-04-15 23:57:34,148 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:34,149 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:34] "GET /api/linkedin/verify-login?_t=1744736254145 HTTP/1.1" 200 -
+2025-04-15 23:57:34,151 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:34] "GET /api/linkedin/login-status?_t=1744736254145 HTTP/1.1" 200 -
+2025-04-15 23:57:34,153 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:34] "GET /api/linkedin/check-status-file?_t=1744736254145 HTTP/1.1" 200 -
+2025-04-15 23:57:37,100 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:37] "GET / HTTP/1.1" 200 -
+2025-04-15 23:57:37,458 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-15 23:57:39,149 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:39,149 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:39] "GET /api/linkedin/verify-login?_t=1744736259146 HTTP/1.1" 200 -
+2025-04-15 23:57:39,153 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:39] "GET /api/linkedin/login-status?_t=1744736259146 HTTP/1.1" 200 -
+2025-04-15 23:57:39,157 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:39] "GET /api/linkedin/check-status-file?_t=1744736259146 HTTP/1.1" 200 -
+2025-04-15 23:57:43,158 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:43,159 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:43] "GET /api/linkedin/verify-login?_t=1744736263154 HTTP/1.1" 200 -
+2025-04-15 23:57:43,163 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:43] "GET /api/linkedin/login-status?_t=1744736263154 HTTP/1.1" 200 -
+2025-04-15 23:57:43,166 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:43] "GET /api/linkedin/check-status-file?_t=1744736263154 HTTP/1.1" 200 -
+2025-04-15 23:57:48,156 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:48,157 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:48] "GET /api/linkedin/verify-login?_t=1744736268154 HTTP/1.1" 200 -
+2025-04-15 23:57:48,161 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:48] "GET /api/linkedin/login-status?_t=1744736268154 HTTP/1.1" 200 -
+2025-04-15 23:57:48,166 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:48] "GET /api/linkedin/check-status-file?_t=1744736268154 HTTP/1.1" 200 -
+2025-04-15 23:57:53,157 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:53,158 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:53] "GET /api/linkedin/verify-login?_t=1744736273154 HTTP/1.1" 200 -
+2025-04-15 23:57:53,162 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:53] "GET /api/linkedin/login-status?_t=1744736273154 HTTP/1.1" 200 -
+2025-04-15 23:57:53,165 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:53] "GET /api/linkedin/check-status-file?_t=1744736273154 HTTP/1.1" 200 -
+2025-04-15 23:57:59,150 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:57:59,152 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:59] "GET /api/linkedin/verify-login?_t=1744736279145 HTTP/1.1" 200 -
+2025-04-15 23:57:59,155 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:59] "GET /api/linkedin/login-status?_t=1744736279145 HTTP/1.1" 200 -
+2025-04-15 23:57:59,158 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:57:59] "GET /api/linkedin/check-status-file?_t=1744736279145 HTTP/1.1" 200 -
+2025-04-15 23:58:03,157 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:03,158 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:03] "GET /api/linkedin/verify-login?_t=1744736283154 HTTP/1.1" 200 -
+2025-04-15 23:58:03,161 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:03] "GET /api/linkedin/login-status?_t=1744736283154 HTTP/1.1" 200 -
+2025-04-15 23:58:03,163 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:03] "GET /api/linkedin/check-status-file?_t=1744736283154 HTTP/1.1" 200 -
+2025-04-15 23:58:08,161 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:08,162 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:08] "GET /api/linkedin/verify-login?_t=1744736288155 HTTP/1.1" 200 -
+2025-04-15 23:58:08,166 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:08] "GET /api/linkedin/login-status?_t=1744736288155 HTTP/1.1" 200 -
+2025-04-15 23:58:08,169 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:08] "GET /api/linkedin/check-status-file?_t=1744736288155 HTTP/1.1" 200 -
+2025-04-15 23:58:13,161 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:13,163 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:13] "GET /api/linkedin/verify-login?_t=1744736293154 HTTP/1.1" 200 -
+2025-04-15 23:58:13,169 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:13] "GET /api/linkedin/login-status?_t=1744736293154 HTTP/1.1" 200 -
+2025-04-15 23:58:13,173 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:13] "GET /api/linkedin/check-status-file?_t=1744736293154 HTTP/1.1" 200 -
+2025-04-15 23:58:18,157 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:18,158 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:18] "GET /api/linkedin/verify-login?_t=1744736298154 HTTP/1.1" 200 -
+2025-04-15 23:58:18,161 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:18] "GET /api/linkedin/login-status?_t=1744736298154 HTTP/1.1" 200 -
+2025-04-15 23:58:18,163 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:18] "GET /api/linkedin/check-status-file?_t=1744736298154 HTTP/1.1" 200 -
+2025-04-15 23:58:24,150 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:24,153 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:24] "GET /api/linkedin/verify-login?_t=1744736304144 HTTP/1.1" 200 -
+2025-04-15 23:58:24,156 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:24] "GET /api/linkedin/login-status?_t=1744736304144 HTTP/1.1" 200 -
+2025-04-15 23:58:24,159 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:24] "GET /api/linkedin/check-status-file?_t=1744736304144 HTTP/1.1" 200 -
+2025-04-15 23:58:29,148 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:29,148 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:29] "GET /api/linkedin/verify-login?_t=1744736309144 HTTP/1.1" 200 -
+2025-04-15 23:58:29,152 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:29] "GET /api/linkedin/login-status?_t=1744736309144 HTTP/1.1" 200 -
+2025-04-15 23:58:29,156 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:29] "GET /api/linkedin/check-status-file?_t=1744736309144 HTTP/1.1" 200 -
+2025-04-15 23:58:34,147 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:34,148 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:34] "GET /api/linkedin/verify-login?_t=1744736314144 HTTP/1.1" 200 -
+2025-04-15 23:58:34,151 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:34] "GET /api/linkedin/login-status?_t=1744736314144 HTTP/1.1" 200 -
+2025-04-15 23:58:34,155 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:34] "GET /api/linkedin/check-status-file?_t=1744736314144 HTTP/1.1" 200 -
+2025-04-15 23:58:39,147 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:39,148 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:39] "GET /api/linkedin/verify-login?_t=1744736319144 HTTP/1.1" 200 -
+2025-04-15 23:58:39,151 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:39] "GET /api/linkedin/login-status?_t=1744736319144 HTTP/1.1" 200 -
+2025-04-15 23:58:39,154 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:39] "GET /api/linkedin/check-status-file?_t=1744736319144 HTTP/1.1" 200 -
+2025-04-15 23:58:44,155 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:44,157 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:44] "GET /api/linkedin/verify-login?_t=1744736324144 HTTP/1.1" 200 -
+2025-04-15 23:58:44,160 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:44] "GET /api/linkedin/login-status?_t=1744736324144 HTTP/1.1" 200 -
+2025-04-15 23:58:44,165 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:44] "GET /api/linkedin/check-status-file?_t=1744736324144 HTTP/1.1" 200 -
+2025-04-15 23:58:49,146 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:49,146 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:49] "GET /api/linkedin/verify-login?_t=1744736329144 HTTP/1.1" 200 -
+2025-04-15 23:58:49,149 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:49] "GET /api/linkedin/login-status?_t=1744736329144 HTTP/1.1" 200 -
+2025-04-15 23:58:49,150 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:49] "GET /api/linkedin/check-status-file?_t=1744736329144 HTTP/1.1" 200 -
+2025-04-15 23:58:54,154 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:54,156 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:54] "GET /api/linkedin/verify-login?_t=1744736334144 HTTP/1.1" 200 -
+2025-04-15 23:58:54,161 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:54] "GET /api/linkedin/login-status?_t=1744736334144 HTTP/1.1" 200 -
+2025-04-15 23:58:54,165 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:54] "GET /api/linkedin/check-status-file?_t=1744736334144 HTTP/1.1" 200 -
+2025-04-15 23:58:59,151 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:58:59,154 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:59] "GET /api/linkedin/verify-login?_t=1744736339144 HTTP/1.1" 200 -
+2025-04-15 23:58:59,160 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:59] "GET /api/linkedin/login-status?_t=1744736339144 HTTP/1.1" 200 -
+2025-04-15 23:58:59,164 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:58:59] "GET /api/linkedin/check-status-file?_t=1744736339144 HTTP/1.1" 200 -
+2025-04-15 23:59:04,164 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:59:04,166 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:04] "GET /api/linkedin/verify-login?_t=1744736344144 HTTP/1.1" 200 -
+2025-04-15 23:59:04,169 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:04] "GET /api/linkedin/login-status?_t=1744736344144 HTTP/1.1" 200 -
+2025-04-15 23:59:04,173 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:04] "GET /api/linkedin/check-status-file?_t=1744736344144 HTTP/1.1" 200 -
+2025-04-15 23:59:09,146 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:59:09,147 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:09] "GET /api/linkedin/verify-login?_t=1744736349143 HTTP/1.1" 200 -
+2025-04-15 23:59:09,151 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:09] "GET /api/linkedin/login-status?_t=1744736349143 HTTP/1.1" 200 -
+2025-04-15 23:59:09,154 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:09] "GET /api/linkedin/check-status-file?_t=1744736349143 HTTP/1.1" 200 -
+2025-04-15 23:59:14,150 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:59:14,152 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:14] "GET /api/linkedin/verify-login?_t=1744736354143 HTTP/1.1" 200 -
+2025-04-15 23:59:14,156 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:14] "GET /api/linkedin/login-status?_t=1744736354143 HTTP/1.1" 200 -
+2025-04-15 23:59:14,160 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:14] "GET /api/linkedin/check-status-file?_t=1744736354143 HTTP/1.1" 200 -
+2025-04-15 23:59:19,147 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:59:19,148 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:19] "GET /api/linkedin/verify-login?_t=1744736359144 HTTP/1.1" 200 -
+2025-04-15 23:59:19,150 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:19] "GET /api/linkedin/login-status?_t=1744736359144 HTTP/1.1" 200 -
+2025-04-15 23:59:19,153 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:19] "GET /api/linkedin/check-status-file?_t=1744736359144 HTTP/1.1" 200 -
+2025-04-15 23:59:24,149 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:59:24,150 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:24] "GET /api/linkedin/verify-login?_t=1744736364143 HTTP/1.1" 200 -
+2025-04-15 23:59:24,155 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:24] "GET /api/linkedin/login-status?_t=1744736364143 HTTP/1.1" 200 -
+2025-04-15 23:59:24,160 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:24] "GET /api/linkedin/check-status-file?_t=1744736364143 HTTP/1.1" 200 -
+2025-04-15 23:59:29,147 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:59:29,150 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:29] "GET /api/linkedin/verify-login?_t=1744736369143 HTTP/1.1" 200 -
+2025-04-15 23:59:29,153 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:29] "GET /api/linkedin/login-status?_t=1744736369143 HTTP/1.1" 200 -
+2025-04-15 23:59:29,156 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:29] "GET /api/linkedin/check-status-file?_t=1744736369143 HTTP/1.1" 200 -
+2025-04-15 23:59:34,146 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:59:34,147 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:34] "GET /api/linkedin/verify-login?_t=1744736374143 HTTP/1.1" 200 -
+2025-04-15 23:59:34,151 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:34] "GET /api/linkedin/login-status?_t=1744736374143 HTTP/1.1" 200 -
+2025-04-15 23:59:34,155 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:34] "GET /api/linkedin/check-status-file?_t=1744736374143 HTTP/1.1" 200 -
+2025-04-15 23:59:39,145 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:59:39,145 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:39] "GET /api/linkedin/verify-login?_t=1744736379143 HTTP/1.1" 200 -
+2025-04-15 23:59:39,148 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:39] "GET /api/linkedin/login-status?_t=1744736379143 HTTP/1.1" 200 -
+2025-04-15 23:59:39,150 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:39] "GET /api/linkedin/check-status-file?_t=1744736379143 HTTP/1.1" 200 -
+2025-04-15 23:59:44,152 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:59:44,153 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:44] "GET /api/linkedin/verify-login?_t=1744736384144 HTTP/1.1" 200 -
+2025-04-15 23:59:44,156 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:44] "GET /api/linkedin/login-status?_t=1744736384144 HTTP/1.1" 200 -
+2025-04-15 23:59:44,157 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:44] "GET /api/linkedin/check-status-file?_t=1744736384144 HTTP/1.1" 200 -
+2025-04-15 23:59:49,147 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-15 23:59:49,147 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:49] "GET /api/linkedin/verify-login?_t=1744736389143 HTTP/1.1" 200 -
+2025-04-15 23:59:49,150 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:49] "GET /api/linkedin/login-status?_t=1744736389143 HTTP/1.1" 200 -
+2025-04-15 23:59:49,152 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 23:59:49] "GET /api/linkedin/check-status-file?_t=1744736389143 HTTP/1.1" 200 -
+2025-04-16 00:00:07,239 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:07,247 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:07] "GET /api/linkedin/verify-login?_t=1744736407164 HTTP/1.1" 200 -
+2025-04-16 00:00:07,283 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:07] "GET /api/linkedin/login-status?_t=1744736407164 HTTP/1.1" 200 -
+2025-04-16 00:00:07,298 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:07] "GET /api/linkedin/check-status-file?_t=1744736407164 HTTP/1.1" 200 -
+2025-04-16 00:00:11,506 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:11,508 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:11] "GET /api/linkedin/verify-login?_t=1744736411487 HTTP/1.1" 200 -
+2025-04-16 00:00:11,513 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:11] "GET /api/linkedin/login-status?_t=1744736411487 HTTP/1.1" 200 -
+2025-04-16 00:00:11,519 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:11] "GET /api/linkedin/check-status-file?_t=1744736411487 HTTP/1.1" 200 -
+2025-04-16 00:00:13,155 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:13,156 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:13] "GET /api/linkedin/verify-login?_t=1744736413151 HTTP/1.1" 200 -
+2025-04-16 00:00:13,159 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:13] "GET /api/linkedin/login-status?_t=1744736413151 HTTP/1.1" 200 -
+2025-04-16 00:00:13,162 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:13] "GET /api/linkedin/check-status-file?_t=1744736413151 HTTP/1.1" 200 -
+2025-04-16 00:00:15,440 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:15] "GET /api/leads HTTP/1.1" 200 -
+2025-04-16 00:00:15,441 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:15] "OPTIONS /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-16 00:00:15,442 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:15,443 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:15] "OPTIONS /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-16 00:00:15,444 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:15] "GET /api/linkedin/verify-login?_t=1744736415435 HTTP/1.1" 200 -
+2025-04-16 00:00:15,444 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:15,446 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-16 00:00:15,447 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:15] "GET /api/linkedin/verify-login?_t=1744736415436 HTTP/1.1" 200 -
+2025-04-16 00:00:15,448 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:15] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-16 00:00:15,449 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-16 00:00:15,456 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:15] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-16 00:00:15,458 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:15] "GET /api/leads HTTP/1.1" 200 -
+2025-04-16 00:00:15,459 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:15] "GET /api/linkedin/login-status?_t=1744736415435 HTTP/1.1" 200 -
+2025-04-16 00:00:15,460 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:15] "GET /api/linkedin/login-status?_t=1744736415436 HTTP/1.1" 200 -
+2025-04-16 00:00:21,145 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:21,146 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:21] "GET /api/linkedin/verify-login?_t=1744736421142 HTTP/1.1" 200 -
+2025-04-16 00:00:21,149 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:21] "GET /api/linkedin/login-status?_t=1744736421142 HTTP/1.1" 200 -
+2025-04-16 00:00:21,152 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:21] "GET /api/linkedin/check-status-file?_t=1744736421142 HTTP/1.1" 200 -
+2025-04-16 00:00:26,148 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:26,148 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:26] "GET /api/linkedin/verify-login?_t=1744736426142 HTTP/1.1" 200 -
+2025-04-16 00:00:26,151 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:26] "GET /api/linkedin/login-status?_t=1744736426142 HTTP/1.1" 200 -
+2025-04-16 00:00:26,155 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:26] "GET /api/linkedin/check-status-file?_t=1744736426142 HTTP/1.1" 200 -
+2025-04-16 00:00:30,442 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:30,444 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:30] "GET /api/linkedin/verify-login?_t=1744736430437 HTTP/1.1" 200 -
+2025-04-16 00:00:30,447 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:30] "GET /api/linkedin/login-status?_t=1744736430437 HTTP/1.1" 200 -
+2025-04-16 00:00:30,451 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:30] "GET /api/linkedin/check-status-file?_t=1744736430437 HTTP/1.1" 200 -
+2025-04-16 00:00:34,344 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:34] "OPTIONS /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-16 00:00:34,347 - leadgen - INFO - LinkedIn login status forced to: True
+2025-04-16 00:00:34,347 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:34] "POST /api/linkedin/force-login HTTP/1.1" 200 -
+2025-04-16 00:00:35,439 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:35,441 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:35] "GET /api/linkedin/verify-login?_t=1744736435436 HTTP/1.1" 200 -
+2025-04-16 00:00:35,444 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:35] "GET /api/linkedin/login-status?_t=1744736435436 HTTP/1.1" 200 -
+2025-04-16 00:00:35,447 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:35] "GET /api/linkedin/check-status-file?_t=1744736435436 HTTP/1.1" 200 -
+2025-04-16 00:00:40,441 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:40,443 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:40] "GET /api/linkedin/verify-login?_t=1744736440437 HTTP/1.1" 200 -
+2025-04-16 00:00:40,449 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:40] "GET /api/linkedin/login-status?_t=1744736440437 HTTP/1.1" 200 -
+2025-04-16 00:00:40,453 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:40] "GET /api/linkedin/check-status-file?_t=1744736440437 HTTP/1.1" 200 -
+2025-04-16 00:00:46,146 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:46,147 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:46] "GET /api/linkedin/verify-login?_t=1744736446142 HTTP/1.1" 200 -
+2025-04-16 00:00:46,149 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:46] "GET /api/linkedin/login-status?_t=1744736446142 HTTP/1.1" 200 -
+2025-04-16 00:00:46,150 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:46] "GET /api/linkedin/check-status-file?_t=1744736446142 HTTP/1.1" 200 -
+2025-04-16 00:00:53,404 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.18.56:5000
+2025-04-16 00:00:53,404 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-16 00:00:56,156 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:00:56,157 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:56] "GET /api/linkedin/verify-login?_t=1744736456143 HTTP/1.1" 200 -
+2025-04-16 00:00:56,161 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:56] "GET /api/linkedin/login-status?_t=1744736456143 HTTP/1.1" 200 -
+2025-04-16 00:00:56,165 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:00:56] "GET /api/linkedin/check-status-file?_t=1744736456143 HTTP/1.1" 200 -
+2025-04-16 00:01:00,443 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:00,445 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:00] "GET /api/linkedin/verify-login?_t=1744736460437 HTTP/1.1" 200 -
+2025-04-16 00:01:00,451 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:00] "GET /api/linkedin/login-status?_t=1744736460437 HTTP/1.1" 200 -
+2025-04-16 00:01:00,456 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:00] "GET /api/linkedin/check-status-file?_t=1744736460437 HTTP/1.1" 200 -
+2025-04-16 00:01:01,676 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:01] "OPTIONS /api/run-test-scraper HTTP/1.1" 200 -
+2025-04-16 00:01:01,678 - leadgen - INFO - Starting LinkedIn login process directly
+2025-04-16 00:01:01,679 - leadgen - INFO - Detected OS: Darwin
+2025-04-16 00:01:01,679 - leadgen - INFO - Using ChromeDriver at: /Users/ghaly/Documents/LinkedIn-Lead-Generator/drivers/chromedriver-mac64/chromedriver
+2025-04-16 00:01:01,679 - leadgen - INFO - Starting Chrome with visible UI
+2025-04-16 00:01:03,115 - leadgen - INFO - Opening LinkedIn login page...
+2025-04-16 00:01:03,117 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:03] "POST /api/run-test-scraper HTTP/1.1" 200 -
+2025-04-16 00:01:05,573 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:05,574 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:05] "GET /api/linkedin/verify-login?_t=1744736465565 HTTP/1.1" 200 -
+2025-04-16 00:01:05,577 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:05] "GET /api/linkedin/login-status?_t=1744736465565 HTTP/1.1" 200 -
+2025-04-16 00:01:05,580 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:05] "GET /api/linkedin/check-status-file?_t=1744736465565 HTTP/1.1" 200 -
+2025-04-16 00:01:06,873 - leadgen - INFO - Waiting for user to login manually
+2025-04-16 00:01:06,886 - leadgen - INFO - Current URL: https://www.linkedin.com/login
+2025-04-16 00:01:08,282 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:08,284 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:08] "GET /api/linkedin/verify-login?_t=1744736468270 HTTP/1.1" 200 -
+2025-04-16 00:01:08,294 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:08] "GET /api/linkedin/login-status?_t=1744736468270 HTTP/1.1" 200 -
+2025-04-16 00:01:08,299 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:08] "GET /api/linkedin/check-status-file?_t=1744736468270 HTTP/1.1" 200 -
+2025-04-16 00:01:11,272 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:11,273 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:11] "GET /api/linkedin/verify-login?_t=1744736471269 HTTP/1.1" 200 -
+2025-04-16 00:01:11,275 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:11] "GET /api/linkedin/login-status?_t=1744736471269 HTTP/1.1" 200 -
+2025-04-16 00:01:11,277 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:11] "GET /api/linkedin/check-status-file?_t=1744736471269 HTTP/1.1" 200 -
+2025-04-16 00:01:16,278 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:16,279 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:16] "GET /api/linkedin/verify-login?_t=1744736476270 HTTP/1.1" 200 -
+2025-04-16 00:01:16,283 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:16] "GET /api/linkedin/login-status?_t=1744736476270 HTTP/1.1" 200 -
+2025-04-16 00:01:16,288 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:16] "GET /api/linkedin/check-status-file?_t=1744736476270 HTTP/1.1" 200 -
+2025-04-16 00:01:21,274 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:21,275 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:21] "GET /api/linkedin/verify-login?_t=1744736481270 HTTP/1.1" 200 -
+2025-04-16 00:01:21,278 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:21] "GET /api/linkedin/login-status?_t=1744736481270 HTTP/1.1" 200 -
+2025-04-16 00:01:21,282 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:21] "GET /api/linkedin/check-status-file?_t=1744736481270 HTTP/1.1" 200 -
+2025-04-16 00:01:26,282 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:26,286 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:26] "GET /api/linkedin/verify-login?_t=1744736486271 HTTP/1.1" 200 -
+2025-04-16 00:01:26,293 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:26] "GET /api/linkedin/login-status?_t=1744736486271 HTTP/1.1" 200 -
+2025-04-16 00:01:26,297 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:26] "GET /api/linkedin/check-status-file?_t=1744736486271 HTTP/1.1" 200 -
+2025-04-16 00:01:30,568 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:30,569 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:30] "GET /api/linkedin/verify-login?_t=1744736490565 HTTP/1.1" 200 -
+2025-04-16 00:01:30,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:30] "GET /api/linkedin/login-status?_t=1744736490565 HTTP/1.1" 200 -
+2025-04-16 00:01:30,575 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:30] "GET /api/linkedin/check-status-file?_t=1744736490565 HTTP/1.1" 200 -
+2025-04-16 00:01:31,972 - leadgen - INFO - Current URL: None
+2025-04-16 00:01:31,972 - leadgen - WARNING - Error checking URL: argument of type 'NoneType' is not iterable
+2025-04-16 00:01:32,859 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:32] "OPTIONS /api/run-test-scraper HTTP/1.1" 200 -
+2025-04-16 00:01:32,862 - leadgen - INFO - Starting LinkedIn login process directly
+2025-04-16 00:01:32,862 - leadgen - INFO - Detected OS: Darwin
+2025-04-16 00:01:32,863 - leadgen - INFO - Using ChromeDriver at: /Users/ghaly/Documents/LinkedIn-Lead-Generator/drivers/chromedriver-mac64/chromedriver
+2025-04-16 00:01:32,863 - leadgen - INFO - Starting Chrome with visible UI
+2025-04-16 00:01:33,737 - leadgen - INFO - Opening LinkedIn login page...
+2025-04-16 00:01:33,738 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:33] "POST /api/run-test-scraper HTTP/1.1" 200 -
+2025-04-16 00:01:35,571 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:35,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:35] "GET /api/linkedin/verify-login?_t=1744736495565 HTTP/1.1" 200 -
+2025-04-16 00:01:35,576 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:35] "GET /api/linkedin/login-status?_t=1744736495565 HTTP/1.1" 200 -
+2025-04-16 00:01:35,580 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:35] "GET /api/linkedin/check-status-file?_t=1744736495565 HTTP/1.1" 200 -
+2025-04-16 00:01:36,683 - leadgen - INFO - Waiting for user to login manually
+2025-04-16 00:01:36,698 - leadgen - INFO - Current URL: https://www.linkedin.com/login
+2025-04-16 00:01:36,981 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:01:38,746 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:38,747 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:38] "GET /api/linkedin/verify-login?_t=1744736498743 HTTP/1.1" 200 -
+2025-04-16 00:01:38,751 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:38] "GET /api/linkedin/login-status?_t=1744736498743 HTTP/1.1" 200 -
+2025-04-16 00:01:38,754 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:38] "GET /api/linkedin/check-status-file?_t=1744736498743 HTTP/1.1" 200 -
+2025-04-16 00:01:40,570 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:40,571 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:40] "GET /api/linkedin/verify-login?_t=1744736500565 HTTP/1.1" 200 -
+2025-04-16 00:01:40,576 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:40] "GET /api/linkedin/login-status?_t=1744736500565 HTTP/1.1" 200 -
+2025-04-16 00:01:40,580 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:40] "GET /api/linkedin/check-status-file?_t=1744736500565 HTTP/1.1" 200 -
+2025-04-16 00:01:41,706 - leadgen - INFO - Current URL: None
+2025-04-16 00:01:41,707 - leadgen - WARNING - Error checking URL: argument of type 'NoneType' is not iterable
+2025-04-16 00:01:41,986 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:01:45,571 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:45,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:45] "GET /api/linkedin/verify-login?_t=1744736505565 HTTP/1.1" 200 -
+2025-04-16 00:01:45,577 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:45] "GET /api/linkedin/login-status?_t=1744736505565 HTTP/1.1" 200 -
+2025-04-16 00:01:45,583 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:45] "GET /api/linkedin/check-status-file?_t=1744736505565 HTTP/1.1" 200 -
+2025-04-16 00:01:46,715 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:01:46,990 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:01:50,644 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:50,645 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:50] "GET /api/linkedin/verify-login?_t=1744736510564 HTTP/1.1" 200 -
+2025-04-16 00:01:50,647 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:50] "GET /api/linkedin/login-status?_t=1744736510564 HTTP/1.1" 200 -
+2025-04-16 00:01:50,685 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:50] "GET /api/linkedin/check-status-file?_t=1744736510564 HTTP/1.1" 200 -
+2025-04-16 00:01:51,724 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:01:51,997 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:01:56,277 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:01:56,279 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:56] "GET /api/linkedin/verify-login?_t=1744736516271 HTTP/1.1" 200 -
+2025-04-16 00:01:56,282 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:56] "GET /api/linkedin/login-status?_t=1744736516271 HTTP/1.1" 200 -
+2025-04-16 00:01:56,285 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:01:56] "GET /api/linkedin/check-status-file?_t=1744736516271 HTTP/1.1" 200 -
+2025-04-16 00:01:56,732 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:01:57,001 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:00,568 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:00,569 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:00] "GET /api/linkedin/verify-login?_t=1744736520565 HTTP/1.1" 200 -
+2025-04-16 00:02:00,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:00] "GET /api/linkedin/login-status?_t=1744736520565 HTTP/1.1" 200 -
+2025-04-16 00:02:00,574 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:00] "GET /api/linkedin/check-status-file?_t=1744736520565 HTTP/1.1" 200 -
+2025-04-16 00:02:01,739 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:02,006 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:05,569 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:05,570 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:05] "GET /api/linkedin/verify-login?_t=1744736525564 HTTP/1.1" 200 -
+2025-04-16 00:02:05,577 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:05] "GET /api/linkedin/login-status?_t=1744736525564 HTTP/1.1" 200 -
+2025-04-16 00:02:05,583 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:05] "GET /api/linkedin/check-status-file?_t=1744736525564 HTTP/1.1" 200 -
+2025-04-16 00:02:06,747 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:07,014 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:10,576 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:10,578 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:10] "GET /api/linkedin/verify-login?_t=1744736530565 HTTP/1.1" 200 -
+2025-04-16 00:02:10,581 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:10] "GET /api/linkedin/login-status?_t=1744736530565 HTTP/1.1" 200 -
+2025-04-16 00:02:10,585 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:10] "GET /api/linkedin/check-status-file?_t=1744736530565 HTTP/1.1" 200 -
+2025-04-16 00:02:11,756 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:12,021 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:15,572 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:15,574 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:15] "GET /api/linkedin/verify-login?_t=1744736535566 HTTP/1.1" 200 -
+2025-04-16 00:02:15,579 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:15] "GET /api/linkedin/login-status?_t=1744736535566 HTTP/1.1" 200 -
+2025-04-16 00:02:15,584 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:15] "GET /api/linkedin/check-status-file?_t=1744736535566 HTTP/1.1" 200 -
+2025-04-16 00:02:16,760 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:17,025 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:20,567 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:20,569 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:20] "GET /api/linkedin/verify-login?_t=1744736540565 HTTP/1.1" 200 -
+2025-04-16 00:02:20,571 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:20] "GET /api/linkedin/login-status?_t=1744736540565 HTTP/1.1" 200 -
+2025-04-16 00:02:20,573 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:20] "GET /api/linkedin/check-status-file?_t=1744736540565 HTTP/1.1" 200 -
+2025-04-16 00:02:21,768 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:22,033 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:25,569 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:25,570 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:25] "GET /api/linkedin/verify-login?_t=1744736545565 HTTP/1.1" 200 -
+2025-04-16 00:02:25,574 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:25] "GET /api/linkedin/login-status?_t=1744736545565 HTTP/1.1" 200 -
+2025-04-16 00:02:25,578 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:25] "GET /api/linkedin/check-status-file?_t=1744736545565 HTTP/1.1" 200 -
+2025-04-16 00:02:26,774 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:27,042 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:30,571 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:30,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:30] "GET /api/linkedin/verify-login?_t=1744736550565 HTTP/1.1" 200 -
+2025-04-16 00:02:30,577 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:30] "GET /api/linkedin/login-status?_t=1744736550565 HTTP/1.1" 200 -
+2025-04-16 00:02:30,581 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:30] "GET /api/linkedin/check-status-file?_t=1744736550565 HTTP/1.1" 200 -
+2025-04-16 00:02:31,782 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:32,050 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:35,571 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:35,573 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:35] "GET /api/linkedin/verify-login?_t=1744736555566 HTTP/1.1" 200 -
+2025-04-16 00:02:35,579 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:35] "GET /api/linkedin/login-status?_t=1744736555566 HTTP/1.1" 200 -
+2025-04-16 00:02:35,585 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:35] "GET /api/linkedin/check-status-file?_t=1744736555566 HTTP/1.1" 200 -
+2025-04-16 00:02:36,788 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:37,059 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:40,569 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:40,570 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:40] "GET /api/linkedin/verify-login?_t=1744736560565 HTTP/1.1" 200 -
+2025-04-16 00:02:40,576 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:40] "GET /api/linkedin/login-status?_t=1744736560565 HTTP/1.1" 200 -
+2025-04-16 00:02:40,580 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:40] "GET /api/linkedin/check-status-file?_t=1744736560565 HTTP/1.1" 200 -
+2025-04-16 00:02:41,795 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:42,067 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:45,567 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:45,569 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:45] "GET /api/linkedin/verify-login?_t=1744736565564 HTTP/1.1" 200 -
+2025-04-16 00:02:45,573 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:45] "GET /api/linkedin/login-status?_t=1744736565564 HTTP/1.1" 200 -
+2025-04-16 00:02:45,576 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:45] "GET /api/linkedin/check-status-file?_t=1744736565564 HTTP/1.1" 200 -
+2025-04-16 00:02:46,799 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:47,075 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:50,571 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:50,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:50] "GET /api/linkedin/verify-login?_t=1744736570565 HTTP/1.1" 200 -
+2025-04-16 00:02:50,578 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:50] "GET /api/linkedin/login-status?_t=1744736570565 HTTP/1.1" 200 -
+2025-04-16 00:02:50,584 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:50] "GET /api/linkedin/check-status-file?_t=1744736570565 HTTP/1.1" 200 -
+2025-04-16 00:02:51,806 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:52,084 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:55,568 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:02:55,569 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:55] "GET /api/linkedin/verify-login?_t=1744736575565 HTTP/1.1" 200 -
+2025-04-16 00:02:55,574 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:55] "GET /api/linkedin/login-status?_t=1744736575565 HTTP/1.1" 200 -
+2025-04-16 00:02:55,578 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:02:55] "GET /api/linkedin/check-status-file?_t=1744736575565 HTTP/1.1" 200 -
+2025-04-16 00:02:56,814 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:02:57,093 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:00,568 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:00,568 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:00] "GET /api/linkedin/verify-login?_t=1744736580565 HTTP/1.1" 200 -
+2025-04-16 00:03:00,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:00] "GET /api/linkedin/login-status?_t=1744736580565 HTTP/1.1" 200 -
+2025-04-16 00:03:00,575 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:00] "GET /api/linkedin/check-status-file?_t=1744736580565 HTTP/1.1" 200 -
+2025-04-16 00:03:01,821 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:02,095 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:05,569 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:05,570 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:05] "GET /api/linkedin/verify-login?_t=1744736585565 HTTP/1.1" 200 -
+2025-04-16 00:03:05,573 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:05] "GET /api/linkedin/login-status?_t=1744736585565 HTTP/1.1" 200 -
+2025-04-16 00:03:05,577 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:05] "GET /api/linkedin/check-status-file?_t=1744736585565 HTTP/1.1" 200 -
+2025-04-16 00:03:06,830 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:07,104 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:10,568 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:10,569 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:10] "GET /api/linkedin/verify-login?_t=1744736590566 HTTP/1.1" 200 -
+2025-04-16 00:03:10,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:10] "GET /api/linkedin/login-status?_t=1744736590566 HTTP/1.1" 200 -
+2025-04-16 00:03:10,575 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:10] "GET /api/linkedin/check-status-file?_t=1744736590566 HTTP/1.1" 200 -
+2025-04-16 00:03:11,837 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:12,113 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:15,567 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:15,568 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:15] "GET /api/linkedin/verify-login?_t=1744736595565 HTTP/1.1" 200 -
+2025-04-16 00:03:15,570 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:15] "GET /api/linkedin/login-status?_t=1744736595565 HTTP/1.1" 200 -
+2025-04-16 00:03:15,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:15] "GET /api/linkedin/check-status-file?_t=1744736595565 HTTP/1.1" 200 -
+2025-04-16 00:03:16,845 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:17,117 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:20,569 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:20,570 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:20] "GET /api/linkedin/verify-login?_t=1744736600566 HTTP/1.1" 200 -
+2025-04-16 00:03:20,574 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:20] "GET /api/linkedin/login-status?_t=1744736600566 HTTP/1.1" 200 -
+2025-04-16 00:03:20,578 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:20] "GET /api/linkedin/check-status-file?_t=1744736600566 HTTP/1.1" 200 -
+2025-04-16 00:03:21,854 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:22,125 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:25,568 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:25,569 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:25] "GET /api/linkedin/verify-login?_t=1744736605566 HTTP/1.1" 200 -
+2025-04-16 00:03:25,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:25] "GET /api/linkedin/login-status?_t=1744736605566 HTTP/1.1" 200 -
+2025-04-16 00:03:25,575 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:25] "GET /api/linkedin/check-status-file?_t=1744736605566 HTTP/1.1" 200 -
+2025-04-16 00:03:26,863 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:27,128 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:30,574 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:30,576 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:30] "GET /api/linkedin/verify-login?_t=1744736610567 HTTP/1.1" 200 -
+2025-04-16 00:03:30,581 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:30] "GET /api/linkedin/login-status?_t=1744736610567 HTTP/1.1" 200 -
+2025-04-16 00:03:30,587 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:30] "GET /api/linkedin/check-status-file?_t=1744736610567 HTTP/1.1" 200 -
+2025-04-16 00:03:31,870 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:32,135 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:35,568 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:35,570 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:35] "GET /api/linkedin/verify-login?_t=1744736615565 HTTP/1.1" 200 -
+2025-04-16 00:03:35,573 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:35] "GET /api/linkedin/login-status?_t=1744736615565 HTTP/1.1" 200 -
+2025-04-16 00:03:35,576 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:35] "GET /api/linkedin/check-status-file?_t=1744736615565 HTTP/1.1" 200 -
+2025-04-16 00:03:36,879 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:37,142 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:40,571 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:40,573 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:40] "GET /api/linkedin/verify-login?_t=1744736620566 HTTP/1.1" 200 -
+2025-04-16 00:03:40,579 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:40] "GET /api/linkedin/login-status?_t=1744736620566 HTTP/1.1" 200 -
+2025-04-16 00:03:40,584 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:40] "GET /api/linkedin/check-status-file?_t=1744736620566 HTTP/1.1" 200 -
+2025-04-16 00:03:41,882 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:42,150 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:45,571 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:45,572 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:45] "GET /api/linkedin/verify-login?_t=1744736625566 HTTP/1.1" 200 -
+2025-04-16 00:03:45,577 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:45] "GET /api/linkedin/login-status?_t=1744736625566 HTTP/1.1" 200 -
+2025-04-16 00:03:45,582 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:45] "GET /api/linkedin/check-status-file?_t=1744736625566 HTTP/1.1" 200 -
+2025-04-16 00:03:46,886 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:47,158 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:50,568 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:50,569 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:50] "GET /api/linkedin/verify-login?_t=1744736630566 HTTP/1.1" 200 -
+2025-04-16 00:03:50,571 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:50] "GET /api/linkedin/login-status?_t=1744736630566 HTTP/1.1" 200 -
+2025-04-16 00:03:50,574 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:50] "GET /api/linkedin/check-status-file?_t=1744736630566 HTTP/1.1" 200 -
+2025-04-16 00:03:51,891 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x000000010082ee20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001008270bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010036e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100348758 chromedriver + 132952
+4   chromedriver                        0x00000001003dd734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001003f62c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x00000001003a9a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001007f3ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001007f6f74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x00000001007d3a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001007f77f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x00000001007c4b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001008179d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100817b60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100826d08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:52,164 - leadgen - WARNING - Error checking URL: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+0   chromedriver                        0x00000001046b2e20 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001046ab0bc cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001041f28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001041cc758 chromedriver + 132952
+4   chromedriver                        0x0000000104261734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x000000010427a2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x000000010422da80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000104677ca8 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x000000010467af74 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000104657a30 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x000000010467b7f0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000104648b24 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x000000010469b9d4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x000000010469bb60 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001046aad08 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018512dc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000185128b80 thread_start + 8
+
+2025-04-16 00:03:55,569 - leadgen - WARNING - No active Chrome driver instance found
+2025-04-16 00:03:55,570 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:55] "GET /api/linkedin/verify-login?_t=1744736635566 HTTP/1.1" 200 -
+2025-04-16 00:03:55,574 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:55] "GET /api/linkedin/login-status?_t=1744736635566 HTTP/1.1" 200 -
+2025-04-16 00:03:55,576 - werkzeug - INFO - 127.0.0.1 - - [16/Apr/2025 00:03:55] "GET /api/linkedin/check-status-file?_t=1744736635566 HTTP/1.1" 200 -
